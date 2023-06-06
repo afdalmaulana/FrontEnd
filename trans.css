@@ -1,0 +1,15 @@
+.box {
+    width: 400px;
+    height: 400px;
+    margin: 50px;
+    background-color: aquamarine;
+    transform: translate(500px, 500px);
+    /* transition: 1s; */
+    animation: shimmy 3s infinite;
+    animation-direction: alternate;
+}
+@keyframes shimmy {
+    0%{
+        transform: translate(0,0);
+    }
+}
