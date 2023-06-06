@@ -1,0 +1,87 @@
+#luar {
+    width: 400px;
+    height: 400px;
+    border: 2px solid black;
+    /* display: flex; */
+    /* flex-direction: row-reverse; */
+}
+.head {
+    text-align: center;
+    padding-top: 25px;
+    /* padding: 15px 20px 10px 20px; */
+    width: 400px;
+    height: 50px;
+}
+.nav1 {
+    text-align: center;
+    margin-top: 5px;
+    width: 140px;
+    height: 30px;
+    display: inline-block;
+    padding-top: 15px;
+}
+.nav2 {
+    text-align: center;
+    display: inline-block;
+    margin-top: 5px;
+    width: 130px;
+    height: 30px;
+    padding-top: 15px;
+}
+.nav3 {
+    text-align: center;
+    display: inline-block;
+    margin-top: 5px;
+    width: 122px;
+    height: 30px;
+    padding-top: 15px;
+}
+.sidebar {
+    position: absolute;
+    text-align: center;
+    padding-top: 75px;
+    margin-top: 5px;
+    width: 140px;
+    height: 125px;
+    display: inline-block;
+    /* padding: 70px; */
+}
+.content1 {
+    margin-top: 5px;
+    text-align: center;
+    display: inline-block;
+    width: 256px;
+    height: 60px;
+    padding-top: 35px;
+    margin-left: 144px;
+}
+.content2 {
+    margin-top: 5px;
+    text-align: center;
+    display: inline-block;
+    width: 125px;
+    height: 75px;
+    padding-top: 25px;
+    margin-left: 144px;
+}
+.content3 {
+    position: absolute;
+    margin-top: 5px;
+    text-align: center;
+    display: inline-block;
+    width: 126px;
+    height: 75px;
+    padding-top: 25px;
+    margin-left: 5px;
+}
+.footer {
+    margin-top: 5px;
+    text-align: center;
+    padding-top: 20px;
+    height: 45px;
+    width: 400px;
+}
+/* kalau position relative bisa di pindahkan, jika dipindahkan tidak akan
+akan mempengaruhi element yang lain
+
+*/
