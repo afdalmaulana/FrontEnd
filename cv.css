@@ -1,0 +1,118 @@
+.container {
+    background-color: #27374D;
+    margin: 0 auto;
+    width: 500px;
+    height: 700px;
+}
+.ima {
+    background-color: #F9E2AF;
+    padding-left: 20px;
+    padding-top: 30px;
+    position: absolute;
+    width: 160px;
+    height: 220px;
+    border-radius: 100px;
+}
+img{
+    width: 140px;
+    height: 200px;
+    border-radius: 70px;
+}
+.head {
+    background-color: #F9E2AF;
+    width: 500px;
+    height: 200px;
+}
+.content {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 30px;
+    font-weight: 700px;
+    background-color: white;
+    position: absolute;
+    margin-top: 50px;
+    margin-left: 250px;
+    padding: 5px 30px 5px 5px;
+    width: 160px;
+}
+
+.name {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-weight: 700px;
+    background-color: #F9E2AF;
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 250px;
+    padding: 5px 30px 5px 5px;
+    width: 160px;
+}
+.job {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 20px;
+    font-weight: 700px;
+    background-color: #F9E2AF;
+    position: absolute;
+    margin-top: 130px;
+    margin-left: 250px;
+    padding: 5px 30px 5px 5px;
+    width: 160px;
+}
+.email {
+
+    position: absolute;
+    margin-top: 185px;
+    margin-left: 380px;
+    font-size: 10px;
+}
+.hp {
+    width: 80px;
+    position: absolute;
+    margin-top: 185px;
+    margin-left: 180px;
+    font-size: 10px;
+}
+
+.halamanBawah {
+    background-color: #F9E2AF;
+    position: absolute;
+    margin-top: 30px;
+    width: 500px;
+    height: 150px;
+}
+.education {
+    margin: 10px 10px;
+    font-size: 12px;
+}
+.profile {
+    color: aliceblue;
+    margin-top: 10px;
+    margin-left: 175px;
+    font-size: 30px;
+}
+.ha {
+    margin-top: 5px;
+    color: aliceblue;
+    text-align: center;
+}
+.about {
+    color: aliceblue;
+    width: 200px;
+    margin-top: 10px;
+    margin-left: 20px;
+    font-size: 20px;
+}
+.intro {
+    text-align: justify;
+    color: aliceblue;
+    margin-left: 20px;
+    width: 450px;
+    font-size: 14px;
+}
+.sekolah {
+    margin-top: -10px;
+    font-size: 12px;
+    margin-top: 0;
+}
+.tahun {
+    margin-top: -10px;
+}
