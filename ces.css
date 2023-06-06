@@ -1,0 +1,9 @@
+.coba {
+   background-color: aquamarine; 
+   width: 400px;
+}
+@media screen and (max-width: 200px){
+    .coba {
+        background-color: purple;
+    }
+}
