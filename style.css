@@ -1,9 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Permanent+Marker&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Lora&family=Permanent+Marker&display=swap');
+
+
 body {
     margin : 0;
     font-family: sans-serif;
 }
+
+
 a {
     text-decoration: none;
+}
+img {
+    position: absolute;
+    margin-left: 1100px;
+    margin-top : 200px
 }
 
 .container{
@@ -18,7 +32,7 @@ a {
     align-items: center;
     display: flex;
     width: 100%;
-    height: 100px;
+    height: 120px;
     background-color: #374259;
     box-shadow: 0 0 8px black;
 }
@@ -30,12 +44,16 @@ a {
     padding-left: 20px;
 }
 .firstName {
+    font-size: 50px;
     color: black;
-    font-weight: 800;
+    font-weight: 900;
+    font-family: 'Lora', serif;
 }
 .lastName {
+    font-size: 45px;
     color: #FBFFDC;
-    padding-left: 5px;
+    padding-left: 10px;
+    font-family: 'Lora', serif;
 }
 
 .navigation {
@@ -82,8 +100,10 @@ a {
     margin-left: 200px;
     padding-top: 5px;
     padding-left: 10px;
-    width: 250px;
+    width: 300px;
     height: 60px;
+    font-family: 'Lora', serif;
+    font-family: 'Permanent Marker', cursive;
 }
 /* .greet:hover {
     width: 220px;
@@ -94,6 +114,8 @@ a {
     margin-top: 280px;
     padding-left: 210px;
     font-size: 50px;
+    font-family: 'Lora', serif;
+font-family: 'Permanent Marker', cursive;
 }
 .job{
     font-size: 20px;
@@ -136,34 +158,33 @@ button {
     margin-top: 900px;
 }
 .ambisi {
-    margin-left: 200px;
-    margin-top: 30px;
+    margin-top: 50px;
     font-size: 40px;
     width: 200px;
 }
 .ambisi1{
-    font-size: 10px;
-    width: 200px;
+    font-size: 15px;
+    width: 300px;
 }
 .precision {
     position: absolute;
     width: 200px;
-    margin-left: 250px;
-    margin-top: -135px;
+    margin-left: 500px;
+    margin-top: -180px;
     font-size: 40px;
 }
 .presisi {
-    width: 200px;
-    font-size: 10px;
+    width: 300px;
+    font-size: 15px;
 }
 .hard {
     position: absolute;
-    margin-left: 250px;
-    margin-top: -134px;
+    margin-left: 500px;
+    margin-top: -180px;
     font-size: 40px;
     width: 200px;
 }
 .work {
-    width: 200px;
-    font-size: 10px;
+    width: 300px;
+    font-size: 15px;
 }
