@@ -5,6 +5,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Lora&family=Permanent+Marker&display=swap');
 
 
+*{
+    scroll-behavior: smooth;
+}
 body {
     margin : 0;
     font-family: sans-serif;
@@ -23,8 +26,8 @@ img {
 .container{
     /* display: flex; */
     width: 100%;
-    height: 1200px;
-    background-color: gray;
+    height: 2000px;
+    background-color: #579BB1;
 }
 
 .Wrapper {
@@ -33,8 +36,10 @@ img {
     display: flex;
     width: 100%;
     height: 120px;
-    background-color: #374259;
+    background-color: #967E76;
     box-shadow: 0 0 8px black;
+    position: fixed;
+    z-index:100000
 }
 
 .brand{
@@ -94,6 +99,7 @@ img {
     border: 1px solid black;
 }
 .greet {
+    color: white;
     position: absolute;;
     font-size: 50px;
     margin-top: 180px;
