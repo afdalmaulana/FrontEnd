@@ -1,0 +1,11 @@
+reactJS
+SPA => client side rendering
+apabila ada dua page pada server seperti contoh
+landing page            user page
+navbar                  navbar
+carousel                profile 
+card                    content
+footer                  footer
+jadi navbar dan footer tersimpan di dom dan tidak akan loading lagi
+carousel, card, profile, content akan di loading karena berbeda dengan page sebelumnya
+MPA => server side rendering
