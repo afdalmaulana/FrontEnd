@@ -9,3 +9,7 @@ footer                  footer
 jadi navbar dan footer tersimpan di dom dan tidak akan loading lagi
 carousel, card, profile, content akan di loading karena berbeda dengan page sebelumnya
 MPA => server side rendering
+
+// export default function App(){
+// ini adalah contoh export function javascript menjadi component reactjs
+// }
