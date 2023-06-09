@@ -1,0 +1,11 @@
+// hooks adalah kumpulan komponen class yang sekarang menjadi komponen function
+// ini adalah pada class => state adalah constant
+// di react class untuk menyimpan data menggunakan state pengganti variable
+/* state = {
+    number: 1
+} */
+// jsx => {}
+// untuk mengakses {this.state.number}
+// method dalam class apabila diberi parentthesis () maka harus diberikan anonymous function () => onChangeNumber()
+// karena kalau tidak maka akan infinite loop
+// this.setState({number: this.state.number + 1}) untuk mengubah nilai state
