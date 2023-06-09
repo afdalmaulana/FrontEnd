@@ -13,7 +13,17 @@ class LandingClass extends React.Component {
             this.setState ({number: this.state.number - 1})
         }
     };
+    componentDidMount(){
+        console.log("Did Mount Running")
+    }
+    componentDidUpdate(){
+        console.log("Did Update Running")
+    }
+    componentWillUnmount(){
+        console.log("Are you sure?")
+    }
     render(){
+        console.log("Web Running")
         return (
             <div>
                 <h1>{this.state.number}</h1>
