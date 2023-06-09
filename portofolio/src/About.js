@@ -4,7 +4,7 @@ export default function About(){
     return (
         <>
             <div>
-                <h1>This is About</h1>
+                <h1>Afdal</h1>
             </div>
             <nav>
                 <Link to="/">

@@ -1,5 +1,7 @@
 import {Link} from 'react-router-dom'
 import image from './image/fanny.png'
+import igPic from './image/instagram.png'
+import linkPic from './image/linked.png'
 
 export default function HomePage (){
     return(
@@ -13,7 +15,7 @@ export default function HomePage (){
           </div>
               <ul className='navigation'>
                 <Link to='/profile'>
-                <li className='about'>About</li>
+                <li className='profile'>Profile</li>
                 </Link>
                 <Link to='/about'>
                 <li className='contact'>Contact</li>
@@ -24,12 +26,12 @@ export default function HomePage (){
         </div>
         <div className='content'>
           <h2 className='welcome'>Welcome to <span className='curly'>Curly Bracket</span></h2>
-          <h1>Software House</h1>
+          <h1><span className='software'>Software</span><span className='house'>House</span></h1>
           <button className='button1'>Read More</button>
           <img src={image} alt="" className='foto'/>
         </div>
         <div className='halBawah'>
-          <div className='job'>
+          <div className='companyGoals'>
             <p>Company goals</p>
             <div className='goals'>
               <div className='goals1'>Client Happiness
@@ -44,15 +46,33 @@ export default function HomePage (){
             </div>
           </div>
         </div>
-        <div className='footer'>
-          <div className='service'>Our Service</div>
-          <div className='wd'>Full Stack Web Development
-          <h3 className='fs'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam omnis delectus voluptate tenetur natus eveniet, sunt optio quam exercitationem praesentium ullam id pariatur tempora ad porro ipsa officiis, eius reprehenderit.</h3>
-          </div>
-          <div className='ux'>User Interface / User Experience</div>
-          {/* <h3 className='ui'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam omnis delectus voluptate tenetur natus eveniet, sunt optio quam exercitationem praesentium ullam id pariatur tempora ad porro ipsa officiis, eius reprehenderit.</h3> */}
-          <div className='dm'>Digital Marketing</div>
-        </div>
+              <div className='footer'>
+                <div className='judulFooter'>Our Service</div>
+                <div className='service'>
+                  <div className='service1'>Web Development
+                  <div className='webDevelopment'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam omnis delectus voluptate tenetur natus eveniet, sunt optio quam exercitationem praesentium ullam id pariatur tempora ad porro ipsa officiis, eius reprehenderit</div>
+                  </div>
+                  <div className='service2'>Digital Marketing
+                  <div className='digitalMarketing'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam omnis delectus voluptate tenetur natus eveniet, sunt optio quam exercitationem praesentium ullam id pariatur tempora ad porro ipsa officiis, eius reprehenderit</div>
+                  </div>
+                  <div className='service3'>Desain UX/UI
+                  <div className='uxui'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam omnis delectus voluptate tenetur natus eveniet, sunt optio quam exercitationem praesentium ullam id pariatur tempora ad porro ipsa officiis, eius reprehenderit</div>
+                  </div>
+                  <div className='service4'>Android Development
+                  <div className='android'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam omnis delectus voluptate tenetur natus eveniet, sunt optio quam exercitationem praesentium ullam id pariatur tempora ad porro ipsa officiis, eius reprehenderit</div>
+                  </div>
+                </div>
+                <div className='thanks'>Thank you for visiting us
+                <h1>we always ready to wait your call</h1>
+                </div>
+                <div className='contactUs'>
+                  Contact us on:
+                  <div className='listContact'>
+                    <div className='instagram'><img src={igPic} alt=""/><img src={linkPic} alt=""/></div>
+                  </div>
+                </div>
+                <div className='copyright'>copyright &copy; 2023 Muh.Afdal Maulana Said :)</div>
+              </div>
       </div>
         </>
     )
