@@ -1,0 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital@1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Serif:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+*, html, body {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+  list-style-type: none;
+}
+.container {
+  /* background-color: #DFD3C3; */
+  background-color: #273538;
+  height: 2000px;
+  width: 100%;
+}
+.wrapper {
+  background-color: #191919;
+  justify-content: space-between;
+  font-size: 20px;
+  display: flex;
+  width: 100%;
+  height: 80px;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+}
+.brand {
+  display: flex;
+  padding-left: 30px;
+  padding-top: 10px;
+}
+.first {
+  font-size: 35px;
+  padding-left: 10px;
+  font-weight: 600;
+  color: #00DFA2;
+}
+.last {
+  color: white;
+  font-size: 35px;
+  font-weight: 400;
+  padding-left: 10px;
+}
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.navigation > li {
+  list-style-type: none;
+  padding: 15px;
+  color: whitesmoke;
+}
+li {
+  color: white;
+}
+.contact {
+  padding: 20px;
+}
+
+.content {
+  color: black;
+  margin-top: 80px;
+  margin-left: 100px;
+  font-size: 30px;
+  padding-top: 50px;
+}
+.content h1{
+  color: white;
+  display: block;
+  font-size: 90px;
+}
+button {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: black;
+  color: #00DFA2;
+}
+.button1:hover{
+  background-color: #472D2D;
+  color: white;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.curly {
+  color : #00DFA2;
+  font-weight: 1000;
+}
+.foto {
+  width: 600px;
+  float: right;
+  margin-top: -180px;
+}
+.gambar {
+  margin-left: 50px;
+  /* background-color: aqua; */
+  width: 1300px;
+  height: 200px;
+}
+.htmll{
+    max-width:100%;
+    max-height:100%;
+    vertical-align: middle;
+}
+.jjs{
+    max-width: 125px;
+    max-height:100%;
+    vertical-align: middle;
+    padding-left: 50px;
+}
+.ccs{
+    max-width: 125px;
+    max-height:100%;
+    vertical-align: middle;
+}
+.gt {
+  max-width: 100%;
+  max-height:100%;
+  vertical-align: middle;
+  padding-left: 50px;
+}
+.rc {
+  max-width: 100%;
+  max-height:100%;
+  vertical-align: middle;
+  padding-left: 5px;
+}
+
+.halBawah {
+  background-color: #191919;
+  margin-top: 400px;
+  width: 100%;
+  height: 300px;
+  color: white;
+}
+.job p{
+  color : #00DFA2;
+  /* font-family: 'Merriweather', serif; */
+  /* font-family: 'Roboto Serif', serif; */
+  font-family: 'Lora', serif;
+  padding-left: 100px;
+  padding-top: 35px;
+  font-size: 30px;
+}
+.goals{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* background-color: #00DFA2; */
+  margin-left: 100px;
+}
+.goals1{
+  font-size: 20px;
+  color: #00DFA2;
+  font-family: 'Roboto Serif', serif;
+  display: grid;
+  grid-column: 1/1;
+  padding-top: 50px;
+  /* grid-row: 1/2; */
+}
+.happy{
+  color: white;
+  padding-top: 5px;
+  font-size: 12px;
+  text-align: left;
+}
+.goals2{
+  font-size: 20px;
+  font-family: 'Roboto Serif', serif;
+  color: #00DFA2;
+  display: grid;
+  grid-column: 2/3;
+  padding-top: 50px;
+}
+.time {
+  color: white;
+  padding-top: 5px;
+  font-size: 12px;
+  text-align: left;
+}
+.goals3{
+  font-size: 20px;
+  font-family: 'Roboto Serif', serif;
+  color: #00DFA2;
+  display: grid;
+  grid-column: 3/3;
+  padding-top: 50px;
+}
+.trust {
+  color: white;
+  padding-top: 5px;
+  font-size: 12px;
+  text-align: left;
+}
+.footer {
+  width: 100%;
+  height: 500px;
+  background-color: #273538;
+  /* background: url('image/blur.jpeg'); */
+  /* background-size: cover; */
+}
+.footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: aqua;
+  border: 2px solid salmon;
+}
+.service {
+  font-family: 'Roboto Serif', serif;
+  border: 2px solid salmon;
+  color: #00DFA2;
+  font-size: 50px;
+  grid-column: 1/4;
+}
+.wd {
+  color: aliceblue;
+  background-color: #191919;
+  font-size: 20px;
+  grid-column: 1/3;
+  grid-row: 2/3;
+  padding-top: 25px;
+  padding-left: 25px;
+}
+.fs {
+  grid-column: 1/3;
+  grid-row: 3/5;
+  padding-left: 25px;
+}
+.ux {
+  color: aliceblue;
+  background-color: #191919;
+  font-size: 20px;
+  grid-column: 3/5;
+  padding-top: 25px;
+  padding-left: 25px;
+}
+.ui{
+  grid-column: 3/5;
+  padding-left: 25px;
+}
+.dm {
+  color: aliceblue;
+  background-color: #191919;
+  font-size: 20px;
+  grid-column: 5/8;
+  padding-top: 25px;
+  padding-left: 25px;
+}
