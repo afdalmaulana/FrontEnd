@@ -1,8 +1,8 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 export default function LandingJs (){
     // top level adalah antara function dan return, tidak boleh dalam loop dan nested function
-    const [count, SetCount] = useState(0)
+    const [count, setCount] = useState(0)
     const [input, setInput] = useState("");
     useEffect(() => {
         // console.log (`You Clicked ${count} times`)
@@ -16,8 +16,8 @@ export default function LandingJs (){
             <p>
                 Mas Belai aku sebanyak {count} AHHHH
             </p> 
-            <button onClick={() => SetCount(count+1)}>Belai Aku MAS</button>
-            <button onClick={() => SetCount(count-1)}>Kurangin mas</button>
+            <button onClick={() => setCount(count+1)}>Belai Aku MAS</button>
+            <button onClick={() => setCount(count-1)}>Kurangin mas</button>
             <div>
                 <input type="text" ref={name} placeholder="Input Name"/>
                 <button onClick={() => setInput(name.current.value)}>Submit</button>

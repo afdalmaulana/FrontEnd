@@ -1,9 +1,9 @@
 import React from "react";
-import { Card } from "../components/card";
-import { Header } from "../components/keader";
+import Card from "../components/card";
+import Header from "../components/header";
 import { Link } from "react-router-dom";
 
-export default function Landing (){
+export default function Landing2 (){
   return (
     <div>
       <Header />
