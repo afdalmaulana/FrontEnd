@@ -121,6 +121,7 @@ export default function Profile (){
             <div className='course'>Course
             <h2>Purwadhika Digital School</h2>
             <p>Fullstack Web Development</p>
+            <p>2023</p>
             </div>
         </div>
         <div className='contactMe'>

@@ -46,25 +46,40 @@ export default function HomePage (){
             </div>
           </div>
         </div>
-              <div className='footer'>
-                <div className='judulFooter'>Our Service</div>
-                <div className='service'>
-                  <div className='service1'>Web Development
-                  <div className='webDevelopment'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam omnis delectus voluptate tenetur natus eveniet, sunt optio quam exercitationem praesentium ullam id pariatur tempora ad porro ipsa officiis, eius reprehenderit</div>
-                  </div>
-                  <div className='service2'>Digital Marketing
-                  <div className='digitalMarketing'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam omnis delectus voluptate tenetur natus eveniet, sunt optio quam exercitationem praesentium ullam id pariatur tempora ad porro ipsa officiis, eius reprehenderit</div>
-                  </div>
-                  <div className='service3'>Desain UX/UI
-                  <div className='uxui'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam omnis delectus voluptate tenetur natus eveniet, sunt optio quam exercitationem praesentium ullam id pariatur tempora ad porro ipsa officiis, eius reprehenderit</div>
-                  </div>
-                  <div className='service4'>Android Development
-                  <div className='android'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam omnis delectus voluptate tenetur natus eveniet, sunt optio quam exercitationem praesentium ullam id pariatur tempora ad porro ipsa officiis, eius reprehenderit</div>
-                  </div>
+              <div className='service'>
+                <div className='webDevelopment'>
+                  <h1>Web Development</h1>
+                  <figure>
+                  <img width="120" height="120" src="https://img.icons8.com/plasticine/100/web-design.png" alt="web-design"/>
+                  </figure>
+                  <p><button>MORE</button></p>
                 </div>
+                <div className='digitalMarketing'>
+                  <h1>Digital Marketing</h1>
+                  <figure>
+                  <img width="120" height="120" src="https://img.icons8.com/fluency/100/marketing.png" alt="marketing"/>
+                  </figure>
+                  <p><button>MORE</button></p>
+                </div>
+                <div className='uxUi'>
+                  <h1>UX/UI Design</h1>
+                  <figure>
+                  <img width="120" height="120" src="https://img.icons8.com/office/100/windows10-personalization.png" alt="windows10-personalization"/>
+                  </figure>
+                  <p><button>MORE</button></p>
+                </div>
+                <div className='android'>
+                  <h1>Android Application</h1>
+                  <figure>
+                  <img width="120" height="120" src="https://img.icons8.com/doodle/100/android-studio--v3.png" alt="android-studio--v3"/>
+                  </figure>
+                  <p><button>MORE</button></p>
+                </div>
+              </div>
                 <div className='thanks'>Thank you for visiting us
                 <h1>we always ready to wait your call</h1>
                 </div>
+              <div className='footer'>
                 <div className='contactUs'>
                   Contact us on:
                   <div className='listContact'>

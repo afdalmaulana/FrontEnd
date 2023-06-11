@@ -201,62 +201,61 @@ button {
   font-size: 12px;
   text-align: left;
 }
-.judulFooter {
-  /* font-family: 'Titillium Web', sans-serif; */
-  font-family: 'Lora', serif;
-  padding-top: 60px;
-  padding-left: 600px;
-  font-size: 50px;
-  /* color: #5C8984; */
+.service{
+  margin-left: 60px;
+  margin-top: 60px;
+  display: flex;
+}
+.service h1{
+  font-size: 20px;
   color: #00DFA2;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.service img{
+  padding-left: 20px;
+  padding-top: 10px;
+}
+.webDevelopment{
+  background-color: #20262E;
   width: 300px;
-  height: 50px;
+  height: 300px;
 }
-.service {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  margin-left: 10px;
-  margin-top: 50px;
+
+.service p{
+  font-size: 15px;
+  padding-top: 40px;
 }
-.service1 {
-  color: #47A992;
-  font-size: 20px;
+.service button{
+  width: 260px;
+  margin-left: 20px;
 }
-.webDevelopment {
-  color: aliceblue;
-  padding-top: 20px;
-  font-size: 12px;
+.service button:hover{
+  cursor: pointer;
+  background-color: #00DFA2;
+  color: black;
 }
-.service2{
-  color: #47A992;
-  font-size: 20px;
-  padding-left: 20px;
+.digitalMarketing{
+  background-color: #20262E;
+  width: 300px;
+  height: 300px;
+  margin-left: 40px;
 }
-.digitalMarketing {
-  color: aliceblue;
-  padding-top: 20px;
-  font-size: 12px;
-}
-.service3{
-  color: #47A992;
-  padding-left: 20px;
-  font-size: 20px;
-}
-.uxui{
-  color: aliceblue;
-  padding-top: 20px;
-  font-size: 12px;
-}
-.service4{
-  color: #47A992;
-  padding-left: 20px;
-  font-size: 20px;
+.uxUi{
+  background-color: #20262E;
+  width: 300px;
+  height: 300px;
+  margin-left: 40px;
 }
 .android{
-  color: white;
-  padding-top: 20px;
-  font-size: 12px;
+  background-color: #20262E;
+  width: 300px;
+  height: 300px;
+  margin-left: 40px;
 }
+
+
+
 .thanks{
   text-align: center;
   font-size: 100px;
@@ -264,8 +263,9 @@ button {
   color: #00DFA2;
 }
 .thanks h1{
-  font-family: 'Playfair', serif;
-  font-size: 25px;
+  /* font-family: 'Playfair', serif; */
+  font-family: 'Lora', serif;
+  font-size: 15px;
   color: aliceblue;
 }
 .contactUs{
@@ -578,7 +578,7 @@ button {
 }
 .inputForm input{
   width: 400px;
-  height: 30px;
+  height: 50px;
   margin-left: 80px;
   border-top: none;
   border-left: none;
@@ -606,6 +606,16 @@ button {
 .inputForm button{
   width: 400px;
   margin-left: 80px;
+  margin-top: 50px;
+  color: black;
+  background-color: #CBB279;
+  font-size: 20px;
+}
+.inputForm button:hover{
+  cursor: pointer;
+  background-color: #20262E;
+  color: #CBB279;
+  transition: 0.2s;
 }
 /* .javascriptProfilepic{
   margin-left: -50px;
