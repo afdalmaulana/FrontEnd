@@ -79,11 +79,7 @@ li:hover{
   /* color: #FF6D28; */
   color: #EAE9EF;
 }
-.content h1{
-  color: white;
-  display: block;
-  font-size: 90px;
-}
+
 button {
   padding: 10px;
   border-radius: 10px;
@@ -206,11 +202,13 @@ button {
   text-align: left;
 }
 .judulFooter {
-  font-family: 'Titillium Web', sans-serif;
+  /* font-family: 'Titillium Web', sans-serif; */
+  font-family: 'Lora', serif;
   padding-top: 60px;
   padding-left: 600px;
   font-size: 50px;
-  color: #FF6D28;
+  /* color: #5C8984; */
+  color: #00DFA2;
   width: 300px;
   height: 50px;
 }
@@ -221,7 +219,7 @@ button {
   margin-top: 50px;
 }
 .service1 {
-  color: #00DFA2;
+  color: #47A992;
   font-size: 20px;
 }
 .webDevelopment {
@@ -230,7 +228,7 @@ button {
   font-size: 12px;
 }
 .service2{
-  color: #00DFA2;
+  color: #47A992;
   font-size: 20px;
   padding-left: 20px;
 }
@@ -240,7 +238,7 @@ button {
   font-size: 12px;
 }
 .service3{
-  color: #00DFA2;
+  color: #47A992;
   padding-left: 20px;
   font-size: 20px;
 }
@@ -250,7 +248,7 @@ button {
   font-size: 12px;
 }
 .service4{
-  color: #00DFA2;
+  color: #47A992;
   padding-left: 20px;
   font-size: 20px;
 }
@@ -298,16 +296,51 @@ button {
 }
 
 /* ini adalah css profile */
+.containerProfile{
+    /* background-color: #DFD3C3; */
+    /* background-color: #579BB1; */
+    background-color: #E1D7C6;
+    height: 3500px;
+    width: 100%;
+}
+.wrapperProfile {
+  background-color: #433D3C;
+  justify-content: space-between;
+  font-size: 20px;
+  display: flex;
+  width: 100%;
+  height: 80px;
+  z-index: 1000;
+  position: fixed;
+  top: 0;
+}
+.firstProfile {
+  font-size: 35px;
+  padding-left: 10px;
+  font-weight: 600;
+  color: #CBB279;
+}
+.lastProfile {
+  color: white;
+  font-size: 35px;
+  font-weight: 400;
+  padding-left: 10px;
+}
+.hellow{
+  color: black;
+  display: block;
+  font-size: 90px;
+}
 .afdal {
-  font-size: 80px;
-  color: burlywood;
+  font-size: 50px;
+  color: #20262E;
 }
 .jobs {
-  color: white;
-  font-size: 30px;
+  color: #20262E;
+  font-size: 20px;
 }
 .socialmedia {
-  color: white;
+  color: #20262E;
   padding-top: 100px;
 }
 .mysocialmedia{
@@ -318,39 +351,271 @@ button {
 .personal{
   padding-left: 80px;
 }
+.instagramAfdal{
+  width: 80px;
+}
+.linkedAfdal{
+  width: 80px;
+}
 .strength{
-  background-color: #00DFA2;
+  /* background-color: #5B5B5B; */
+  background-color: #20262E;
   height: 300px;
-  margin-top: 600px;
+  margin-top: 350px;
   padding-top: 20px;
   padding-left: 80px;
 }
 .mystrength {
   font-size: 40px;
+  color: #CBB279;
 }
 .listStrength{
   padding-top: 20px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  width: 1300px;
 }
 .ambisi{
   font-size: 25px;
+  color: #CDC2AE;
 }
+
 .isiAmbisi{
   padding-top: 20px;
-  font-size: 15px;
+  font-size: 14px;
+  width: 380px;
+  text-align: justify;
+  color: #F4F9F9;
 }
 .presisi{
   font-size: 25px;
+  color: #CDC2AE;
 }
 .isiPresisi{
   padding-top: 20px;
-  font-size: 15px;
+  font-size: 14px;
+  width: 380px;
+  text-align: justify;
+  color: #F4F9F9;
 }
 .workHard{
   font-size: 25px;
+  color: #CDC2AE;
 }
 .isiWork{
   padding-top: 20px;
+  font-size: 14px;
+  width: 380px;
+  text-align: justify;
+  color: #F4F9F9;
+}
+.skillProfile{
+  font-size: 45px;
+  font-family: 'Lora', serif;
+  font-weight: bolder;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+.wrapperSkill{
+  display: flex;
+  justify-content: space-around;
+}
+.wrapperSkill figcaption{
+  text-align: center;
+}
+.garis{
+  height: 10px;
+  margin-top: 20px;
+  background-color: #20262E;
+}
+.aboutProfile{
+  padding-left: 80px;
+  padding-top: 80px;
+  animation-duration: 5s;
+  animation-name: textin;
+}
+@keyframes textin {
+  from {
+    margin-bottom: 100%;
+  }
+
+  to {
+    margin-bottom: 0;
+  }
+}
+
+@keyframes slidein {
+  from {
+    margin-bottom: 200px;
+    width: 800px;
+  }
+
+  to {
+    margin-bottom: 0;
+    width: 800px;
+  }
+}
+
+.aboutProfile h1{
+  font-size: 50px;
+  font-family: 'Lora', serif;
+}
+.aboutProfile p{
+  text-align: justify;
+  width: 1300px;
+  padding-top: 10px;
+  display: flex;
+}
+.aboutProfile div{
+  background-color: #00DFA2;
+  width: 50px;
+  height: 20px;
+}
+.afdalJob{
+  padding-left: 80px;
+  display: flex;
+  padding-top: 50px;
+  animation-duration: 6s;
+  animation-name: slidein;
+}
+.afdalJob img{
+  color: #472D2D;
+  padding-left: 20px;
+  padding-top: 15px;
+}
+.afdalJob figcaption {
+  color: #433D3C;
+  padding-top: 20px;
+  padding-left: 30px;
+  font-size: 30px;
+  font-family: 'Poppins', sans-serif;
+}
+.afdalJob p{
+  color: #433D3C;
+  padding-left: 30px;
+  padding-top: 10px;
+  font-size: 20px;
+}
+.afdalJob p:hover{
+  cursor: pointer;
+  color: maroon;
+  text-decoration: none;
+}
+.afdalWeb{
+  background-color: white;
+  width: 300px;
+  height: 250px;
+}
+
+.afdalApp{
+  margin-left: 80px;
+  background-color: white;
+  width: 300px;
+  height: 250px;
+}
+.afdalApp img{
+  padding-top: 15px;
+  padding-left: 30px;
+}
+.education {
+  background-color: #20262E;
+  height: 650px;
+  color: #CBB279;
+  margin-top: 150px;
+  padding-left: 80px;
+  padding-top: 100px;
+  display: flex;
+}
+.education h2{
+  padding-top: 50px;
+  font-size: 30px;
+}
+.course{
+  margin-left: 350px;
+}
+.contactMe {
+  display: flex;
+  margin-left: 120px;
+  margin-top: -300px;
+}
+.projectMe{
+  background-color: #CBB279;
+  width: 600px;
+  height: 600px;
+
+}
+.projectMe h1{
+  padding-left: 20px;
+  padding-top: 50px;
+  font-size: 50px;
+  width: 500px;
+}
+.projectFor div{
+  padding-left: 20px;
+  padding-top: 20px;
   font-size: 15px;
 }
+.projectFor p{
+  padding-left: 20px;
+  font-size: 20px;
+}
+.projectContact{
+  margin-top: 50px;
+  padding-left: 20px;
+  font-size: 20px;
+}
+.projectEmail{
+  margin-top: 50px;
+  padding-left: 20px;
+  font-size: 20px;
+}
+.inputForm{
+  background-color: white;
+  width: 600px;
+  height: 600px;
+
+}
+.inputForm input{
+  width: 400px;
+  height: 30px;
+  margin-left: 80px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  outline: none;
+  font-size: 20px;
+}
+.inputForm textarea{
+  margin-left: 80px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 400px;
+  font-size: 20px;
+}
+.nameInput{
+  margin-top: 100px;
+}
+.emailInput{
+  margin-top: 40px
+}
+.areaInput{
+  margin-top: 50px;
+}
+.inputForm button{
+  width: 400px;
+  margin-left: 80px;
+}
+/* .javascriptProfilepic{
+  margin-left: -50px;
+}
+.captionJavascript{
+  margin-left: -25px;
+} */
+/* .htmlProfile img{
+  margin-left: -400px;
+} */
+/* .htmlProfilepic {
+  margin-left: -200px;
+} */
