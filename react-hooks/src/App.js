@@ -2,6 +2,7 @@
 import './App.css';
 import Counter from './pages/Counter';
 import Timer from './pages/timer';
+import Calculator from './pages/Calculator';
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       <h1>{count}</h1>
       <button onClick={increment}>Ini Tombol Tambah</button>
       <button onClick={decrement}>Ini Tombol Kurang</button>
+      <Calculator/>
       <Timer/>
     </div>
   );
