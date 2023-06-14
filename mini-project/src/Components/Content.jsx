@@ -3,8 +3,8 @@ import { Avatar, Box, Button, Flex, Image, Tab, TabList, TabPanel, TabPanels, Ta
 export default function Content(){
     return (
         <>
-        <Box height={'850px'} w={'1200px'}>
-        <Text fontSize={'6xl'}>Happy Reading</Text>
+        <Box height={'850px'} w={'1200px'} mt={'50px'}>
+        <Text fontSize={'6xl'}>Gold Diamond</Text>
         <Tabs variant='enclosed' borderColor={'black'}>
         <TabList>
         <Tab>Home</Tab>

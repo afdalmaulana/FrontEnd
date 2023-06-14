@@ -1,33 +1,30 @@
 import { Avatar, AvatarBadge, AvatarGroup, Box, Button, ButtonGroup, Center, Flex, IconButton, Image, Input, Menu, MenuButton, MenuItem, MenuList, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, Spacer, Text, useDisclosure } from '@chakra-ui/react'
 import {ChatIcon, ChevronDownIcon, SearchIcon} from '@chakra-ui/icons'
+import { FaSketch } from "react-icons/fa";
+import SearchBar from './SearchBar';
+import WriteBlog from './WriteBlog';
+import ModalLogin from './ModalLogin';
+import CreateBlog from './CreateBlog';
+import { Link } from 'react-router-dom';
+import Register from './Register';
 
 export default function Navbar(){
-    const { isOpen, onOpen, onClose } = useDisclosure()
     return(
-        <Box w={'100%'} backgroundColor={'whiteAlpha.500'} h={'60px'} border={'1px'} borderColor={'blackAlpha.300'} pt={'10px'} pos="sticky" zIndex={2}>
-            <Flex ml={'40px'}>
-            <IconButton aria-label='Search database' icon={<SearchIcon />} h={'30px'} backgroundColor={'white'}/>
-            <Input placeholder='Search' w={'200px'} h={'30px'}/>
+        <Box w={'100%'} backgroundColor={'white'} h={'60px'} border={'1px'} borderColor={'blackAlpha.300'} pt={'10px'} pos={'fixed'} zIndex={5}>
+            <Flex ml={'30px'}>
+                <Link to={'/'}>
+                <Button variant={''}>
+                <FaSketch size={'30px'} color='gold'></FaSketch>
+                </Button>
+                </Link>
+            <SearchBar/>
             <Spacer/>
-            <Button backgroundColor={'whiteAlpha.500'} onClick={onOpen} marginRight={'10px'} leftIcon={<ChatIcon/>} variant=''>Write</Button>
-            <Modal isOpen={isOpen} onClose={onClose}>
-            <ModalOverlay />
-            <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-            </ModalBody>
-
-            <ModalFooter>
-            <Button colorScheme='blue' mr={3} onClick={onClose}>
-              Close
-            </Button>
-                <Button variant='ghost'>Secondary Action</Button>
-            </ModalFooter>
-            </ModalContent>
-        </Modal>
+            <ButtonGroup>
+                <CreateBlog/>
+                <WriteBlog/>
+            </ButtonGroup>
       <ButtonGroup>
-        <Button colorScheme={'twitter'} borderRadius={'50px'}>Signup</Button>
+        <Register/>
         <Button backgroundColor={'white'} borderRadius={'50px'} variant=''>Signin</Button>
       </ButtonGroup>
             <Menu>

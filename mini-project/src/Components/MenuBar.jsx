@@ -2,21 +2,23 @@ import { EmailIcon } from "@chakra-ui/icons";
 import { Avatar, Box, Button, Flex, Image, Input, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
+
+
 export default function MenuBar(){
     return (
         <>
-        <Box height={'900px'} w={'500px'} border={'2px'} color={'blackAlpha.200'} pl={'20px'}>
+        <Box height={'900px'} w={'500px'} border={'2px'} color={'blackAlpha.200'} pl={'20px'} mt={'50px'} zIndex={2}>
         <Image width="140" height="140" src="https://img.icons8.com/stickers/100/reading.png" alt="reading" mt={'20px'}/>
         <Text color={'blackAlpha.600'} fontSize={'15px'} w={'300px'}>a publication from medium on personal development</Text>
         <Button colorScheme='facebook' borderRadius={'50px'} mt={'10px'}>Follow</Button>
         <Text color={'blackAlpha.600'} mt={'30px'}>Connect with us</Text>
-        <Link href='https://www.instagram.com/afdalmaulanaaa/'>
+        <a href='https://www.instagram.com/afdalmaulanaaa/' target="blank">
         <Image width="10" height="10" src="https://img.icons8.com/ios/50/instagram-new--v1.png" alt="instagram-new--v1"/>
-        </Link>
+        </a>
         <Text color={'blackAlpha.800'} mt={'30px'}>Editors</Text>
         <Box mt={'20px'} w={'300px'}>
             <Flex>
-            <Avatar bg='teal.500' mr={'20px'} color={'black'}/>
+            <Avatar bg='teal.500' mr={'20px'} color={'black'} src="./afdal.png" h={'60px'} w={'60px'}/>
             <Text color={'black'}>Muh. Afdal Maulana Said</Text>
             </Flex>
         </Box>
