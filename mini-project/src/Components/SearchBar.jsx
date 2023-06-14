@@ -3,7 +3,7 @@ import { Box, IconButton, Input, InputGroup, InputLeftElement } from "@chakra-ui
 
 export default function SearchBar(){
     return (
-        <Box>
+        <Box mt={'10px'}>
             <InputGroup>
             <InputLeftElement>
             <IconButton aria-label='Search database' icon={<SearchIcon />} size={'5px'} backgroundColor={'white'}/>

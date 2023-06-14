@@ -9,7 +9,7 @@ export default function CreateBlog(){
     }
     return (
         <>
-        <ButtonGroup>
+        <ButtonGroup mt={'10px'}>
         <Button backgroundColor={'whiteAlpha.500'} leftIcon={<FaPencilAlt/>} variant={''} onClick={toCreateBlog} p={'10px'}>Start Writing
         </Button>
         </ButtonGroup>

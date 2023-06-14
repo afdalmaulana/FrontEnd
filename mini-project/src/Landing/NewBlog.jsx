@@ -1,4 +1,4 @@
-import { Box, Button, Input, InputGroup, Stack, Textarea } from "@chakra-ui/react";
+import { Button, Input, InputGroup, Stack, Textarea } from "@chakra-ui/react";
 import Navbar from "../Components/Navbar";
 
 export default function NewBlog(){
