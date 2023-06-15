@@ -1,6 +1,5 @@
 import { Box, Button, useDisclosure } from "@chakra-ui/react";
-import ModalSignIn from "./ModalSignUp";
-import ModalSignUp from "./ModalSignIn";
+import ModalSignIn from "./ModalSignIn";
 
 export default function SignIn(){
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -9,7 +8,7 @@ export default function SignIn(){
         <>
         <Box mt={'10px'}>
         <Button backgroundColor={'white'} borderRadius={'50px'} variant='' onClick={onOpen}>Signin</Button>
-        <ModalSignUp isOpen={isOpen} onClose={onClose} onOpen={onOpen}/>
+        <ModalSignIn isOpen={isOpen} onClose={onClose} onOpen={onOpen}/>
         </Box>
         </>
     )

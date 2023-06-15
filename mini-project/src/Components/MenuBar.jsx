@@ -7,12 +7,10 @@ import { Link } from "react-router-dom";
 export default function MenuBar(){
     return (
         <>
-        <Box height={'900px'} w={'500px'}  bgColor={''} borderRight={'1px'} pl={'20px'} zIndex={2} h={'2000px'}>
-        <Image width="140" height="140" src="https://img.icons8.com/stickers/100/reading.png" alt="reading" mt={'20px'}/>
-        <Text color={'blackAlpha.600'} fontSize={'15px'} w={'300px'}>a publication from medium on personal development</Text>
-        <Button colorScheme='facebook' borderRadius={'50px'} mt={'10px'}>Follow</Button>
+        <Box height={'900px'} w={'500px'}  pl={'20px'} zIndex={2} h={'650px'} pos={'sticky'} top={'50'}>
+        {/* <Image width="140" height="140" src="https://img.icons8.com/stickers/100/reading.png" alt="reading" mt={'20px'}/> */}
         <Text color={'blackAlpha.600'} mt={'30px'}>Connect with Editor</Text>
-            <Flex>
+            <Flex mt={'20px'}>
             <Avatar bg='teal.500' mr={'20px'} color={'black'} src="./afdal.png" h={'60px'} w={'60px'}/>
             <Text color={'black'}>Muh. Afdal Maulana Said
             <HStack spacing='10px'>
@@ -29,6 +27,7 @@ export default function MenuBar(){
         </HStack>
             </Text>
             </Flex>
+        <Text color={'blackAlpha.600'} fontSize={'15px'} w={'300px'} mt={'10px'}>a publication from golden book on personal development</Text>
         <Box mt={'20px'} w={'300px'}>
         </Box>
         <Text color={'black'} mt={'40px'} fontSize={'3xl'} fontFamily={'sans-serif'}>Sign up for Daily Tip</Text>
@@ -44,7 +43,7 @@ export default function MenuBar(){
             <Button borderRadius={'50px'} w={'80px'} h={'30px'} m={'5px'} fontSize={'10px'}>Writing</Button>
             <Button borderRadius={'50px'} w={'80px'} h={'30px'} m={'5px'} fontSize={'10px'}>Fashion</Button>
             <Link href="#">
-            <Text color={'yellow.500'}>See more topics</Text>
+            <Text color={'yellow.500'} mt={'20px'}>See more topics</Text>
             </Link>
         </Box>
         </Box>

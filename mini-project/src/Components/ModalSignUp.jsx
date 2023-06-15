@@ -1,8 +1,13 @@
-import { Button, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Input, useDisclosure } from "@chakra-ui/react"
+import { Button, ButtonGroup, Drawer, DrawerBody, DrawerCloseButton, DrawerContent, DrawerFooter, DrawerHeader, DrawerOverlay, Input, InputGroup, InputRightElement, Stack, Text, useDisclosure } from "@chakra-ui/react"
 import React from "react"
+import { FaGoogle } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+import AuthorSignUp from "./AuthorSignUp";
 
-export default function ModalSignIn({isOpen,onClose}){
-  const btnRef = React.useRef()
+export default function ModalSignUp({isOpen,onClose}){
+    const btnRef = React.useRef()
+  const [show, setShow] = React.useState(false)
+  const handleClick = () => setShow(!show)
     return (
         <>
       <Drawer
@@ -17,17 +22,32 @@ export default function ModalSignIn({isOpen,onClose}){
           <DrawerHeader>Create your account</DrawerHeader>
 
           <DrawerBody>
-            <Input placeholder='Type here...' />
+            <Text>Username</Text>
+            <Input placeholder='Enter your username' mt={'10px'}/>
+            <Text mt={'20px'}>Email</Text>
+            <Input placeholder='Enter a valid email' mt={'10px'}/>
+            <Text mt={'20px'}>Phone number</Text>
+            <Input placeholder='Enter a phone number' mt={'10px'}/>
+
+            <Text mt={'20px'}>Password</Text>
+            <InputGroup size='md'>
+            <Input pr='4.5rem' type={show ? 'text' : 'password'} placeholder='Enter password'/>
+                <InputRightElement width='4.5rem'>
+                <Button h='1.75rem' size='sm' onClick={handleClick}> {show ? 'Hide' : 'Show'}</Button>
+                </InputRightElement>
+            </InputGroup>
+            <Stack mt={'20px'}>
+                    <Button leftIcon={<FaGoogle/>} borderRadius={'50px'}>Signup with Google</Button>
+                    <Button leftIcon={<FaFacebook/>} colorScheme={'facebook'} borderRadius={'50px'}>Signup with Facebook</Button>
+            </Stack>
           </DrawerBody>
 
           <DrawerFooter>
-            <Button variant='outline' mr={3} onClick={onClose}>
-              Cancel
-            </Button>
-            <Button colorScheme='blue'>Save</Button>
+            
+            <AuthorSignUp/>
           </DrawerFooter>
         </DrawerContent>
       </Drawer>
-    </>
+    </>    
     )
 }

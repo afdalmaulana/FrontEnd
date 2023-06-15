@@ -17,8 +17,8 @@ export default function Navbar(){
         <Box w={'100%'} backgroundColor={'white'} h={'60px'} border={'1px'} borderColor={'blackAlpha.300'} top={'0'} position={'fixed'} zIndex={10}>
             <Flex ml={'30px'}>
                 <Link to={'/'}>
-                <Button variant={''}>
-                <BiBookBookmark size={'30px'} color='gold'></BiBookBookmark>
+                <Button variant={''} mt={'10px'}>
+                <BiBookBookmark size={'30px'} color='gold'></BiBookBookmark>Golden Book
                 </Button>
                 </Link>
             <SearchBar/>
