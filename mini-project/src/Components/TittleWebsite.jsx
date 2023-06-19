@@ -1,21 +1,52 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { useState } from "react";
 import { BiBookBookmark } from "react-icons/bi";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function TittleWebsite(){
-    return (
-        <>
-        <Box bgImage={'menbook.jpg'} bgSize={'cover'} bgPos={'center'} mt={'50px'} h={'500px'}>
+export default function TittleWebsite() {
+  const navigate = useNavigate();
+  function toContent() {
+    navigate("/carousel");
+  }
+  return (
+    <>
+      <Box w={"100%"}>
+        <Box
+          bgImage={"tumpukanBuku.jpeg"}
+          bgSize={"cover"}
+          bgPos={"center"}
+          mt={"50px"}
+          h={"750px"}
+        >
           <Flex>
-        <Text fontSize={'7xl'} mt={'100px'} ml={'100px'} color={'whiteAlpha.900'} fontFamily={'monospace'}>Golden Book</Text>
-        <Box mt={'100px'} ml={'5px'}>
-          <BiBookBookmark size={'30px'} color="gold"/>
-        </Box>
+            <Text
+              fontSize={"8xl"}
+              mt={"120px"}
+              ml={"80px"}
+              color={"black"}
+              fontFamily={"monospace"}
+              fontWeight={"bold"}
+            >
+              Golden Book
+            </Text>
+            <Box mt={"120px"} ml={"5px"}>
+              <BiBookBookmark size={"50px"} color="gold" />
+            </Box>
           </Flex>
-          <Box w={'450px'} ml={'100px'}>
-          <Text color={'yellow.300'} fontSize={'2xl'}>Discover stories, thinking and expensive experience from writes on any topic</Text>
-          <Button mt={'20px'} borderRadius={'50px'} bgColor={'black'} color={'yellow.300'}>Start Reading</Button>
+          <Box w={"600px"} ml={"80px"}>
+            <Text color={"black"} fontSize={"3xl"} fontWeight={"bold"}>
+              Discover stories, thinking and expensive experience from writes on
+              any topic. Find and share real perspectives about topics that
+              matter today
+            </Text>
+            <a href="#carousel">
+              <Button mt={"20px"} borderRadius={"50px"} colorScheme={"yellow"}>
+                Start Reading
+              </Button>
+            </a>
           </Box>
-          </Box>
-        </>
-    )
+        </Box>
+      </Box>
+    </>
+  );
 }

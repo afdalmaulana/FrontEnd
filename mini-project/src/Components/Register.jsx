@@ -1,14 +1,17 @@
 import { Box, Button, useDisclosure } from "@chakra-ui/react";
-import ModalSignUp from "./ModalSignUp";
+import { useNavigate } from "react-router-dom";
 
 
 export default function Register(){
-    const { isOpen, onOpen, onClose } = useDisclosure()
+    const navigate = useNavigate();
+    function toSignUp(){
+        navigate('/pageregister')
+    }
+    
     return (
         <>
-        <Box mt={'10px'}> 
-            <Button colorScheme={'yellow'} borderRadius={'50px'} onClick={onOpen}>Signup</Button>
-            <ModalSignUp isOpen={isOpen} onClose={onClose} onOpen={onOpen}/>
+        <Box mt={'10px'} mr={'10px'}> 
+            <Button colorScheme={'yellow'} borderRadius={'50px'} onClick={toSignUp}>Sign Up</Button>
         </Box>
         </>
     )

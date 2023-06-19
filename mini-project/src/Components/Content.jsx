@@ -1,91 +1,123 @@
-import { Avatar, Box, Button, ButtonGroup, Card, CardBody, CardFooter, CardHeader, Flex, Heading, Image, Stack, Tab, TabList, TabPanel, TabPanels, Tabs, Text } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Button,
+  ButtonGroup,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Center,
+  Divider,
+  Flex,
+  Heading,
+  Image,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Stack,
+  Tab,
+  TabList,
+  TabPanel,
+  TabPanels,
+  Tabs,
+  Text,
+} from "@chakra-ui/react";
 import { GrLike } from "react-icons/gr";
 import { IoIosArrowDown } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
+import { AiFillEye, AiOutlineArrowRight } from "react-icons/ai";
+import { BiRightArrow } from "react-icons/bi";
+import TopLike from "./PageContent/TopLike";
 
-export default function Content({data}){
-    return (
-        <>
-        <Box height={'800px'} w={'1200px'}>
-          <Tabs>
-        <TabList>
-        <Tab>Home</Tab>
-        <Tab>Recent</Tab>
-  </TabList>
-  <TabPanels>
-    <TabPanel>
-    <Stack>
-            {data.map((item) => {
-                return (
-                  <Card
-                  direction={{ base: 'column', sm: 'row' }}
-                  overflow='hidden'
-                  variant='outline'
+export default function Content({ data }) {
+  const navigate = useNavigate();
+  function toSign(){
+    navigate("/signPage")
+  }
+  return (
+    <>
+      <Box>
+        <Stack>
+          <Box>
+            <Box w={"750px"} m={"auto"}>
+              <Text
+                align={"center"}
+                mt={"50px"}
+                fontSize={"4xl"}
+                fontWeight={"bolder"}
+              >
+                Blog atau buku yang di tulis oleh beberapa orang yang memiliki
+                imajinasi yang luar biasa
+              </Text>
+              <Box w={"650px"} m={"auto"}>
+                <Text align={"center"} mt={"20px"} fontSize={"2xl"}>
+                  Pilih dari 100+ blog atau buku yang dapat disesuaikan dengan
+                  mood dan pilihan anda untuk dibaca
+                </Text>
+              </Box>
+              <Button
+                rightIcon={<ArrowForwardIcon />}
+                ml={"200px"}
+                mt={"50px"}
+                fontSize={"2xl"}
+                variant={""}
+              >
+                Lihat semua Buku atau Blog
+              </Button>
+            </Box>
+          </Box>
+        </Stack>
+        <TopLike data={data}/>
+        <Box ml={"250px"} mt={"100px"}>
+          <Stack>
+            <Flex>
+              <Box>
+                <Image
+                  src="https://images.unsplash.com/photo-1581970196594-f0a8ad70eaa1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fHJlYWRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60"
+                  h={"600px"}
+                  w={"500px"}
+                ></Image>
+              </Box>
+              <Box pt={"100px"} pl={"50px"}>
+                <Stack
+                  fontSize={"5xl"}
+                  fontWeight={"bolder"}
+                  lineHeight={"40px"}
+                  fontFamily={"initial"}
                 >
-                  <Image
-                    objectFit='cover'
-                    maxW={{ base: '100%', sm: '200px' }}
-                    src={item.images}
-                    alt='Caffe Latte'
-                  />
-                
-                  <Stack>
-                    <CardBody>
-                      <Heading size='lg'>{item.title}</Heading>
-                      <Text fontSize={'12px'}>{item.author}</Text>
-                      <Text py='2'>{item.desc}</Text>
-                      <Button borderRadius={'50px'} variant='' rightIcon={<IoIosArrowDown/>}>Read More</Button>
-                    </CardBody>
-                
-                    <CardFooter>
-                      <Button borderRadius={'50px'} variant='' rightIcon={<BsFillBookmarkStarFill/>}></Button>
-                      <Button variant='' colorScheme='blue' borderRadius={'50px'} leftIcon={<GrLike/>}> Like
-                      </Button>
-                    </CardFooter>
-                  </Stack>
-                </Card>
-                )
-            })}
-        </Stack>
-    </TabPanel>
-    <TabPanel>
-    <Stack>
-      <p>This is recent</p>
-            {data.map((item) => {
-                return (
-                    <Card
-                      direction={{ base: 'column', sm: 'row' }}
-                      overflow='hidden'
-                      variant='outline'
-                    >
-                      <Image
-                        objectFit='cover'
-                        maxW={{ base: '100%', sm: '200px' }}
-                        src={item.images}
-                        alt='Caffe Latte'
-                      />
-                      <Stack>
-                          <CardBody>
-                            <Heading size='lg'>{item.title}</Heading>
-
-                            <Text py='2'>{item.desc}</Text>
-                            <Button variant='' rightIcon={<IoIosArrowDown/>}>Read More</Button>
-                          </CardBody>
-                            <CardFooter>
-                              <Button variant='solid' colorScheme='blue'>
-                                Buy Latte
-                              </Button>
-                            </CardFooter>
-                          </Stack>
-                        </Card>
-                )
-            })}
-        </Stack>
-    </TabPanel>
-  </TabPanels>
-</Tabs>
+                  <Text>Golden Book</Text>
+                  <Text>Kebebasan Total</Text>
+                  <Text>Dalam Membaca</Text>
+                </Stack>
+                <Stack w={"400px"} fontSize={"2xl"} mt={"20px"}>
+                  <Text>
+                    Mulai menulis blog atau buku tentang imajinasi anda atau
+                    mulai membaca blog atau buku yang tersedia di Golden Book
+                    yang dapat anda sesuaikan dengan minat atau rasa penasaran
+                    anda terhadap tulisan yang ada pada Golden Book
+                  </Text>
+                </Stack>
+                <Button
+                  mt={"45px"}
+                  fontSize={"2xl"}
+                  variant={""}
+                  rightIcon={<AiOutlineArrowRight />}
+                  onClick={toSign}
+                >
+                  Mulai
+                </Button>
+              </Box>
+            </Flex>
+            {/* <Image src="https://images.unsplash.com/photo-1575024357670-2b5164f470c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"
+            w={'300px'}
+            ></Image> */}
+          </Stack>
         </Box>
-        </>
-    )
+      </Box>
+    </>
+  );
 }
