@@ -4,13 +4,13 @@ import {useNavigate} from 'react-router-dom'
 export default function CreateBlog(){
     const navigate = useNavigate();
     
-    function toCreateBlog(){
+    function toNewBlog(){
         navigate("/newBlog")
     }
     return (
         <>
         <ButtonGroup mt={'10px'}>
-        <Button backgroundColor={'whiteAlpha.500'} leftIcon={<FaPencilAlt/>} variant={''} onClick={toCreateBlog} p={'10px'}>Start Writing
+        <Button backgroundColor={'whiteAlpha.500'} leftIcon={<FaPencilAlt/>} variant={''} onClick={toNewBlog} p={'10px'}>Start Writing
         </Button>
         </ButtonGroup>
         </>

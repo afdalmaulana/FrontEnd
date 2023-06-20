@@ -107,15 +107,15 @@ export default function Home() {
   ]
   const [like, setLike] = useState(topLike);
   return (
-    <>
+    <main>
       <Navbar />
       <TittleWebsite />
       {/* <Flex> */}
         {/* <MenuBar data={data} /> */}
       <CarouselNew populer={populer} />
-        <Content data={data} />
+        <Content like={like} blogList={blogList}/>
       {/* </Flex> */}
       <Footer />
-    </>
+    </main>
   );
 }

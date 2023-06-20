@@ -3,7 +3,7 @@ import { AiFillEye } from "react-icons/ai";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { GrLike } from "react-icons/gr";
 
-export default function TopLike({data}){
+export default function TopLike({like}){
     return (
         <>
         <Box ml={"40px"} mt={"100px"}>
@@ -11,7 +11,7 @@ export default function TopLike({data}){
             10 Top Like
           </Text>
           <Flex wrap={"wrap"} gap={"20px"}>
-            {data.map((item) => {
+            {like.map((item) => {
               return (
                 <Card maxW="md" maxH="lg">
                   <CardBody justifyContent={"center"}>

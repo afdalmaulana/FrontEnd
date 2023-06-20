@@ -29,7 +29,7 @@ export default function AvatarProfile(){
         <MenuItem>Get a membership</MenuItem>
         <MenuItem>Apply for author verification</MenuItem>
         <MenuItem>Delete</MenuItem>
-        <MenuItem>Attend a Workshop</MenuItem>
+        <MenuItem><Link to={'/accountsetting'}>Account Setting</Link></MenuItem>
     </MenuList>
 </Menu>
         </Box>

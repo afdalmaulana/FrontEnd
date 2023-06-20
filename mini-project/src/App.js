@@ -8,6 +8,10 @@ import PageRegister from './Landing/PageRegister';
 import PageSign from './Landing/PageSign';
 import PageTrending from './Landing/PageTrending';
 import Terms from './Landing/Terms';
+import AccountSetting from './Landing/AccountSetting';
+import ChangePassword from './Landing/ChangePassword';
+import Profile from './Landing/Profile';
+import BlogCategory from './Landing/BlogCategory';
 
 
 function App() {
@@ -20,7 +24,11 @@ function App() {
         <Route path='/pageregister' element={<PageRegister/>}></Route>
         <Route path='/signPage' element={<PageSign/>}></Route>
         <Route path='/trending' element={<PageTrending/>}/>
+        <Route path='/accountsetting' element={<AccountSetting/>}/>
+        <Route path='/changePassword' element={<ChangePassword/>}/>
+        <Route path='/profile' element={<Profile/>}/>
         <Route path='/terms' element={<Terms/>}/>
+        <Route path='/category' element={<BlogCategory/>}/>
       </Routes>
       
     </>

@@ -179,6 +179,7 @@ export default function PageSign() {
                             </ModalBody>
                             <ModalFooter>
                               <Button onClick={onClose}>Close</Button>
+                              <Button colorScheme="yellow">Submit</Button>
                             </ModalFooter>
                           </ModalContent>
                         </Modal>

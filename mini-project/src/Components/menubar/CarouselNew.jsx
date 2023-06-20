@@ -52,11 +52,11 @@ export default function CarouselNew({ populer }) {
           href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
         />
         <IconButton
-          mt={"-950px"}
+          // mt={"10px"}
           bgColor={"yellow"}
           aria-label="left-arrow"
           variant="outline"
-          position="absolute"
+          position="relative"
           left={side}
           top={top}
           transform="translate(0%, -50%)"
@@ -67,7 +67,7 @@ export default function CarouselNew({ populer }) {
         </IconButton>
 
         <IconButton
-          mt={"-950px"}
+          mt={"-1500px"}
           bgColor={"yellow"}
           aria-label="right-arrow"
           variant="outline"

@@ -28,9 +28,8 @@ import {
   BsFillBookmarkStarFill,
   BsFillArrowLeftCircleFill,
 } from "react-icons/bs";
-import SearchBar from "./SearchBar";
+import SearchBar from "../navbar/SearchBar";
 import MembershipLogin from "../MembershipLogin";
-import Category from "./Category";
 
 export default function MenuBar() {
   return (
@@ -46,7 +45,6 @@ export default function MenuBar() {
         top={"50"}
       >
         <SearchBar />
-        <Category/>
 
         <Box mt={"10px"} w={"300px"}>
           <Text>Discover more of what matters to you</Text>

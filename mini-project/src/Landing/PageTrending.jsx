@@ -12,6 +12,7 @@ import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { GrLike } from "react-icons/gr";
 import { IoIosArrowDown } from "react-icons/io";
 
+
 export default function PageTrending({ data }) {
   return (
     <>

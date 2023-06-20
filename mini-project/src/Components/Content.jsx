@@ -32,11 +32,13 @@ import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { AiFillEye, AiOutlineArrowRight } from "react-icons/ai";
 import { BiRightArrow } from "react-icons/bi";
 import TopLike from "./PageContent/TopLike";
+import BlogList from "./PageContent/BlogList";
 
-export default function Content({ data }) {
+export default function Content({ like, blogList }) {
+  console.log(blogList);  
   const navigate = useNavigate();
-  function toSign(){
-    navigate("/signPage")
+  function toSign() {
+    navigate("/signPage");
   }
   return (
     <>
@@ -71,7 +73,7 @@ export default function Content({ data }) {
             </Box>
           </Box>
         </Stack>
-        <TopLike data={data}/>
+        <TopLike like={like} />
         <Box ml={"250px"} mt={"100px"}>
           <Stack>
             <Flex>
@@ -117,6 +119,7 @@ export default function Content({ data }) {
             ></Image> */}
           </Stack>
         </Box>
+        <BlogList blogList={blogList}/>
       </Box>
     </>
   );

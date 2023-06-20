@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   ButtonGroup,
   Editable,
@@ -77,6 +78,14 @@ export default function NewBlog() {
               ></Input>
               <EditableControls />
             </Editable>
+              <Input placeholder="Author" w={'600px'} ml={'450px'}></Input>
+              <Input placeholder="Publication Date" type="datetime-local" w={'600px'} ml={'450px'}></Input>
+              <Box ml={'450px'}>
+              <input type="file" placeholder="image"></input>
+              </Box>
+              <Input placeholder="Category" w={'600px'} ml={'450px'}></Input>
+              <Input placeholder="News Content" w={'600px'} ml={'450px'}></Input>
+              <Input placeholder="Keywords" w={'600px'} ml={'450px'}></Input>
             <Flex>
               <Textarea
                 placeholder="Input your imagination"

@@ -21,7 +21,7 @@ export default function SearchBar({ data }) {
             variant={"filled"}
           />
         </InputLeftElement>
-        <Input placeholder="Search" w={"350px"} h={"40px"} variant={""} />
+        <Input placeholder="Search" w={"250px"} h={"40px"} variant={"flushed"}/>
       </InputGroup>
     </Box>
   );

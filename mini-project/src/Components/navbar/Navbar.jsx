@@ -34,11 +34,13 @@ import { Link } from "react-router-dom";
 import AvatarProfile from "./AvatarProfile";
 import SignIn from "./SignIn";
 import Register from "../Register";
-import SearchBar from "../menubar/SearchBar";
+import SearchBar from "./SearchBar";
+import Category from "./Category";
 
 export default function Navbar() {
   return (
-    <Box shadow={'lg'}
+    <Box
+      shadow={"lg"}
       w={"100%"}
       backgroundColor={"white"}
       h={"60px"}
@@ -53,19 +55,20 @@ export default function Navbar() {
           <Button variant={""} mt={"10px"}>
             <BiBookBookmark size={"30px"} color="gold"></BiBookBookmark>
             <Box>
-              <Flex gap={"5px"}>
+              <Flex gap={"2px"}>
                 <Text fontSize={"35px"}>Golden </Text>
                 <Text fontSize={"35px"} fontWeight={"bolder"}>
                   {" "}
                   Book
                 </Text>
-              <SearchBar/>
+                <SearchBar />
               </Flex>
             </Box>
           </Button>
         </Link>
         <Spacer />
         <ButtonGroup>
+          <Category/>
           <CreateBlog />
           <WriteBlog />
           <SignIn />
