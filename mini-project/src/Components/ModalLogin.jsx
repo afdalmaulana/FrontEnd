@@ -37,6 +37,7 @@ export default function ModalLogin({ isOpen, onClose }) {
                 mr={"auto"}
                 borderRadius={"40px"}
                 mt={"10px"}
+                onClick={toSignPage}
               >
                 Sign up
               </Button>

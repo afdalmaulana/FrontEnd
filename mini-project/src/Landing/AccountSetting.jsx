@@ -24,6 +24,9 @@ export default function AccountSetting() {
     function toChangePassword(){
         navigate('/changePassword')
     }
+    function toUpdateProfile(){
+      navigate('/updateProfile');
+    }
   return (
     <>
       <Box>
@@ -61,10 +64,18 @@ export default function AccountSetting() {
                         <Text>08124214977</Text>
                       </Flex>
                     </Box>
-                    <Box mt={"30px"}>
+                    <Box mt={"50px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Password</Text>
                         <Button rightIcon={<BsArrowUpRight />} variant={""} onClick={toChangePassword}>
+                          Change
+                        </Button>
+                      </Flex>
+                    </Box>
+                    <Box mt={"30px"}>
+                      <Flex justifyContent={"space-between"}>
+                        <Text>Update Profile</Text>
+                        <Button rightIcon={<BsArrowUpRight />} variant={""} onClick={toUpdateProfile}>
                           Change
                         </Button>
                       </Flex>
@@ -74,7 +85,8 @@ export default function AccountSetting() {
                     <p>two!</p>
                   </TabPanel>
                   <TabPanel>
-                    <p>three!</p>
+                    <Box>
+                    </Box>
                   </TabPanel>
                 </TabPanels>
               </Tabs>

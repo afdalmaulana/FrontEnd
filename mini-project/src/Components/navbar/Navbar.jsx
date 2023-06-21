@@ -36,8 +36,11 @@ import SignIn from "./SignIn";
 import Register from "../Register";
 import SearchBar from "./SearchBar";
 import Category from "./Category";
+import { useState } from "react";
+import UserProfile from "./UserProfile";
 
 export default function Navbar() {
+  const [isSign, setIsSign] = useState(true);
   return (
     <Box
       shadow={"lg"}
@@ -69,13 +72,13 @@ export default function Navbar() {
         <Spacer />
         <ButtonGroup>
           <Category/>
-          <CreateBlog />
-          <WriteBlog />
-          <SignIn />
+          {isSign ? <CreateBlog/> : <WriteBlog/>}
+          {isSign ? "" : <SignIn/>}
+          {/* <SignIn /> */}
           {/* <Register/> */}
           {/* <SignIn/> */}
         </ButtonGroup>
-        <AvatarProfile />
+        {isSign ? <UserProfile/> : <AvatarProfile/>}
       </Flex>
     </Box>
   );

@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  ButtonGroup,
   Input,
   Modal,
   ModalBody,
@@ -18,20 +17,16 @@ import Navbar from "../Components/navbar/Navbar";
 import React, { useState } from "react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 
-export default function ChangePassword() {
-  const [oldPassword, setOldPassword] = useState("");
+export default function ResetPassword() {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const [userOldPassword, setUserOldPassword] = useState("");
   const [userNewPassword, setUserNewPassword] = useState("");
   const [userConfirmPassword, setUserConfirmPassword] = useState("");
 
   function submitHandler(e) {
-    setUserOldPassword(`${oldPassword}`);
     setUserNewPassword(`${newPassword}`);
     setUserConfirmPassword(`${confirmPassword}`);
-    setOldPassword("");
     setNewPassword("");
     setConfirmPassword("");
   }
@@ -58,23 +53,6 @@ export default function ChangePassword() {
             h={"500px"}
             ml={"250px"}
           >
-            <Text
-              fontSize={"1xl"}
-              fontWeight={"bold"}
-              fontFamily={"sans-serif"}
-              mt={"20px"}
-            >
-              Old password
-            </Text>
-            <Input
-              mt={"5px"}
-              placeholder="Type here"
-              fontSize={"20px"}
-              w={"400px"}
-              variant={"outline"}
-              value={oldPassword}
-              onChange={(e) => setOldPassword(e.target.value)}
-            />
             <Text
               fontSize={"1xl"}
               fontWeight={"bold"}
@@ -129,16 +107,12 @@ export default function ChangePassword() {
                 <ModalHeader>Your Password</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                  <Text>Old Password : {userOldPassword}</Text>
                   <Text>New Password : {userNewPassword}</Text>
                   <Text>Confirm Password : {userConfirmPassword}</Text>
                   {/* <Text>Gender : {userGender}</Text> */}
                 </ModalBody>
                 <ModalFooter>
-                  <ButtonGroup gap={'10px'}>
-                  <Button onClick={onClose} bgColor={'red.300'}>Close</Button>
-                  <Button colorScheme="yellow">Submit</Button>
-                  </ButtonGroup>
+                  <Button onClick={onClose}>Close</Button>
                 </ModalFooter>
               </ModalContent>
             </Modal>

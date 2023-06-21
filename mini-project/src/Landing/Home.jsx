@@ -1,12 +1,9 @@
 import Navbar from "../Components/navbar/Navbar";
 import Content from "../Components/Content";
-import MenuBar from "../Components/menubar/MenuBar";
 import { useState } from "react";
-import { Flex } from "@chakra-ui/react";
 import TittleWebsite from "../Components/TittleWebsite";
 import Footer from "../Components/footer/Footer";
-import CarouselNew from "../Components/menubar/CarouselNew";
-import ListContent from "../Components/ListContent";
+import CarouselNew from "../Components/CarouselNew";
 
 
 export default function Home() {

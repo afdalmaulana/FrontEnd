@@ -4,6 +4,8 @@ import {
   Divider,
   Flex,
   FormControl,
+  Icon,
+  IconButton,
   Input,
   InputGroup,
   Modal,
@@ -20,10 +22,11 @@ import {
 import Navbar from "../Components/navbar/Navbar";
 import { Link } from "react-router-dom";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { BsGoogle } from "react-icons/bs";
+import { Bs0Circle, BsGoogle } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa";
 import React, { useState } from "react";
 import { RiEye2Line, RiEyeCloseFill } from "react-icons/ri";
+import { AiOutlineCaretDown } from "react-icons/ai";
 
 export default function PageSign() {
   const [name, setName] = useState("");
@@ -40,6 +43,11 @@ export default function PageSign() {
   const [userEmail, setUserEmail] = useState("");
   const [userPhone, setUserPhone] = useState("");
   const [userPassword, setUserPassword] = useState("");
+
+  const [reset, setReset] = useState(false);
+  function resetButton() {
+    setReset(true);
+  }
 
   function submitHandler(e) {
     setUserName(`${name}`);
@@ -87,12 +95,14 @@ export default function PageSign() {
             <Text fontSize={"7xl"} fontFamily={"initial"}>
               Sign In
             </Text>
-            <Flex ml={"50px"} w={"300px"} fontSize={"15px"}>
-              <Text>Don't have ay account ? </Text>
-              <Link to={"/pageregister"}>
-                <Text color={"green"}>Create one</Text>
-              </Link>
-            </Flex>
+            <Box w={"270px"}>
+              <Flex justify={"space-around"}>
+                <Text>Don't have any account ? </Text>
+                <Link to={"/pageregister"}>
+                  <Text color={"green"}>Create one</Text>
+                </Link>
+              </Flex>
+            </Box>
             <Flex justifyContent={"space-around"} mt={"50px"}>
               <Box>
                 <FormControl>
@@ -158,6 +168,41 @@ export default function PageSign() {
                       >
                         Submit
                       </Button>
+                      <Box w={"260px"}>
+                        <Flex justify={"space-around"}>
+                          <Text justifyContent={"left"} mt={"10px"}>
+                            Forgot your password ?{" "}
+                          </Text>
+                          <IconButton
+                            onClick={resetButton}
+                            icon={<AiOutlineCaretDown />}
+                            pos={'absolute'}
+                            mt={'5px'} variant={'ghost'}
+                            ml={'220px'}
+                          ></IconButton>
+                          {/* <Button onClick={resetButton} fontSize={'12px'} variant={''} mt={'10px'}>Hit me</Button> */}
+                        </Flex>
+                      </Box>
+                      {reset ? (
+                        <Box>
+                          <Stack>
+                          <Input
+                            required
+                            placeholder="Email"
+                            variant={"flushed"}
+                            borderColor={"black"}
+                            w={"300px"}
+                            value={email}
+                            mt={"20px"}
+                            onChange={(e) => setEmail(e.target.value)}
+                          ></Input>
+                          <Button colorScheme="yellow">Get a link</Button>
+                          </Stack>
+                        </Box>
+                      ) : (
+                        ""
+                      )}
+
                       {!isValid && (
                         <Text color={"red"}>
                           Password should have at least 6 characters, at least 1

@@ -1,7 +1,6 @@
 import {
   Box,
   Button,
-  Center,
   Divider,
   Flex,
   FormControl,
@@ -88,12 +87,14 @@ export default function PageRegister() {
             <Text fontSize={"7xl"} fontFamily={"initial"}>
               Sign Up
             </Text>
-            <Flex ml={"50px"} w={"300px"} fontSize={"15px"}>
-              <Text>Already have ay account ? </Text>
-              <Link to={"/signPage"}>
-                <Text color={"green"}>Sign in</Text>
-              </Link>
-            </Flex>
+            <Box w={'260px'}>
+              <Flex justify={"space-around"}>
+                <Text>Already have any account ? </Text>
+                <Link to={'/signPage'}>
+                  <Text color={"green"}>Sign in</Text>
+                </Link>
+              </Flex>
+            </Box>
             <Flex justifyContent={"space-around"} mt={"50px"}>
               <Box>
                 <FormControl>

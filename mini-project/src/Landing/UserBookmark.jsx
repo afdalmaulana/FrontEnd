@@ -29,7 +29,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../Components/navbar/Navbar";
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
 
-export default function Profile() {
+export default function UserBookmark() {
   function EditableControls() {
     const {
       isEditing,
@@ -129,21 +129,7 @@ export default function Profile() {
                     </Editable>
                   </TabPanel>
                   <TabPanel>
-                    <Box>
-                      <Flex>
-                        <Box>
-                          <Avatar
-                            src="https://bit.ly/broken-link"
-                            size={"xl"}
-                          />
-                        </Box>
-                        <Box>
-                          <Text ml={"20px"} fontSize={"2xl"}>
-                            Nama Pengguna
-                          </Text>
-                        </Box>
-                      </Flex>
-                    </Box>
+                    <p>three!</p>
                   </TabPanel>
                   <TabPanel>
                     <Box>
