@@ -1,25 +1,25 @@
 {
   "users": [
     {
+      "id": 1,
       "firstName": "Doni",
       "lastName": "Smith",
       "email": "donsmith@gmail.com",
-      "password": "doni123",
-      "id": 1
+      "password": "doni123"
     },
     {
+      "id": 2,
       "firstName": "Alex",
       "lastName": "Graham",
       "email": "alexgraham@gmail.com",
-      "password": "alex123",
-      "id": 2
+      "password": "alex123"
     },
     {
+      "id": 3,
       "firstName": "Owen",
       "lastName": "Gill",
       "email": "owengill@gmail.com",
-      "password": "Owen123",
-      "id": 3
+      "password": "Owen123"
     },
     {
       "firstName": "Jamse",
@@ -34,6 +34,27 @@
       "email": "King@gmail.com",
       "password": "king123",
       "id": 5
+    },
+    {
+      "firstName": "Jamse",
+      "lastName": "King",
+      "email": "King@gmail.com",
+      "password": "king123",
+      "id": 6
+    },
+    {
+      "firstName": "Jamse",
+      "lastName": "King",
+      "email": "King@gmail.com",
+      "password": "king123",
+      "id": 7
+    },
+    {
+      "firstName": "Jamse",
+      "lastName": "King",
+      "email": "King@gmail.com",
+      "password": "king123",
+      "id": 8
     }
   ]
 }
