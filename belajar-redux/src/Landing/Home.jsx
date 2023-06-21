@@ -15,6 +15,7 @@ export default function Home() {
       console.log(err);
     }
   };
+
   const postData = async () => {
     try {
       const send = await axios.post("http://localhost:3000/users", {
