@@ -33,9 +33,13 @@ import { AiFillEye, AiOutlineArrowRight } from "react-icons/ai";
 import { BiRightArrow } from "react-icons/bi";
 import TopLike from "./PageContent/TopLike";
 import BlogList from "./PageContent/BlogList";
+import jsonTopLike from '../json-dummy/listBlog.json'
+import jsonAllBlog from '../json-dummy/listBlog.json'
 
-export default function Content({ like, blogList }) {
-  console.log(blogList);  
+export default function Content() {
+  const blogLike = jsonTopLike.topLike;
+  const allBlog = jsonAllBlog.blogList
+  // console.log(blogList);  
   const navigate = useNavigate();
   function toSign() {
     navigate("/signPage");
@@ -73,7 +77,7 @@ export default function Content({ like, blogList }) {
             </Box>
           </Box>
         </Stack>
-        <TopLike like={like} />
+        <TopLike like={blogLike} />
         <Box ml={"250px"} mt={"100px"}>
           <Stack>
             <Flex>
@@ -119,7 +123,7 @@ export default function Content({ like, blogList }) {
             ></Image> */}
           </Stack>
         </Box>
-        <BlogList blogList={blogList}/>
+        <BlogList allBlogList={allBlog}/>
       </Box>
     </>
   );

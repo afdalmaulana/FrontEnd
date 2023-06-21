@@ -2,8 +2,11 @@ import { Box, Button, ButtonGroup, Card, CardBody, CardFooter, Center, Divider, 
 import { AiFillEye } from "react-icons/ai";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { GrLike } from "react-icons/gr";
+import { useDispatch } from 'react-redux'
+import { addToBookmark } from "../../redux/reducer/BlogReducer";
 
 export default function TopLike({like}){
+  const dispatch = useDispatch();
     return (
         <>
         <Box ml={"40px"} mt={"100px"}>
@@ -26,7 +29,7 @@ export default function TopLike({like}){
                     </Center>
                     <Stack mt="6" spacing="2">
                       <Heading size="md">{item.title}</Heading>
-                      <Text fontSize={"12"}>{item.desc} hhhh</Text>
+                      <Text fontSize={"12"}>{item.desc}</Text>
                       <Text color="blue.600" fontSize="2xl">
                         <Button rightIcon={<AiFillEye />} variant={""}>
                           Read more
@@ -48,6 +51,7 @@ export default function TopLike({like}){
                         variant=""
                         color="black"
                         rightIcon={<BsFillBookmarkStarFill />}
+                        onClick={() => dispatch(addToBookmark(item))}
                       ></Button>
                     </ButtonGroup>
                   </CardFooter>

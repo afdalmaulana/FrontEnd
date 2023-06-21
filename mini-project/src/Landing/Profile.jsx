@@ -28,8 +28,11 @@ import {
 import { Link } from "react-router-dom";
 import Navbar from "../Components/navbar/Navbar";
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
+import { useSelector } from "react-redux";
+import ItemBookmark from "../Components/ItemBookmark";
 
 export default function Profile() {
+  const bookmarkBlog = useSelector((state) => state.BlogReducer.blog);
   function EditableControls() {
     const {
       isEditing,
@@ -82,35 +85,8 @@ export default function Profile() {
                 <TabPanels>
                   <TabPanel>
                     <Box>
-                      <Card
-                        direction={{ base: "column", sm: "row" }}
-                        overflow="hidden"
-                        variant="outline"
-                      >
-                        <Image
-                          objectFit="cover"
-                          maxW={{ base: "100%", sm: "200px" }}
-                          src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-                          alt="Caffe Latte"
-                        />
-
-                        <Stack>
-                          <CardBody>
-                            <Heading size="md">The perfect latte</Heading>
-
-                            <Text py="2">
-                              Caffè latte is a coffee beverage of Italian origin
-                              made with espresso and steamed milk.
-                            </Text>
-                          </CardBody>
-
-                          <CardFooter>
-                            <Button variant="solid" colorScheme="blue">
-                              Buy Latte
-                            </Button>
-                          </CardFooter>
-                        </Stack>
-                      </Card>
+                      <ItemBookmark bookmark={bookmarkBlog}/>
+                     
                     </Box>
                   </TabPanel>
                   <TabPanel>

@@ -4,7 +4,7 @@ import { AiFillEye } from "react-icons/ai";
 import { GrLike } from "react-icons/gr";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 
-export default function BlogList({blogList}) {
+export default function BlogList({allBlogList}) {
   return (
     <>
       <Box ml={"40px"} mt={"100px"}>
@@ -12,7 +12,7 @@ export default function BlogList({blogList}) {
           All Blog and Book
         </Text>
         <Flex wrap={"wrap"} gap={"20px"}>
-          {blogList.map((item) => {
+          {allBlogList.map((item) => {
             return (
               <Card maxW="md" maxH="lg">
                 <CardBody justifyContent={"center"}>

@@ -21,8 +21,10 @@ import { GrLike } from "react-icons/gr";
 import { IoIosArrowDown } from "react-icons/io";
 import Slider from "react-slick";
 import { AiFillEye } from "react-icons/ai";
+import jsonPopulerBlog from '../json-dummy/listBlog.json'
 
-export default function CarouselNew({ populer }) {
+export default function CarouselNew() {
+  const populerBlog = jsonPopulerBlog.populerBlog;
   const [slider, setSlider] = useState(null);
   const top = useBreakpointValue({ base: "90%", md: "50%" });
   const side = useBreakpointValue({ base: "30%", md: "40px" });
@@ -39,7 +41,7 @@ export default function CarouselNew({ populer }) {
   };
   return (
     <>
-      <Box h={"600px"} id="carousel" mt={"50px"} >
+      <Box h={"600px"} id="carousel" mt={"50px"}>
         <link
           rel="stylesheet"
           type="text/css"
@@ -92,7 +94,7 @@ export default function CarouselNew({ populer }) {
         </Text>
         <Divider />
         <Slider {...settings} ref={setSlider}>
-          {populer.map((item) => {
+          {populerBlog.map((item) => {
             return (
               <Card maxW="md" maxH="lg">
                 <CardBody justifyContent={"center"}>
