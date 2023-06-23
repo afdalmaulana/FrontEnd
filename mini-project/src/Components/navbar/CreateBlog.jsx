@@ -9,7 +9,7 @@ export default function CreateBlog() {
   }
   return (
     <>
-      <ButtonGroup mt={"10px"}>
+      <ButtonGroup>
         <Button
           backgroundColor={"whiteAlpha.500"}
           leftIcon={<FaPencilAlt />}

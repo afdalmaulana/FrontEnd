@@ -29,7 +29,6 @@ export default function ItemBookmark({ bookmark }) {
             </CardFooter>
           </Stack>
         </Card>
-        ;
       </>
     )
   });

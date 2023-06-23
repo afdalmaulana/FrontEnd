@@ -30,7 +30,7 @@ import { FaSketch } from "react-icons/fa";
 import { BiBookBookmark } from "react-icons/bi";
 import WriteBlog from "./WriteBlog";
 import CreateBlog from "./CreateBlog";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AvatarProfile from "./AvatarProfile";
 import SignIn from "./SignIn";
 import Register from "../Register";
@@ -40,7 +40,7 @@ import { useState } from "react";
 import UserProfile from "./UserProfile";
 
 export default function Navbar() {
-  const [isSign, setIsSign] = useState(true);
+  const [isSign, setIsSign] = useState(false);
   return (
     <Box
       shadow={"lg"}
@@ -72,13 +72,13 @@ export default function Navbar() {
         <Spacer />
         <ButtonGroup>
           <Category/>
-          {isSign ? <CreateBlog/> : <WriteBlog/>}
-          {isSign ? "" : <SignIn/>}
+          <WriteBlog/>
+          {/* {isSign ? <CreateBlog/> : <WriteBlog/>} */}
+          <SignIn/>
           {/* <SignIn /> */}
           {/* <Register/> */}
           {/* <SignIn/> */}
         </ButtonGroup>
-        {isSign ? <UserProfile/> : <AvatarProfile/>}
       </Flex>
     </Box>
   );

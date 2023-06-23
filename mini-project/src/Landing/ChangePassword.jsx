@@ -49,7 +49,7 @@ export default function ChangePassword() {
     <>
       <Box>
         <Navbar />
-        <Box mt={"200px"} ml={"250px"}>
+        <Box mt={"200px"} ml={"400px"}>
           <Stack
             w={"500px"}
             pl={"50px"}

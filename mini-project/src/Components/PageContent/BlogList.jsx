@@ -1,10 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Button, ButtonGroup, Card, CardBody, CardFooter, Center, Divider, Flex, Heading, Image, Stack, Text } from "@chakra-ui/react";
 import { AiFillEye } from "react-icons/ai";
 import { GrLike } from "react-icons/gr";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
+import axios from "axios";
 
-export default function BlogList({allBlogList}) {
+export default function BlogList() {
+  const [blogList, setBlogList] = useState([])
+  async function getBlog(){
+    try {
+      const respon = await axios.get(
+        "https://minpro-blog.purwadhikabootcamp.com/api/blog"
+      )
+      setBlogList(respon.data.result)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  getBlog();
   return (
     <>
       <Box ml={"40px"} mt={"100px"}>
@@ -12,13 +25,13 @@ export default function BlogList({allBlogList}) {
           All Blog and Book
         </Text>
         <Flex wrap={"wrap"} gap={"20px"}>
-          {allBlogList.map((item) => {
+          {blogList.map((item) => {
             return (
               <Card maxW="md" maxH="lg">
                 <CardBody justifyContent={"center"}>
                   <Center>
                     <Image
-                      src={item.images}
+                      src={`https://minpro-blog.purwadhikabootcamp.com/${item.imageURL}`}
                       borderRadius="lg"
                       w={"400px"}
                       h={"200px"}

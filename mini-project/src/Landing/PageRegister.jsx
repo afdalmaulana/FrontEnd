@@ -4,6 +4,7 @@ import {
   Divider,
   Flex,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Input,
   InputGroup,
@@ -25,56 +26,79 @@ import { Link } from "react-router-dom";
 import { BsGoogle } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa";
 import { RiEye2Line, RiEyeCloseFill } from "react-icons/ri";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import axios from "axios";
+
+const RegistrasiSchema = Yup.object().shape({
+  name: Yup.string()
+    .matches(
+      /^.*(?=.{6,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      "Username must contain at least  characters, one uppercase, one number and one special case character"
+    )
+    .required("Username is required"),
+  email: Yup.string()
+    .email("Invalid email address format")
+    .required("Password is required"),
+  phone: Yup.string().matches(/^[0-9]+$/, "Phone number must be number"),
+  password: Yup.string()
+    .matches(
+      /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      "Username must contain at least 8 characters, one uppercase, one number and one special case character"
+    )
+    .min(6, "Password must be 6 characters minimum")
+    .required("Password is required"),
+  confirm: Yup.string().oneOf(
+    [Yup.ref("password"), null],
+    'Must match "password" value'
+  ),
+});
+
+
 
 export default function PageRegister() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [isValid, setIsValid] = useState(true);
-  const [phone, setPhone] = useState("");
-
-  // kita membuat hooks useState penampung untuk menampilkan data di function setelah di klik
-  // kenapa kita tidak langsung memasukkan useState const [name, setName] = useState('') ke dalam function?
-  // karena useState tidak bisa kita masukkan ke dalam function
-  // dan apabila di function kita langsung memanggil setName, maka sebelum button di klik, name akan tampil duluan
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPhone, setUserPhone] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-
-  function submitHandler(e) {
-    setUserName(`${name}`);
-    setUserEmail(`${email}`);
-    setUserPhone(`${phone}`);
-    setUserPassword(`${password}`);
-    const hasMinLength = password.length >= 6;
-    const hasSymbol = /[!@#$%^&*]/.test(password);
-    const hasUppercase = /[A-Z]/.test(password);
-
-    if (hasMinLength && hasSymbol && hasUppercase) {
-      // Password is valid
-      setIsValid(true);
-      // Perform further actions
-    } else {
-      // Password is invalid
-      setIsValid(false);
-    }
-    setName("");
-    setEmail("");
-    setPassword("");
-    setPhone("");
+  const register = async (values) => {
+  try {
+    const { name, email, phone, password, confirm } = values;
+    console.log(values)
+    const res = await axios.post(
+      "https://minpro-blog.purwadhikabootcamp.com/api/auth/", 
+      {
+        username: name,
+        email: email,
+        phone: phone,
+        password: password,
+        confirmPassword: confirm,
+      },
+    );
+    console.log(res);
+  } catch (error) {
+    console.log(error);
   }
-  const OverlayTwo = () => (
-    <ModalOverlay
-      bg="none"
-      backdropFilter="auto"
-      backdropInvert="80%"
-      backdropBlur="2px"
-    />
-  );
-  const [overlay, setOverlay] = React.useState(<OverlayTwo />);
+};
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      phone: "",
+      password: "",
+      confirm: "",
+    },
+    validationSchema: RegistrasiSchema,
+    onSubmit: (values) => {
+      register(values);
+    },
+  });
+  // const OverlayTwo = () => (
+  //   <ModalOverlay
+  //     bg="none"
+  //     backdropFilter="auto"
+  //     backdropInvert="80%"
+  //     backdropBlur="2px"
+  //   />
+  // );
+  // const [overlay, setOverlay] = React.useState(<OverlayTwo />);
 
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
   return (
@@ -87,120 +111,181 @@ export default function PageRegister() {
             <Text fontSize={"7xl"} fontFamily={"initial"}>
               Sign Up
             </Text>
-            <Box w={'260px'}>
+            <Box w={"260px"}>
               <Flex justify={"space-around"}>
                 <Text>Already have any account ? </Text>
-                <Link to={'/signPage'}>
+                <Link to={"/signPage"}>
                   <Text color={"green"}>Sign in</Text>
                 </Link>
               </Flex>
             </Box>
             <Flex justifyContent={"space-around"} mt={"50px"}>
               <Box>
-                <FormControl>
+                <form onSubmit={formik.handleSubmit}>
                   <Stack>
-                    <FormLabel>Username</FormLabel>
-                    <Input
-                      type="text"
-                      placeholder="Username"
-                      variant={"flushed"}
-                      borderColor={"black"}
-                      w={"300px"}
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                    ></Input>
-                    <FormLabel>Email</FormLabel>
-                    <Input
-                      required
-                      placeholder="Email"
-                      variant={"flushed"}
-                      borderColor={"black"}
-                      w={"300px"}
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                    ></Input>
-                    <FormLabel>Phone number</FormLabel>
-                    <Input
-                      required
-                      placeholder="Enter your phone number"
-                      type="number"
-                      variant={"flushed"}
-                      borderColor={"black"}
-                      w={"300px"}
-                      onChange={(e) => setPhone(e.target.value)}
-                      value={phone}
-                    ></Input>
-                    <FormLabel>Password</FormLabel>
-                    <InputGroup>
+                    <FormControl
+                      isInvalid={formik.touched.name && formik.errors.name}
+                    >
+                      <FormLabel></FormLabel>
                       <Input
-                        pr="4.5rem"
-                        type={show ? "text" : "password"}
-                        placeholder="Enter password"
+                        type="text"
+                        placeholder="Username"
                         variant={"flushed"}
                         borderColor={"black"}
-                        w={"280px"}
-                        InputRightElement
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                      />
-                      <Button
-                        size="sm"
-                        onClick={handleClick}
-                        mt={"10px"}
-                        variant={"unstyled"}
-                      >
-                        {" "}
-                        {show ? (
-                          <RiEye2Line size={"30px"} />
-                        ) : (
-                          <RiEyeCloseFill size={"30px"} />
-                        )}
-                      </Button>
-                    </InputGroup>
-                    <Stack>
-                      <Button
-                        colorScheme="yellow"
-                        w={"300px"}
-                        borderRadius={"50px"}
-                        mt={"10px"}
-                        rightIcon={<ArrowForwardIcon />}
-                        onClick={() => {
-                          setOverlay(<OverlayTwo />);
-                          onOpen();
-                          submitHandler();
-                        }}
-                      >
-                        Submit
-                      </Button>
-                      {!isValid && (
-                        <Text color={"red"}>
-                          Password should have at least 6 characters, at least 1
-                          symbol, and at least 1 uppercase letter
-                        </Text>
+                        w={"320px"}
+                        id="name"
+                        name="name"
+                        value={formik.values.name}
+                        onChange={formik.handleChange}
+                      ></Input>
+                      {formik.touched.name && formik.errors.name && (
+                        <FormErrorMessage>
+                          {formik.errors.name}
+                        </FormErrorMessage>
                       )}
-                      {isValid && (
-                        <Modal isCentered isOpen={isOpen} onClose={onClose}>
-                          {overlay}
-                          <ModalContent>
-                            <ModalHeader>Your Data</ModalHeader>
-                            <ModalCloseButton />
-                            <ModalBody>
-                              <Text>Username : {userName}</Text>
-                              <Text>email : {userEmail}</Text>
-                              <Text>email : {userPhone}</Text>
-                              <Text>password : {userPassword}</Text>
-                              {/* <Text>Gender : {userGender}</Text> */}
-                            </ModalBody>
-                            <ModalFooter>
-                              <Button onClick={onClose}>Close</Button>
-                            </ModalFooter>
-                          </ModalContent>
-                        </Modal>
+                    </FormControl>
+                    <FormControl
+                      isInvalid={formik.touched.email && formik.errors.email}
+                    >
+                      <FormLabel></FormLabel>
+                      <Input
+                        placeholder="Email"
+                        variant={"flushed"}
+                        borderColor={"black"}
+                        w={"320px"}
+                        mt={'20px'}
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={formik.values.email}
+                        onChange={formik.handleChange}
+                      ></Input>
+                      {formik.touched.email && formik.errors.email && (
+                        <FormErrorMessage>
+                          {formik.errors.email}
+                        </FormErrorMessage>
                       )}
-                    </Stack>
-                    {/* <Button type="submit" colorScheme="yellow">Submit</Button> */}
+                    </FormControl>
+                    <FormControl
+                      isInvalid={formik.touched.phone && formik.errors.phone}
+                    >
+                      <FormLabel></FormLabel>
+                      <Input
+                        placeholder="Phone Number"
+                        variant={"flushed"}
+                        borderColor={"black"}
+                        w={"320px"}
+                        id="phone"
+                        name="phone"
+                        type="text"
+                        mt={'20px'}
+                        value={formik.values.phone}
+                        onChange={formik.handleChange}
+                      ></Input>
+                      {formik.touched.phone && formik.errors.phone && (
+                        <FormErrorMessage>
+                          {formik.errors.phone}
+                        </FormErrorMessage>
+                      )}
+                    </FormControl>
+                    <FormControl
+                      isInvalid={
+                        formik.touched.password && formik.errors.password
+                      }
+                    >
+                      <FormLabel></FormLabel>
+                      <InputGroup>
+                        <Input
+                          id="password"
+                          name="password"
+                          mt={'20px'}
+                          value={formik.values.password}
+                          onChange={formik.handleChange}
+                          pr="4.5rem"
+                          type={show ? "text" : "password"}
+                          placeholder="Enter password"
+                          variant={"flushed"}
+                          borderColor={"black"}
+                          w={"280px"}
+                          InputRightElement
+                          // value={password}
+                        />
+                        <Button
+                          size="sm"
+                          onClick={handleClick}
+                          mt={"10px"}
+                          variant={"unstyled"}
+                        >
+                          {" "}
+                          {show ? (
+                            <RiEye2Line size={"25px"} />
+                          ) : (
+                            <RiEyeCloseFill size={"25px"} />
+                          )}
+                        </Button>
+                      </InputGroup>
+                      {formik.touched.password && formik.errors.password && (
+                        <FormErrorMessage>
+                          {formik.errors.password}
+                        </FormErrorMessage>
+                      )}
+                    </FormControl>
+                    <FormControl
+                      isInvalid={
+                        formik.touched.confirm && formik.errors.confirm
+                      }
+                    >
+                      <FormLabel></FormLabel>
+                      <InputGroup>
+                        <Input
+                          id="confirm"
+                          name="confirm"
+                          value={formik.values.confirm}
+                          onChange={formik.handleChange}
+                          pr="4.5rem"
+                          type={show ? "text" : "password"}
+                          placeholder="Confirm password"
+                          variant={"flushed"}
+                          borderColor={"black"}
+                          mt={'20px'}
+                          w={"280px"}
+                          InputRightElement
+                          // value={password}
+                        />
+                        <Button
+                          size="sm"
+                          onClick={handleClick}
+                          mt={"10px"}
+                          variant={"unstyled"}
+                        >
+                          {" "}
+                          {show ? (
+                            <RiEye2Line size={"25px"} />
+                          ) : (
+                            <RiEyeCloseFill size={"25px"} />
+                          )}
+                        </Button>
+                      </InputGroup>
+                      {formik.touched.confirm && formik.errors.confirm && (
+                        <FormErrorMessage>
+                          {formik.errors.confirm}
+                        </FormErrorMessage>
+                      )}
+                    </FormControl>
                   </Stack>
-                </FormControl>
+                  <Stack>
+                    <Button
+                      colorScheme="yellow"
+                      w={"300px"}
+                      borderRadius={"50px"}
+                      mt={"10px"}
+                      rightIcon={<ArrowForwardIcon />}
+                      type="submit"
+                    >
+                      Submit
+                    </Button>
+                  </Stack>
+                </form>
               </Box>
               <Box>
                 <Divider orientation="vertical" />

@@ -14,11 +14,14 @@ import Profile from './Landing/Profile';
 import BlogCategory from './Landing/BlogCategory';
 import UpdateProfile from './Landing/UpdateProfile';
 import UserBookmark from './Landing/UserBookmark';
+import Navbar from './Components/navbar/Navbar';
+import Verify from './Landing/Verify';
 
 
 function App() {
   return (
     <>
+      <Navbar />
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/newBlog' element={<NewBlog/>}></Route>
@@ -33,6 +36,8 @@ function App() {
         <Route path='/terms' element={<Terms/>}/>
         <Route path='/category' element={<BlogCategory/>}/>
         <Route path='/userbookmark' element={<UserBookmark/>}/>
+        <Route path='/verification/:token' element={<Verify/>}/>
+        {/* /verification/:token */}
       </Routes>
       
     </>

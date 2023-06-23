@@ -3,6 +3,7 @@ const initialState = {
     blog : [],
 }
 
+
 export const BlogReducer = createSlice({
     name: 'BlogReducer',
     initialState,
@@ -12,5 +13,6 @@ export const BlogReducer = createSlice({
         }
     }
 })
+
 export const { addToBookmark } = BlogReducer.actions;
 export default BlogReducer.reducer;

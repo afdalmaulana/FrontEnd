@@ -108,7 +108,7 @@ export default function Profile() {
                     <Box>
                       <Flex>
                         <Box>
-                          <Avatar
+                          <Avatar as={Button}
                             src="https://bit.ly/broken-link"
                             size={"xl"}
                           />
