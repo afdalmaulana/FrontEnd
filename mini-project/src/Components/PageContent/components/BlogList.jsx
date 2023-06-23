@@ -1,20 +1,57 @@
 import React, { useState } from "react";
-import { Box, Button, ButtonGroup, Card, CardBody, CardFooter, Center, Divider, Flex, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Card,
+  CardBody,
+  CardFooter,
+  Center,
+  Divider,
+  Flex,
+  Heading,
+  Image,
+  Stack,
+  Text,
+  useToast,
+} from "@chakra-ui/react";
 import { AiFillEye } from "react-icons/ai";
 import { GrLike } from "react-icons/gr";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addToBookmark } from "../../../redux/reducer/BlogReducer";
 
 export default function BlogList() {
-  const [blogList, setBlogList] = useState([])
-  async function getBlog(){
+  const toast = useToast();
+  function toToastAdd (){
+    toast({
+      title: "Bookmark Success",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
+  }
+  function notToast(){
+    toast({
+      title: "Bookmark Failed",
+      status: "error",
+      description : "You need to login first, to save the blog",
+      duration: 3000,
+      isClosable: true,
+    });
+  }
+  const login = useSelector((state) => state.UserReducer.login);
+  const dispatch = useDispatch();
+  const [blogList, setBlogList] = useState([]);
+  async function getBlog() {
     try {
       const respon = await axios.get(
         "https://minpro-blog.purwadhikabootcamp.com/api/blog"
-      )
-      setBlogList(respon.data.result)
+      );
+      setBlogList(respon.data.result);
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
   getBlog();
@@ -58,11 +95,21 @@ export default function BlogList() {
                     >
                       Like
                     </Button>
-                    <Button
-                      variant=""
-                      color="black"
-                      rightIcon={<BsFillBookmarkStarFill />}
-                    ></Button>
+                    {!login ? (
+                      <Button
+                        variant=""
+                        color="black"
+                        rightIcon={<BsFillBookmarkStarFill />}
+                        onClick={() => notToast()}
+                      ></Button>
+                    ) : (
+                      <Button
+                        variant=""
+                        color="black"
+                        rightIcon={<BsFillBookmarkStarFill />}
+                        onClick={() => dispatch(addToBookmark(item), toToastAdd())}
+                      ></Button>
+                    )}
                   </ButtonGroup>
                 </CardFooter>
               </Card>

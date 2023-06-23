@@ -12,19 +12,19 @@ export default function ItemBookmark({ bookmark }) {
           <Image
             objectFit="cover"
             maxW={{ base: "100%", sm: "200px" }}
-            src={item.images}
-            alt="Caffe Latte"
+            src={`https://minpro-blog.purwadhikabootcamp.com/${item.imageURL}`}
+            alt="bloglist"
           />
 
           <Stack>
             <CardBody>
               <Heading size="md">{item.title}</Heading>
-              <Text py="2">{item.desc}</Text>
+              <Text py="2">{item.content}</Text>
             </CardBody>
 
             <CardFooter>
-              <Button variant="solid" colorScheme="blue">
-                Buy Latte
+              <Button variant="solid" colorScheme="yellow">
+                Read More
               </Button>
             </CardFooter>
           </Stack>

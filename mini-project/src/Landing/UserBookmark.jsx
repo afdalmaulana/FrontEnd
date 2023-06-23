@@ -27,33 +27,11 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Navbar from "../Components/navbar/Navbar";
-import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
+import { useSelector } from "react-redux";
+import ItemBookmark from "../Components/ItemBookmark";
 
 export default function UserBookmark() {
-  function EditableControls() {
-    const {
-      isEditing,
-      getSubmitButtonProps,
-      getCancelButtonProps,
-      getEditButtonProps,
-    } = useEditableControls();
-
-    return isEditing ? (
-      <ButtonGroup justifyContent="center" size="sm">
-        <IconButton icon={<CheckIcon />} {...getSubmitButtonProps()} />
-        <IconButton icon={<CloseIcon />} {...getCancelButtonProps()} />
-      </ButtonGroup>
-    ) : (
-      <Flex justifyContent="center">
-        <IconButton
-          size={"20px"}
-          icon={<EditIcon />}
-          {...getEditButtonProps()}
-          variant={""}
-        />
-      </Flex>
-    );
-  }
+  const bookmarkBlog = useSelector((state) => state.BlogReducer.blog);
   return (
     <>
       <Box>
@@ -69,99 +47,16 @@ export default function UserBookmark() {
           >
             <Stack>
               <Text fontSize={"4xl"} fontWeight={"bold"}>
-                Nama Pengguna
+                Your Library
               </Text>
               <Tabs w={"650px"}>
                 <TabList>
                   <Tab>Bookmark</Tab>
-                  <Tab>About</Tab>
-                  <Tab>Change Profile Picture</Tab>
-                  <Tab>Your Write</Tab>
                 </TabList>
-
                 <TabPanels>
                   <TabPanel>
                     <Box>
-                      <Card
-                        direction={{ base: "column", sm: "row" }}
-                        overflow="hidden"
-                        variant="outline"
-                      >
-                        <Image
-                          objectFit="cover"
-                          maxW={{ base: "100%", sm: "200px" }}
-                          src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-                          alt="Caffe Latte"
-                        />
-
-                        <Stack>
-                          <CardBody>
-                            <Heading size="md">The perfect latte</Heading>
-
-                            <Text py="2">
-                              Caffè latte is a coffee beverage of Italian origin
-                              made with espresso and steamed milk.
-                            </Text>
-                          </CardBody>
-
-                          <CardFooter>
-                            <Button variant="solid" colorScheme="blue">
-                              Buy Latte
-                            </Button>
-                          </CardFooter>
-                        </Stack>
-                      </Card>
-                    </Box>
-                  </TabPanel>
-                  <TabPanel>
-                    <Editable
-                      bgColor={"blackAlpha.200"}
-                      h={"200px"}
-                      textAlign="center"
-                      defaultValue="Tell us about your self"
-                      fontSize="50px"
-                      isPreviewFocusable={false}
-                    >
-                      <EditablePreview />
-                      {/* Here is the custom input */}
-                      <Input as={EditableInput} h={"200px"} />
-                      <EditableControls />
-                    </Editable>
-                  </TabPanel>
-                  <TabPanel>
-                    <p>three!</p>
-                  </TabPanel>
-                  <TabPanel>
-                    <Box>
-                      <Card
-                        direction={{ base: "column", sm: "row" }}
-                        overflow="hidden"
-                        variant="outline"
-                      >
-                        <Image
-                          objectFit="cover"
-                          maxW={{ base: "100%", sm: "200px" }}
-                          src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-                          alt="Caffe Latte"
-                        />
-
-                        <Stack>
-                          <CardBody>
-                            <Heading size="md">The perfect latte</Heading>
-
-                            <Text py="2">
-                              Caffè latte is a coffee beverage of Italian origin
-                              made with espresso and steamed milk.
-                            </Text>
-                          </CardBody>
-
-                          <CardFooter>
-                            <Button variant="solid" colorScheme="blue">
-                              Buy Latte
-                            </Button>
-                          </CardFooter>
-                        </Stack>
-                      </Card>
+                      <ItemBookmark bookmark={bookmarkBlog}/>
                     </Box>
                   </TabPanel>
                 </TabPanels>

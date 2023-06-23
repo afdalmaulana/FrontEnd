@@ -5,11 +5,9 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import TopLike from "./components/TopLike";
 import BlogList from "./components/BlogList";
 import jsonTopLike from "../../json-dummy/listBlog.json";
-import jsonAllBlog from "../../json-dummy/listBlog.json";
 
 export default function Content() {
   const blogLike = jsonTopLike.topLike;
-  const allBlog = jsonAllBlog.blogList;
   // console.log(blogList);
   const navigate = useNavigate();
   function toSign() {
@@ -94,7 +92,7 @@ export default function Content() {
             ></Image> */}
           </Stack>
         </Box>
-        <BlogList allBlogList={allBlog} />
+        <BlogList />
       </Box>
     </>
   );

@@ -76,19 +76,12 @@ export default function Profile() {
               </Text>
               <Tabs w={"650px"}>
                 <TabList>
-                  <Tab>Bookmark</Tab>
                   <Tab>About</Tab>
                   <Tab>Change Profile Picture</Tab>
                   <Tab>Your Write</Tab>
                 </TabList>
 
                 <TabPanels>
-                  <TabPanel>
-                    <Box>
-                      <ItemBookmark bookmark={bookmarkBlog}/>
-                     
-                    </Box>
-                  </TabPanel>
                   <TabPanel>
                     <Editable
                       bgColor={"blackAlpha.200"}

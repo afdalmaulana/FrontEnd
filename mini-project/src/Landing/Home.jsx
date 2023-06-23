@@ -14,7 +14,7 @@ export default function Home() {
       {/* <MenuBar data={data} /> */}
       <CarouselNew />
       <Content />
-      <Profile />
+      {/* <Profile /> */}
       {/* </Flex> */}
       <Footer />
     </main>
