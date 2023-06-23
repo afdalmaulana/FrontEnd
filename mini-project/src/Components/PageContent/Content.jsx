@@ -1,45 +1,16 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  ButtonGroup,
-  Card,
-  CardBody,
-  CardFooter,
-  CardHeader,
-  Center,
-  Divider,
-  Flex,
-  Heading,
-  Image,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
-  Text,
-} from "@chakra-ui/react";
-import { GrLike } from "react-icons/gr";
-import { IoIosArrowDown } from "react-icons/io";
-import { Link, useNavigate } from "react-router-dom";
-import { BsFillBookmarkStarFill } from "react-icons/bs";
+import { Box, Button, Flex, Image, Stack, Text } from "@chakra-ui/react";
+import { useNavigate } from "react-router-dom";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { AiFillEye, AiOutlineArrowRight } from "react-icons/ai";
-import { BiRightArrow } from "react-icons/bi";
-import TopLike from "./PageContent/TopLike";
-import BlogList from "./PageContent/BlogList";
-import jsonTopLike from '../json-dummy/listBlog.json'
-import jsonAllBlog from '../json-dummy/listBlog.json'
+import { AiOutlineArrowRight } from "react-icons/ai";
+import TopLike from "./components/TopLike";
+import BlogList from "./components/BlogList";
+import jsonTopLike from "../../json-dummy/listBlog.json";
+import jsonAllBlog from "../../json-dummy/listBlog.json";
 
 export default function Content() {
   const blogLike = jsonTopLike.topLike;
-  const allBlog = jsonAllBlog.blogList
-  // console.log(blogList);  
+  const allBlog = jsonAllBlog.blogList;
+  // console.log(blogList);
   const navigate = useNavigate();
   function toSign() {
     navigate("/signPage");
@@ -123,7 +94,7 @@ export default function Content() {
             ></Image> */}
           </Stack>
         </Box>
-        <BlogList allBlogList={allBlog}/>
+        <BlogList allBlogList={allBlog} />
       </Box>
     </>
   );

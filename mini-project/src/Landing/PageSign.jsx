@@ -6,8 +6,6 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Icon,
-  IconButton,
   Input,
   InputGroup,
   Stack,
@@ -73,6 +71,7 @@ export default function PageSign() {
           duration:8000,
           isClosable : true,
         });
+        toHome();
       }
       // document.location.href = "/";
     } catch (error) {
@@ -238,7 +237,7 @@ export default function PageSign() {
                         mt={"10px"}
                         rightIcon={<ArrowForwardIcon />}
                         type="submit"
-                        onClick={toHome}
+                        // onClick={toHome}
                       >
                         Submit
                       </Button>

@@ -40,7 +40,7 @@ export default function BlogList() {
                   </Center>
                   <Stack mt="6" spacing="2">
                     <Heading size="md">{item.title}</Heading>
-                    <Text fontSize={"12"}>{item.desc} hhhh</Text>
+                    <Text fontSize={"12"}>{item.content}</Text>
                     <Text color="blue.600" fontSize="2xl">
                       <Button rightIcon={<AiFillEye />} variant={""}>
                         Read more

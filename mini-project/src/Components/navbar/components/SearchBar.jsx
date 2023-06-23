@@ -6,13 +6,11 @@ import {
   InputGroup,
   InputLeftElement,
 } from "@chakra-ui/react";
-import { useRef, useState } from "react";
-import Content from "../Content";
 
 export default function SearchBar({ data }) {
   return (
     <Box>
-      <InputGroup>
+      <InputGroup ml={'20px'}>
         <InputLeftElement>
           <IconButton
             aria-label="Search database"
@@ -21,7 +19,12 @@ export default function SearchBar({ data }) {
             variant={"filled"}
           />
         </InputLeftElement>
-        <Input placeholder="Search" w={"250px"} h={"40px"} variant={"flushed"}/>
+        <Input
+          placeholder="Search"
+          w={"400px"}
+          h={"40px"}
+          variant={"flushed"}
+        />
       </InputGroup>
     </Box>
   );

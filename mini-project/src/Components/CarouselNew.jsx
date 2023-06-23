@@ -14,11 +14,10 @@ import {
   Text,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { GrLike } from "react-icons/gr";
-import { IoIosArrowDown } from "react-icons/io";
 import Slider from "react-slick";
 import { AiFillEye } from "react-icons/ai";
 import jsonPopulerBlog from '../json-dummy/listBlog.json'
