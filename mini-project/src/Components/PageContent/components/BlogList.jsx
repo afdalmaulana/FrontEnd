@@ -49,7 +49,7 @@ export default function BlogList() {
       const respon = await axios.get(
         `https://minpro-blog.purwadhikabootcamp.com/api/blog`
       );
-      // setBlogList(respon.data.result);
+      setBlogList(respon.data.result);
     } catch (error) {
       console.log(error);
     }

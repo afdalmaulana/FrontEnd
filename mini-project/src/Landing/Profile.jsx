@@ -30,8 +30,16 @@ import Navbar from "../Components/navbar/Navbar";
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
 import { useSelector } from "react-redux";
 import ItemBookmark from "../Components/ItemBookmark";
+import AvatarUser from "../Components/avatar/AvatarUser";
+import AvatarUploader from "../Components/avatar/AvatarUploader";
+import { useState } from "react";
 
 export default function Profile() {
+    // const [avatarImage, setAvatarImage] = useState('');
+  
+    // const handleAvatarChange = (imageUrl) => {
+    //   setAvatarImage(imageUrl);
+    // };
   const bookmarkBlog = useSelector((state) => state.BlogReducer.blog);
   function EditableControls() {
     const {
@@ -101,10 +109,12 @@ export default function Profile() {
                     <Box>
                       <Flex>
                         <Box>
-                          <Avatar as={Button}
+                          <Avatar as={Button} type="file"
                             src="https://bit.ly/broken-link"
                             size={"xl"}
                           />
+                          {/* <AvatarUser imageUrl={avatarImage}/>
+                          <AvatarUploader onAvatarChange={handleAvatarChange}/> */}
                         </Box>
                         <Box>
                           <Text ml={"20px"} fontSize={"2xl"}>
