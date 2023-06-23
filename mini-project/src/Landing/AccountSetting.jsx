@@ -18,8 +18,12 @@ import Navbar from "../Components/navbar/Navbar";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { BsArrowUpRight } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export default function AccountSetting() {
+  const {username} = useSelector((state) => state.UserReducer)
+  const {email} = useSelector((state) => state.UserReducer)
+  const {phone} = useSelector((state) => state.UserReducer)
     const navigate = useNavigate();
     function toChangePassword(){
         navigate('/changePassword')
@@ -49,19 +53,19 @@ export default function AccountSetting() {
                     <Box>
                       <Flex justifyContent={"space-between"}>
                         <Text>Username</Text>
-                        <Text>afdalmaulanaaa</Text>
+                        <Text>{username}</Text>
                       </Flex>
                     </Box>
                     <Box mt={"30px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Email address</Text>
-                        <Text>afdalmaulanaaa@gmail.com</Text>
+                        <Text>{email}</Text>
                       </Flex>
                     </Box>
                     <Box mt={"30px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Phone number</Text>
-                        <Text>08124214977</Text>
+                        <Text>{phone}</Text>
                       </Flex>
                     </Box>
                     <Box mt={"50px"}>

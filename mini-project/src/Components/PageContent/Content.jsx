@@ -1,10 +1,11 @@
-import { Box, Button, Flex, Image, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Image, Stack, Text, useToast } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import TopLike from "./components/TopLike";
 import BlogList from "./components/BlogList";
 import jsonTopLike from "../../json-dummy/listBlog.json";
+import { useSelector } from "react-redux";
 
 export default function Content() {
   const blogLike = jsonTopLike.topLike;
@@ -83,7 +84,7 @@ export default function Content() {
                   rightIcon={<AiOutlineArrowRight />}
                   onClick={toSign}
                 >
-                  Mulai
+                  Start
                 </Button>
               </Box>
             </Flex>

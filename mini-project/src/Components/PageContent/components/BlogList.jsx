@@ -47,9 +47,9 @@ export default function BlogList() {
   async function getBlog() {
     try {
       const respon = await axios.get(
-        "https://minpro-blog.purwadhikabootcamp.com/api/blog"
+        `https://minpro-blog.purwadhikabootcamp.com/api/blog`
       );
-      setBlogList(respon.data.result);
+      // setBlogList(respon.data.result);
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +64,7 @@ export default function BlogList() {
         <Flex wrap={"wrap"} gap={"20px"}>
           {blogList.map((item) => {
             return (
-              <Card maxW="md" maxH="lg">
+              <Card maxW="320px" maxH="lg">
                 <CardBody justifyContent={"center"}>
                   <Center>
                     <Image
@@ -77,11 +77,8 @@ export default function BlogList() {
                   </Center>
                   <Stack mt="6" spacing="2">
                     <Heading size="md">{item.title}</Heading>
-                    <Text fontSize={"12"}>{item.content}</Text>
+                    <Text fontSize={"10"}>{item.content}</Text>
                     <Text color="blue.600" fontSize="2xl">
-                      <Button rightIcon={<AiFillEye />} variant={""}>
-                        Read more
-                      </Button>
                     </Text>
                   </Stack>
                 </CardBody>

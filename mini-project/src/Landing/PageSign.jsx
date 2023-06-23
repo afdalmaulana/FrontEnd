@@ -24,7 +24,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import { BsGoogle } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { userLogin } from "../redux/reducer/UserReducer";
+import { userEmail, userIn, userLogin, userName, userPhone } from "../redux/reducer/UserReducer";
 import ForgetPassword from "../Components/ForgetPassword";
 
 const LoginSchema = Yup.object().shape({
@@ -65,6 +65,9 @@ export default function PageSign() {
       console.log("ini respon",login);
       if(login.status === 200){
         dispatch(userLogin(login.data.token))
+        dispatch(userName(login.data.isAccountExist.username))
+        dispatch(userEmail(login.data.isAccountExist.email))
+        dispatch(userPhone(login.data.isAccountExist.phone))
         toast({
           description: "Login Success, Happy Reading",
           status: "success",
@@ -96,6 +99,7 @@ export default function PageSign() {
       signIn(values);
     },
   });
+
 
   
 
@@ -166,7 +170,7 @@ export default function PageSign() {
                         </FormErrorMessage>
                       )}
                     </FormControl>
-                    <FormControl
+                    {/* <FormControl
                       isInvalid={formik.touched.phone && formik.errors.phone}
                     >
                       <FormLabel htmlFor="phone"></FormLabel>
@@ -187,7 +191,7 @@ export default function PageSign() {
                           {formik.errors.phone}
                         </FormErrorMessage>
                       )}
-                    </FormControl>
+                    </FormControl> */}
                     <InputGroup>
                       <FormControl
                         isInvalid={

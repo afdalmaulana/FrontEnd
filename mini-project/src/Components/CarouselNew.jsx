@@ -29,9 +29,9 @@ export default function CarouselNew() {
   async function latestBlog() {
     try {
       const res = await axios.get(
-        "https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=&sort=asc&page=1"
+        "https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=&sort=asc"
       );
-      console.log(res.data.result);
+      // console.log(res.data.result);
       setLatest(res.data.result);
     } catch (error) {
       console.log(error);

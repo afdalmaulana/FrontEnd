@@ -28,7 +28,7 @@ export default function BlogCategory() {
       const res = await axios.get(
         "https://minpro-blog.purwadhikabootcamp.com/api/blog/allCategory"
       );
-      console.log(res);
+      // console.log(res);
       setCategory(res.data);
 
     } catch (error) {
