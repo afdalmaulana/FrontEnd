@@ -27,22 +27,22 @@ import { useFormik } from "formik";
 const resetSchema = Yup.object().shape({
   currentPassword: Yup.string().required("currentPassword is required"),
   password: Yup.string().required("password is required"),
-  newPassword: Yup.string().required("newPassword is required"),
+  confirmPassword: Yup.string().required("newPassword is required"),
 });
 
 export default function ChangePassword() {
   const changePassword = async (values) => {
-    const { currentPassword, password, newPassword } = values;
+    const { currentPassword, password, confirmPassword } = values;
     try {
       const respon = await axios.get(
         "https://minpro-blog.purwadhikabootcamp.com/api/auth/changePass",
         {
           currentPassword: currentPassword,
           password: password,
-          newPassword: newPassword,
+          confirmPassword: confirmPassword,
         }
       );
-      console.log(respon);
+      console.log(respon.data.success);
     } catch (error) {
       console.log(error);
     }
@@ -51,7 +51,7 @@ export default function ChangePassword() {
     initialValues: {
       currentPassword: "",
       password: "",
-      newPassword: "",
+      confirmPassword: "",
     },
     validationSchema: resetSchema,
     onSubmit: (values) => {
@@ -80,7 +80,7 @@ export default function ChangePassword() {
     <>
       <Box>
         <Navbar />
-        <Box mt={"200px"} ml={"400px"}>
+        <Box mt={"200px"} ml={"280px"}>
           <form onSubmit={formik.handleSubmit}>
             <Stack
               w={"500px"}
@@ -152,7 +152,8 @@ export default function ChangePassword() {
               </FormControl>
               <FormControl
                 isInvalid={
-                  formik.touched.newPassword && formik.errors.newPassword
+                  formik.touched.confirmPassword &&
+                  formik.errors.confirmPassword
                 }
               >
                 <FormLabel
@@ -161,7 +162,7 @@ export default function ChangePassword() {
                   fontFamily={"sans-serif"}
                   mt={"20px"}
                 >
-                  New Password
+                  Confirm New Password
                 </FormLabel>
                 <Input
                   mt={"5px"}
@@ -169,17 +170,18 @@ export default function ChangePassword() {
                   fontSize={"20px"}
                   w={"400px"}
                   variant={"outline"}
-                  id="currentPassword"
-                  name="currentPassword"
+                  id="confirmPassword"
+                  name="confirmPassword"
                   type="text"
                   value={formik.values.newPaassword}
                   onChange={formik.handleChange}
                 />
-                {formik.touched.newPassword && formik.errors.newPassword && (
-                  <FormErrorMessage>
-                    {formik.errors.newPassword}
-                  </FormErrorMessage>
-                )}
+                {formik.touched.confirmPassword &&
+                  formik.errors.confirmPassword && (
+                    <FormErrorMessage>
+                      {formik.errors.confirmPassword}
+                    </FormErrorMessage>
+                  )}
               </FormControl>
               <Button
                 colorScheme="yellow"

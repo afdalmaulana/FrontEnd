@@ -32,12 +32,12 @@ export default function ForgetPassword() {
     // console.log(url);
     // console.log(token);
     try {
+      const  email  = values;
       const respon = await axios.put(
         `https://minpro-blog.purwadhikabootcamp.com/api/auth/forgotPass`,
         {
-          email: values.email,
-        },
-
+          email: email,
+        }
       );
       console.log(respon.data.message);
       toast({
@@ -62,6 +62,7 @@ export default function ForgetPassword() {
       resetPassword(values);
     },
   });
+
   return (
     <>
       <Box w={"260px"}>
