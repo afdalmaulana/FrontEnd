@@ -15,7 +15,8 @@ import UserProfile from "./UserProfile";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useSelector } from "react-redux";
 export default function SignIn() {
-  const login = useSelector((state) => state.UserReducer.login);
+  const userLogin = useSelector((state) => state.UserReducer.login);
+  const login = localStorage.getItem("token");
   const navigate = useNavigate();
   function toSigninPage() {
     navigate("/signPage");
@@ -23,13 +24,10 @@ export default function SignIn() {
   function toSignUp() {
     navigate("/pageregister");
   }
-  function toSignin() {
-    navigate("/signPage");
-  }
   return (
     <>
       <Box mt={"10px"} mr={"50px"}>
-        {!login ? (
+        {!login && !userLogin ? (
           <Menu>
             {/* <Avatar src="https://bit.ly/broken-link" boxSize={9} /> */}
             <MenuButton
@@ -72,22 +70,11 @@ export default function SignIn() {
               <MenuItem mt={"30px"}>Become a member</MenuItem>
               <MenuItem>Get a membership</MenuItem>
               <MenuItem>Apply for author verification</MenuItem>
-              <MenuItem>Delete</MenuItem>
-              <MenuItem></MenuItem>
+              <MenuItem>Close</MenuItem>
             </MenuList>
           </Menu>
         ) : (
-          // <Button
-          //   colorScheme={"yellow"}
-          //   borderRadius={"50px"}
-          //   onClick={toSignin}
-          // >
-          //   Get Started
-          // </Button>
           <UserProfile />
-          // <Button onClick={() => localStorage.removeItem("login")}>
-          // Sign out
-          // </Button>
         )}
       </Box>
     </>

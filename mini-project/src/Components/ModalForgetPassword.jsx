@@ -1,0 +1,120 @@
+import {
+  Button,
+  FormControl,
+  FormErrorMessage,
+  Input,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Stack,
+  useToast,
+} from "@chakra-ui/react";
+import axios from "axios";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+
+const ResetSchema = Yup.object().shape({
+  email: Yup.string()
+    .email("Invalid email address format")
+    .required("Email is required"),
+});
+
+export default function ModalForgetPassword({ isOpen, onClose }) {
+  const toast = useToast();
+
+  const resetPassword = async (values) => {
+    // const url = window.location.href.split("/");
+    // const token = url.pop();
+    // console.log(url);
+    // console.log(token);
+    try {
+      const respon = await axios.put(
+        `https://minpro-blog.purwadhikabootcamp.com/api/auth/forgotPass`,
+        {
+          email: values.email,
+        }
+      );
+      console.log(respon.data.message);
+      toast({
+        title: respon.data.message,
+        description: "Check you email",
+        status: "Success",
+      });
+    } catch (error) {
+      console.log("ini erorr", error);
+      toast({
+        description: "error",
+        status: "error",
+      });
+    }
+  };
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+    },
+    validationSchema: ResetSchema,
+    onSubmit: (values) => {
+      resetPassword(values);
+    },
+  });
+  return (
+    <>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Stack>
+              <form onSubmit={formik.handleSubmit}>
+                <FormControl
+                  isInvalid={formik.touched.email && formik.errors.email}
+                >
+                  <Input
+                    required
+                    placeholder="Email"
+                    variant={"flushed"}
+                    borderColor={"black"}
+                    w={"300px"}
+                    mt={"20px"}
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                  ></Input>
+                  {formik.touched.email && formik.errors.email && (
+                    <FormErrorMessage>{formik.errors.email}</FormErrorMessage>
+                  )}
+                </FormControl>
+
+                <ModalFooter>
+                  <Button
+                    mt={"20px"}
+                    w={"200px"}
+                    borderRadius={"50px"}
+                    onClick={onClose}
+                  >
+                    Close
+                  </Button>
+                  <Button
+                    mt={"20px"}
+                    w={"200px"}
+                    borderRadius={"50px"}
+                    type="submit"
+                  >
+                    Get a link
+                  </Button>
+                </ModalFooter>
+              </form>
+            </Stack>
+          </ModalBody>
+        </ModalContent>
+      </Modal>
+    </>
+  );
+}

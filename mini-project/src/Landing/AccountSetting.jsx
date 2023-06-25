@@ -24,6 +24,7 @@ export default function AccountSetting() {
   const {username} = useSelector((state) => state.UserReducer)
   const {email} = useSelector((state) => state.UserReducer)
   const {phone} = useSelector((state) => state.UserReducer)
+  const login = localStorage.getItem("token")
     const navigate = useNavigate();
     function toChangePassword(){
         navigate('/changePassword')
@@ -59,7 +60,7 @@ export default function AccountSetting() {
                     <Box mt={"30px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Email address</Text>
-                        <Text>{email}</Text>
+                        {!login ? "" : (<Text>{email}</Text>)}
                       </Flex>
                     </Box>
                     <Box mt={"30px"}>

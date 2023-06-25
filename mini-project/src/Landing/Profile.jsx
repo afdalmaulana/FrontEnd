@@ -28,19 +28,16 @@ import {
 import { Link } from "react-router-dom";
 import Navbar from "../Components/navbar/Navbar";
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
-import { useSelector } from "react-redux";
-import ItemBookmark from "../Components/ItemBookmark";
-import AvatarUser from "../Components/avatar/AvatarUser";
-import AvatarUploader from "../Components/avatar/AvatarUploader";
-import { useState } from "react";
+import axios from "axios";
+import UserProfile from "../Components/UserProfile";
 
 export default function Profile() {
-    // const [avatarImage, setAvatarImage] = useState('');
-  
-    // const handleAvatarChange = (imageUrl) => {
-    //   setAvatarImage(imageUrl);
-    // };
-  const bookmarkBlog = useSelector((state) => state.BlogReducer.blog);
+  // const [avatarImage, setAvatarImage] = useState('');
+
+  // const handleAvatarChange = (imageUrl) => {
+  //   setAvatarImage(imageUrl);
+  // };
+
   function EditableControls() {
     const {
       isEditing,
@@ -109,7 +106,9 @@ export default function Profile() {
                     <Box>
                       <Flex>
                         <Box>
-                          <Avatar as={Button} type="file"
+                          <Avatar
+                            as={Button}
+                            type="file"
                             src="https://bit.ly/broken-link"
                             size={"xl"}
                           />
@@ -164,10 +163,7 @@ export default function Profile() {
           <GridItem>
             <Box>
               <Stack mt={"80px"} ml={"50px"}>
-                <Avatar src="https://bit.ly/broken-link" size={"xl"} />
-                <Text fontSize={"20px"} fontWeight={"medium"}>
-                  Nama Pengguna
-                </Text>
+                <UserProfile/>
                 <Text fontSize={"15px"} color={"green"}>
                   <Link to={"/accountsetting"}>Account Setting</Link>
                 </Text>

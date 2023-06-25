@@ -71,7 +71,7 @@ export default function PageSign() {
         toast({
           description: "Login Success, Happy Reading",
           status: "success",
-          duration:8000,
+          duration:5000,
           isClosable : true,
         });
         toHome();

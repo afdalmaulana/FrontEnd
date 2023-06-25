@@ -1,0 +1,29 @@
+body {
+    background-color: #161616;
+}
+.CarouselNew {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-card {
+    background-color: #202525;
+    width: 800px;
+    display: flex;
+    gap: 50px;
+    border-left: 10px solid #52E1E2;
+    align-items: center;
+    transition: tranform 0.5s ease-in-out;
+
+    .content-card.transition{
+        transform: translate(100px);
+    }
+    .content-card img {
+        width: 200px;
+        height: 200px;
+        background-color: #52E1E2;
+    }
+}

@@ -21,7 +21,6 @@ import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { GrLike } from "react-icons/gr";
 import Slider from "react-slick";
 import { AiFillEye } from "react-icons/ai";
-import jsonPopulerBlog from "../json-dummy/listBlog.json";
 import axios from "axios";
 
 export default function CarouselNew() {
@@ -29,7 +28,7 @@ export default function CarouselNew() {
   async function latestBlog() {
     try {
       const res = await axios.get(
-        "https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=&sort=asc"
+        "https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=&sort=ASC"
       );
       // console.log(res.data.result);
       setLatest(res.data.result);
@@ -38,6 +37,27 @@ export default function CarouselNew() {
     }
   }
   latestBlog();
+
+  // new
+  const [currentContentIndex, setCurrentContentIndex] = useState(0);
+  const [transition, setTransition] = useState(false);
+
+  const nextImage = () => {
+    setTransition(true);
+    setTimeout(() => {
+      setCurrentContentIndex((currentContentIndex + 1) % latest.length);
+      setTransition(false);
+    }, 500);
+  };
+  const prevImage = () => {
+    setTransition(true);
+    setTimeout(() => {
+      setCurrentContentIndex(
+        currentContentIndex === 0 ? latest.length - 1 : currentContentIndex - 1
+      );
+      setTransition(false);
+    }, 500);
+  };
 
   // const populerBlog = jsonPopulerBlog.populerBlog;
   const [slider, setSlider] = useState(null);
@@ -56,8 +76,9 @@ export default function CarouselNew() {
   };
   return (
     <>
+
       <Box h={"600px"} id="carousel" mt={"50px"}>
-        <link
+      <link
           rel="stylesheet"
           type="text/css"
           charSet="UTF-8"
@@ -125,13 +146,13 @@ export default function CarouselNew() {
                     />
                   </Center>
                   <Stack mt="6" spacing="2">
-                    <Heading size="md">{item.title}</Heading>
-                    <Text fontSize={"12"}>{item.content}</Text>
-                    <Text color="blue.600" fontSize="2xl">
-                      <Button rightIcon={<AiFillEye />} variant={""}>
-                        Read more
-                      </Button>
+                    <Text fontSize={'12px'} fontWeight={'bold'}>{item.title}</Text>
+                    <Text color="blue.600" fontSize="10px">
+                      {item.User.username}
                     </Text>
+                    <Text fontSize={"8px"}>{item.content}</Text>
+                    <Text color={'yellow.500'}>Category : {item.Category.name}</Text>
+
                   </Stack>
                 </CardBody>
                 <Divider />

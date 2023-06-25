@@ -1,6 +1,5 @@
 // import logo from './logo.svg';
 import { Route, Routes } from 'react-router-dom';
-import './App.css';
 import Home from './Landing/Home';
 import NewBlog from './Landing/NewBlog';
 import Membership from './Landing/Membership';
@@ -16,6 +15,7 @@ import UpdateProfile from './Landing/UpdateProfile';
 import UserBookmark from './Landing/UserBookmark';
 import Navbar from './Components/navbar/Navbar';
 import Verify from './Landing/Verify';
+import Pages from './Pages';
 
 
 function App() {
@@ -39,6 +39,7 @@ function App() {
         <Route path='/verification/:token' element={<Verify/>}/>
         {/* /verification/:token */}
       </Routes>
+      {/* <Pages/> */}
       
     </>
   );

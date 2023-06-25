@@ -17,8 +17,19 @@ import { BiBookmarks } from "react-icons/bi";
 import { MdNoAccounts } from "react-icons/md";
 import { useDispatch } from "react-redux";
 import { userLogout } from "../../../redux/reducer/UserReducer";
+import axios from "axios";
 
 export default function UserProfile() {
+  const getAvatar = async () => {
+    try {
+      const res = await axios.get(
+        "https://minpro-blog.purwadhikabootcamp.com/Public/Avatar-6.png"
+      );
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  }
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -38,7 +49,7 @@ export default function UserProfile() {
     <>
       <Box mt={"2px"} mr={"10px"}>
         <Menu>
-          <Avatar src="https://bit.ly/broken-link" boxSize={9} />
+          <Avatar src="https://minpro-blog.purwadhikabootcamp.com/Public/Avatar-6.png" boxSize={9} />
           <MenuButton
             as={Button}
             backgroundColor={"white"}

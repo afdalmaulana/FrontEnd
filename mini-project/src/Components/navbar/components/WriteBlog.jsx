@@ -7,11 +7,12 @@ import CreateBlog from "./CreateBlog";
 export default function WriteBlog() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const login = useSelector((state) => state.UserReducer.login);
+  const userLogin = localStorage.getItem("token");
 
   return (
     <>
       <Box mt={"10px"}>
-        {!login ? (
+        {!userLogin && !login ? (
           <Button
             backgroundColor={"whiteAlpha.500"}
             hover={"black"}
@@ -24,8 +25,8 @@ export default function WriteBlog() {
           </Button>
         ) : (
           <CreateBlog />
-        )}
-        <ModalLogin isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
+          )}
+          <ModalLogin isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
       </Box>
     </>
   );

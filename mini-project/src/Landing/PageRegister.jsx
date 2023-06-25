@@ -18,11 +18,12 @@ import {
   Stack,
   Text,
   useDisclosure,
+  useToast,
 } from "@chakra-ui/react";
 import Navbar from "../Components/navbar/Navbar";
 import React, { useState } from "react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BsGoogle } from "react-icons/bs";
 import { FaFacebook } from "react-icons/fa";
 import { RiEye2Line, RiEyeCloseFill } from "react-icons/ri";
@@ -57,6 +58,11 @@ const RegistrasiSchema = Yup.object().shape({
 
 
 export default function PageRegister() {
+  const navigate = useNavigate();
+  function toHome(){
+    navigate("/")
+  }
+  const toast = useToast();
   const register = async (values) => {
   try {
     const { name, email, phone, password, confirm } = values;
@@ -69,11 +75,27 @@ export default function PageRegister() {
         phone: phone,
         password: password,
         confirmPassword: confirm,
+        FE_URL : "http://localhost:3000"
       },
     );
-    console.log(res);
+    console.log("ini register",res);
+    if(res.status === 200){
+      toast({
+        title: "Register Success, Please check your email to verify",
+        status: "success",
+        duration: 4000,
+        isClosable: true,
+      });
+      toHome();
+    }
   } catch (error) {
     console.log(error);
+    toast({
+      description : "Account not verify",
+      status : "error",
+      duration:2000,
+      isClosable:true,
+    })
   }
 };
   const formik = useFormik({
