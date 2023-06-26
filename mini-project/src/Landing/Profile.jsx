@@ -28,7 +28,7 @@ import {
 import { Link } from "react-router-dom";
 import Navbar from "../Components/navbar/Navbar";
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
-import UserProfile from "../Components/UserProfile";
+import UserAvatar from "../Components/PageContent/components/UserAvatar";
 
 export default function Profile() {
   // const [avatarImage, setAvatarImage] = useState('');
@@ -162,7 +162,7 @@ export default function Profile() {
           <GridItem>
             <Box>
               <Stack mt={"80px"} ml={"50px"}>
-                <UserProfile/>
+                <UserAvatar />
                 <Text fontSize={"15px"} color={"green"}>
                   <Link to={"/accountsetting"}>Account Setting</Link>
                 </Text>

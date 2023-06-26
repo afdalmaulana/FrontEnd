@@ -1,18 +1,18 @@
 import { ChatIcon } from "@chakra-ui/icons";
 import { Box, Button, useDisclosure } from "@chakra-ui/react";
-import ModalLogin from "../../ModalLogin";
+import ModalLogin from "../../Register/ModalLogin";
 import { useSelector } from "react-redux";
 import CreateBlog from "./CreateBlog";
 
 export default function WriteBlog() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const login = useSelector((state) => state.UserReducer.login);
-  const userLogin = localStorage.getItem("token");
+  // const userLogin = localStorage.getItem("token");
 
   return (
     <>
       <Box mt={"10px"}>
-        {!userLogin && !login ? (
+        {!login ? (
           <Button
             backgroundColor={"whiteAlpha.500"}
             hover={"black"}
@@ -25,8 +25,8 @@ export default function WriteBlog() {
           </Button>
         ) : (
           <CreateBlog />
-          )}
-          <ModalLogin isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
+        )}
+        <ModalLogin isOpen={isOpen} onClose={onClose} onOpen={onOpen} />
       </Box>
     </>
   );

@@ -45,19 +45,20 @@ export const UserReducer = createSlice({
     userName: (state, action) => {
       state.username.push(action.payload);
     },
+    userEmail: (state, action) => {
+      state.email.push(action.payload);
+    },
+    userPhone: (state, action) => {
+      state.phone.push(action.payload);
+    },
     keepLoginSuccess: (state) => {
       state.login = true;
     },
   },
 });
 
-export const signIn = async (values) => {
+export const signIn = (values) => {
   return async (dispatch) => {
-    const toast = useToast();
-    const navigate = useState();
-    function toHome() {
-      navigate("/");
-    }
     try {
       const { name, email, password, phone } = values;
       console.log(values);
@@ -76,25 +77,11 @@ export const signIn = async (values) => {
       dispatch(userLogin());
       dispatch(setUser(login.data.isAccountExist));
       dispatch(userName(login.data.isAccountExist.username));
-      toast({
-        description: "Login Success, Happy Reading",
-        status: "success",
-        duration: 5000,
-        isClosable: true,
-      });
-      toHome();
-
-      // dispatch(userEmail(login.data.isAccountExist.email));
-      // dispatch(userPhone(login.data.isAccountExist.phone));
+      dispatch(userEmail(login.data.isAccountExist.email));
+      dispatch(userPhone(login.data.isAccountExist.phone));
       // document.location.href = "/";
     } catch (error) {
       console.log(error);
-      toast({
-        description: "Account not verify",
-        status: "error",
-        duration: 2000,
-        isClosable: true,
-      });
     }
   };
 };

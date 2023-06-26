@@ -23,9 +23,9 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { BsGoogle } from "react-icons/bs";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../redux/reducer/UserReducer";
-import ModalForgetPassword from "../Components/ModalForgetPassword";
+import ModalForgetPassword from "../Components/ForgetPassword/ModalForgetPassword";
 
 const LoginSchema = Yup.object().shape({
   name: Yup.string().min(5, "username must have 5 characters minimum"),
@@ -40,10 +40,16 @@ const LoginSchema = Yup.object().shape({
 });
 
 export default function PageSign() {
-  const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
-  const toast = useToast();
+  function toHome() {
+    navigate("/");
+  }
+
+  const login = useSelector((state) => state.UserReducer.login);
+  console.log(login);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
+  const toast = useToast();
 
   const formik = useFormik({
     initialValues: {
@@ -55,9 +61,25 @@ export default function PageSign() {
     validationSchema: LoginSchema,
     onSubmit: (values) => {
       dispatch(signIn(values));
+      if (!login) {
+        toast({
+          description: "Login Success, Happy Reading",
+          status: "success",
+          duration: 3000,
+          isClosable: true,
+        });
+        toHome();
+      } else {
+        toast({
+          description: "Account not verify",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
     },
   });
-
+  //
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
 

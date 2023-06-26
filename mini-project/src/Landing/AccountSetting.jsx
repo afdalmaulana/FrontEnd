@@ -2,6 +2,7 @@ import {
   Avatar,
   Box,
   Button,
+  Divider,
   Flex,
   Grid,
   GridItem,
@@ -17,6 +18,7 @@ import Navbar from "../Components/navbar/Navbar";
 import { BsArrowUpRight } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import UserAvatar from "../Components/PageContent/components/UserAvatar";
 
 export default function AccountSetting() {
   const { username } = useSelector((state) => state.UserReducer);
@@ -51,7 +53,6 @@ export default function AccountSetting() {
                 <TabList>
                   <Tab>Account</Tab>
                   <Tab>Membership</Tab>
-                  <Tab>Three</Tab>
                 </TabList>
 
                 <TabPanels>
@@ -74,7 +75,10 @@ export default function AccountSetting() {
                         <Text>{phone}</Text>
                       </Flex>
                     </Box>
-                    <Box mt={"50px"}>
+                    <Box bgColor={"blackAlpha.800"}>
+                      <Divider mt={"20px"} />
+                    </Box>
+                    <Box mt={"20px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Password</Text>
                         <Button
@@ -98,12 +102,52 @@ export default function AccountSetting() {
                         </Button>
                       </Flex>
                     </Box>
+                    <Box mt={"30px"}>
+                      <Flex justifyContent={"space-between"}>
+                        <Text>Change username</Text>
+                        <Button
+                          rightIcon={<BsArrowUpRight />}
+                          variant={""}
+                          onClick={""}
+                        >
+                          Change
+                        </Button>
+                      </Flex>
+                    </Box>
+                    <Box mt={"30px"}>
+                      <Flex justifyContent={"space-between"}>
+                        <Text>Change email</Text>
+                        <Button
+                          rightIcon={<BsArrowUpRight />}
+                          variant={""}
+                          onClick={""}
+                        >
+                          Change
+                        </Button>
+                      </Flex>
+                    </Box>
+                    <Box mt={"30px"}>
+                      <Flex justifyContent={"space-between"}>
+                        <Text>Change Phone</Text>
+                        <Button
+                          rightIcon={<BsArrowUpRight />}
+                          variant={""}
+                          onClick={""}
+                        >
+                          Change
+                        </Button>
+                      </Flex>
+                    </Box>
                   </TabPanel>
                   <TabPanel>
-                    <p>two!</p>
-                  </TabPanel>
-                  <TabPanel>
-                    <Box></Box>
+                    <Text>To get membership</Text>
+                    <Button
+                      mt={"20px"}
+                      colorScheme="yellow"
+                      borderRadius={"50px"}
+                    >
+                      Click Here
+                    </Button>
                   </TabPanel>
                 </TabPanels>
               </Tabs>
@@ -112,10 +156,7 @@ export default function AccountSetting() {
           <GridItem>
             <Box>
               <Stack mt={"80px"} ml={"50px"}>
-                <Avatar src="https://bit.ly/broken-link" size={"xl"} />
-                <Text fontSize={"20px"} fontWeight={"medium"}>
-                  Nama Pengguna
-                </Text>
+                <UserAvatar />
                 <Text fontSize={"15px"} color={"green"}>
                   <Link to={"/profile"}>Edit Profile</Link>
                 </Text>

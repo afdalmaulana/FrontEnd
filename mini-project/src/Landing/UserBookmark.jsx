@@ -14,7 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import Navbar from "../Components/navbar/Navbar";
 import { useSelector } from "react-redux";
-import ItemBookmark from "../Components/ItemBookmark";
+import ItemBookmark from "../Components/PageContent/components/ItemBookmark";
 
 export default function UserBookmark() {
   const bookmarkBlog = useSelector((state) => state.BlogReducer.blog);

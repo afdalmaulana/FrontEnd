@@ -17,12 +17,12 @@ import GetStarted from "./GetStarted";
 export default function SignIn() {
   const { onClose } = useDisclosure();
   const userLogin = useSelector((state) => state.UserReducer.login);
-  const login = localStorage.getItem("token");
+  // const login = localStorage.getItem("token");
   
   return (
     <>
       <Box mt={"10px"} mr={"50px"}>
-        {!login && !userLogin ? (
+        {!userLogin ? (
           <GetStarted/>
         ) : (
           <UserProfile />

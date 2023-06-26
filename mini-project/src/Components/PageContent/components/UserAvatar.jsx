@@ -1,7 +1,9 @@
 import { Avatar, Box, Text } from "@chakra-ui/react";
 import axios from "axios";
+import { useSelector } from "react-redux";
 
-export default function UserProfile(){
+export default function UserAvatar(){
+    const { username } = useSelector((state) => state.UserReducer)
     const getAvatar = async () => {
         try{
             const res = await axios.get(
@@ -17,7 +19,7 @@ export default function UserProfile(){
             <Box>
             <Avatar src={`https://minpro-blog.purwadhikabootcamp.com/Public/Avatar-6.png`} size={"xl"} />
                 <Text fontSize={"20px"} fontWeight={"medium"}>
-                  Nama Pengguna
+                  {username}
                 </Text>
             </Box>
         </>
