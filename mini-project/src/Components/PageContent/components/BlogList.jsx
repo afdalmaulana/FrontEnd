@@ -187,7 +187,7 @@ export default function BlogList() {
                           </Text>
                           <Text></Text>
                         </Flex>
-                        <Text fontSize={"8px"}>{blog.content}</Text>
+                        <Text fontSize={"12px"} noOfLines={3}>{blog.content}</Text>
                         <Text color={"yellow.500"}>
                           Category : {blog.Category.name}
                         </Text>
