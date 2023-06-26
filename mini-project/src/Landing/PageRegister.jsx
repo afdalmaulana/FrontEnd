@@ -8,20 +8,12 @@ import {
   FormLabel,
   Input,
   InputGroup,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Stack,
   Text,
-  useDisclosure,
   useToast,
 } from "@chakra-ui/react";
 import Navbar from "../Components/navbar/Navbar";
-import React, { useState } from "react";
+import React from "react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { Link, useNavigate } from "react-router-dom";
 import { BsGoogle } from "react-icons/bs";

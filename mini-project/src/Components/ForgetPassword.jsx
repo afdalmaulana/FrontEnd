@@ -32,16 +32,17 @@ export default function ForgetPassword() {
     // console.log(url);
     // console.log(token);
     try {
-      const  email  = values;
-      const respon = await axios.put(
+      await axios.put(
         `https://minpro-blog.purwadhikabootcamp.com/api/auth/forgotPass`,
         {
-          email: email,
+          email: values.email,
+          FE_URL: "http://localhost:3000",
         }
       );
-      console.log(respon.data.message);
+      console.log("Check your email to reset");
+      // console.log(respon.data.message);
       toast({
-        title: respon.data.message,
+        title: "Password reset send to your email",
         description: "Check you email",
         status: "Success",
       });
@@ -107,7 +108,6 @@ export default function ForgetPassword() {
                 )}
               </FormControl>
               <Button
-                colorScheme="yellow"
                 mt={"20px"}
                 w={"200px"}
                 borderRadius={"50px"}

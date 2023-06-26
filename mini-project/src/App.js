@@ -15,7 +15,7 @@ import UpdateProfile from './Landing/UpdateProfile';
 import UserBookmark from './Landing/UserBookmark';
 import Navbar from './Components/navbar/Navbar';
 import Verify from './Landing/Verify';
-import Pages from './Pages';
+// import Pages from './Pages';
 
 
 function App() {

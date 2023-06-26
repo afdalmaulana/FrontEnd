@@ -9,17 +9,14 @@ import {
   Center,
   Divider,
   Flex,
-  Grid,
   Heading,
-  IconButton,
   Image,
   Stack,
   Text,
   useToast,
 } from "@chakra-ui/react";
-import { AiFillEye } from "react-icons/ai";
 import { GrLike } from "react-icons/gr";
-import { BsBookmarkPlus, BsFillBookmarkStarFill } from "react-icons/bs";
+import { BsFillBookmarkStarFill } from "react-icons/bs";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addToBookmark } from "../../../redux/reducer/BlogReducer";

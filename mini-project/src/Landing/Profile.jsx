@@ -28,7 +28,6 @@ import {
 import { Link } from "react-router-dom";
 import Navbar from "../Components/navbar/Navbar";
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
-import axios from "axios";
 import UserProfile from "../Components/UserProfile";
 
 export default function Profile() {

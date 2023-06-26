@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Box,
   Button,
   Center,
@@ -8,15 +7,12 @@ import {
   MenuItem,
   MenuList,
   Text,
-  useDisclosure,
 } from "@chakra-ui/react";
 import React from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import UserProfile from "./UserProfile";
-import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useSelector } from "react-redux";
 export default function SignIn() {
-  const {isOpen, onOpen, onClose} = useDisclosure();
   const userLogin = useSelector((state) => state.UserReducer.login);
   const login = localStorage.getItem("token");
   const navigate = useNavigate();

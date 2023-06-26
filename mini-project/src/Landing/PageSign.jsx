@@ -10,21 +10,25 @@ import {
   InputGroup,
   Stack,
   Text,
-  useDisclosure,
   useToast,
 } from "@chakra-ui/react";
 import Navbar from "../Components/navbar/Navbar";
-import { Form, Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { FaFacebook } from "react-icons/fa";
-import React, { useState } from "react";
+import React from "react";
 import { RiEye2Line, RiEyeCloseFill } from "react-icons/ri";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { BsGoogle } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import { userEmail, userIn, userLogin, userName, userPhone } from "../redux/reducer/UserReducer";
+import {
+  userEmail,
+  userLogin,
+  userName,
+  userPhone,
+} from "../redux/reducer/UserReducer";
 import ForgetPassword from "../Components/ForgetPassword";
 
 const LoginSchema = Yup.object().shape({
@@ -41,10 +45,9 @@ const LoginSchema = Yup.object().shape({
   phone: Yup.string().matches(/^[0-9]+$/, "Phone number must be number"),
 });
 
-
 export default function PageSign() {
   const navigate = useNavigate();
-  function toHome(){
+  function toHome() {
     navigate("/");
   }
   const toast = useToast();
@@ -52,8 +55,8 @@ export default function PageSign() {
   const signIn = async (values) => {
     try {
       const { name, email, password, phone } = values;
-      console.log(values)
-      const login  = await axios.post(
+      console.log(values);
+      const login = await axios.post(
         `https://minpro-blog.purwadhikabootcamp.com/api/auth/login`,
         {
           username: name,
@@ -62,17 +65,17 @@ export default function PageSign() {
           password: password,
         }
       );
-      console.log("ini respon",login);
-      if(login.status === 200){
-        dispatch(userLogin(login.data.token))
-        dispatch(userName(login.data.isAccountExist.username))
-        dispatch(userEmail(login.data.isAccountExist.email))
-        dispatch(userPhone(login.data.isAccountExist.phone))
+      console.log("ini respon", login);
+      if (login.status === 200) {
+        dispatch(userLogin(login.data.token));
+        dispatch(userName(login.data.isAccountExist.username));
+        dispatch(userEmail(login.data.isAccountExist.email));
+        dispatch(userPhone(login.data.isAccountExist.phone));
         toast({
           description: "Login Success, Happy Reading",
           status: "success",
-          duration:5000,
-          isClosable : true,
+          duration: 5000,
+          isClosable: true,
         });
         toHome();
       }
@@ -80,11 +83,11 @@ export default function PageSign() {
     } catch (error) {
       console.log(error);
       toast({
-        description : "Account not verify",
-        status : "error",
-        duration:2000,
-        isClosable:true,
-      })
+        description: "Account not verify",
+        status: "error",
+        duration: 2000,
+        isClosable: true,
+      });
     }
   };
   const formik = useFormik({
@@ -99,9 +102,6 @@ export default function PageSign() {
       signIn(values);
     },
   });
-
-
-  
 
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
@@ -245,10 +245,10 @@ export default function PageSign() {
                       >
                         Submit
                       </Button>
-                      <ForgetPassword />
                     </Stack>
                   </Stack>
                 </form>
+              <ForgetPassword />
               </Box>
               <Box>
                 <Divider orientation="vertical" />

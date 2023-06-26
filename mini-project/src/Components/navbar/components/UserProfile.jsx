@@ -3,14 +3,11 @@ import {
   Avatar,
   Box,
   Button,
-  Center,
   Menu,
   MenuButton,
-  MenuItem,
   MenuList,
-  Text,
 } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import { AiOutlineSetting } from "react-icons/ai";
 import { BiBookmarks } from "react-icons/bi";
@@ -29,7 +26,7 @@ export default function UserProfile() {
     } catch (error) {
       console.log(error);
     }
-  }
+  };
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -49,7 +46,10 @@ export default function UserProfile() {
     <>
       <Box mt={"2px"} mr={"10px"}>
         <Menu>
-          <Avatar src="https://minpro-blog.purwadhikabootcamp.com/Public/Avatar-6.png" boxSize={9} />
+          <Avatar
+            src="https://minpro-blog.purwadhikabootcamp.com/Public/Avatar-6.png"
+            boxSize={9}
+          />
           <MenuButton
             as={Button}
             backgroundColor={"white"}

@@ -1,5 +1,5 @@
 import { EmailIcon } from "@chakra-ui/icons";
-import { Avatar, Box, Button, Center, Divider, Flex, HStack, Image, Input, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Divider, Flex, HStack, Image, Input, Stack, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 export default function Footer(){

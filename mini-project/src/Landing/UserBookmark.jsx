@@ -1,21 +1,8 @@
 import {
   Avatar,
   Box,
-  Button,
-  ButtonGroup,
-  Card,
-  CardBody,
-  CardFooter,
-  Editable,
-  EditableInput,
-  EditablePreview,
-  Flex,
   Grid,
   GridItem,
-  Heading,
-  IconButton,
-  Image,
-  Input,
   Stack,
   Tab,
   TabList,
@@ -23,7 +10,6 @@ import {
   TabPanels,
   Tabs,
   Text,
-  useEditableControls,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import Navbar from "../Components/navbar/Navbar";
@@ -56,7 +42,7 @@ export default function UserBookmark() {
                 <TabPanels>
                   <TabPanel>
                     <Box>
-                      <ItemBookmark bookmark={bookmarkBlog}/>
+                      <ItemBookmark bookmark={bookmarkBlog} />
                     </Box>
                   </TabPanel>
                 </TabPanels>

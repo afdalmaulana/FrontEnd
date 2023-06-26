@@ -1,11 +1,10 @@
 import {
-    Avatar,
+  Avatar,
   Box,
   Button,
   Flex,
   Grid,
   GridItem,
-  Input,
   Stack,
   Tab,
   TabList,
@@ -15,29 +14,35 @@ import {
   Text,
 } from "@chakra-ui/react";
 import Navbar from "../Components/navbar/Navbar";
-import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { BsArrowUpRight } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export default function AccountSetting() {
-  const {username} = useSelector((state) => state.UserReducer)
-  const {email} = useSelector((state) => state.UserReducer)
-  const {phone} = useSelector((state) => state.UserReducer)
-  const login = localStorage.getItem("token")
-    const navigate = useNavigate();
-    function toChangePassword(){
-        navigate('/changePassword')
-    }
-    function toUpdateProfile(){
-      navigate('/updateProfile');
-    }
+  const { username } = useSelector((state) => state.UserReducer);
+  const { email } = useSelector((state) => state.UserReducer);
+  const { phone } = useSelector((state) => state.UserReducer);
+  const login = localStorage.getItem("token");
+  const navigate = useNavigate();
+  function toChangePassword() {
+    navigate("/changePassword");
+  }
+  function toUpdateProfile() {
+    navigate("/updateProfile");
+  }
   return (
     <>
       <Box>
         <Navbar />
         <Grid templateColumns="repeat(2,1fr)" gap={2} mt={"60px"}>
-          <GridItem w={"1000px"} pl={"150px"} pt={"80px"} borderRight={'1px'} h={'750px'} borderColor={'blackAlpha.100'}>
+          <GridItem
+            w={"1000px"}
+            pl={"150px"}
+            pt={"80px"}
+            borderRight={"1px"}
+            h={"750px"}
+            borderColor={"blackAlpha.100"}
+          >
             <Stack>
               <Text fontSize={"4xl"} fontWeight={"bold"}>
                 Settings
@@ -60,7 +65,7 @@ export default function AccountSetting() {
                     <Box mt={"30px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Email address</Text>
-                        {!login ? "" : (<Text>{email}</Text>)}
+                        {!login ? "" : <Text>{email}</Text>}
                       </Flex>
                     </Box>
                     <Box mt={"30px"}>
@@ -72,7 +77,11 @@ export default function AccountSetting() {
                     <Box mt={"50px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Password</Text>
-                        <Button rightIcon={<BsArrowUpRight />} variant={""} onClick={toChangePassword}>
+                        <Button
+                          rightIcon={<BsArrowUpRight />}
+                          variant={""}
+                          onClick={toChangePassword}
+                        >
                           Change
                         </Button>
                       </Flex>
@@ -80,7 +89,11 @@ export default function AccountSetting() {
                     <Box mt={"30px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Update Profile</Text>
-                        <Button rightIcon={<BsArrowUpRight />} variant={""} onClick={toUpdateProfile}>
+                        <Button
+                          rightIcon={<BsArrowUpRight />}
+                          variant={""}
+                          onClick={toUpdateProfile}
+                        >
                           Change
                         </Button>
                       </Flex>
@@ -90,8 +103,7 @@ export default function AccountSetting() {
                     <p>two!</p>
                   </TabPanel>
                   <TabPanel>
-                    <Box>
-                    </Box>
+                    <Box></Box>
                   </TabPanel>
                 </TabPanels>
               </Tabs>
@@ -99,11 +111,15 @@ export default function AccountSetting() {
           </GridItem>
           <GridItem>
             <Box>
-                <Stack mt={'80px'} ml={'50px'}>
-                <Avatar src='https://bit.ly/broken-link' size={'xl'}/>
-                <Text fontSize={'20px'} fontWeight={'medium'}>Nama Pengguna</Text>
-                <Text fontSize={'15px'} color={'green'}><Link to={'/profile'}>Edit Profile</Link></Text>
-                </Stack>
+              <Stack mt={"80px"} ml={"50px"}>
+                <Avatar src="https://bit.ly/broken-link" size={"xl"} />
+                <Text fontSize={"20px"} fontWeight={"medium"}>
+                  Nama Pengguna
+                </Text>
+                <Text fontSize={"15px"} color={"green"}>
+                  <Link to={"/profile"}>Edit Profile</Link>
+                </Text>
+              </Stack>
             </Box>
           </GridItem>
         </Grid>

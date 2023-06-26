@@ -10,11 +10,6 @@ import {
   Heading,
   Image,
   Stack,
-  Tab,
-  TabList,
-  TabPanel,
-  TabPanels,
-  Tabs,
   Text,
 } from "@chakra-ui/react";
 import Navbar from "../Components/navbar/Navbar";

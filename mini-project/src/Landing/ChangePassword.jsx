@@ -1,24 +1,14 @@
 import {
   Box,
   Button,
-  ButtonGroup,
   FormControl,
   FormErrorMessage,
   FormLabel,
   Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
   Stack,
-  Text,
-  useDisclosure,
 } from "@chakra-ui/react";
 import Navbar from "../Components/navbar/Navbar";
-import React, { useState } from "react";
+import React from "react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import axios from "axios";
 import * as Yup from "yup";
@@ -75,7 +65,6 @@ export default function ChangePassword() {
   //     backdropBlur="2px"
   //   />
   // );
-  const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
       <Box>

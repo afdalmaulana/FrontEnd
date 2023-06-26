@@ -7,8 +7,6 @@ import {
   CardFooter,
   Center,
   Divider,
-  Flex,
-  Heading,
   IconButton,
   Image,
   Stack,
@@ -20,7 +18,6 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { GrLike } from "react-icons/gr";
 import Slider from "react-slick";
-import { AiFillEye } from "react-icons/ai";
 import axios from "axios";
 
 export default function CarouselNew() {
