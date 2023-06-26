@@ -17,6 +17,11 @@ export default function ResetPassword() {
           password: values.password,
           confirmPassword: values.confirmPassword,
           FE_URL: "http:/localhost/3000",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
       console.log(res);

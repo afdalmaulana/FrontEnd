@@ -1,7 +1,4 @@
-import { ChevronDownIcon } from "@chakra-ui/icons";
 import {
-  Avatar,
-  Box,
   Button,
   Center,
   Menu,
@@ -11,11 +8,10 @@ import {
   Text,
   useDisclosure,
 } from "@chakra-ui/react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-export default function AvatarProfile() {
-  const {isOpen, onOpen, onClose} = useDisclosure();
-
+export default function GetStarted() {
+    const {onClose} = useDisclosure();
   const navigate = useNavigate();
   function toSigninPage() {
     navigate("/signPage");
@@ -26,16 +22,17 @@ export default function AvatarProfile() {
     onClose();
   }
   return (
-    <Box mt={"10px"} mr={"10px"}>
+    <>
       <Menu>
-        <Avatar src="https://bit.ly/broken-link" boxSize={9} />
+        {/* <Avatar src="https://bit.ly/broken-link" boxSize={9} /> */}
         <MenuButton
           as={Button}
-          backgroundColor={"white"}
-          w={"5px"}
-          rightIcon={<ChevronDownIcon />}
-          variant=""
-        ></MenuButton>
+          colorScheme="yellow"
+          borderRadius={"20px"}
+          w={"150px"}
+        >
+          Get Started
+        </MenuButton>
         <MenuList w={"300px"} marginRight={"10px"}>
           <Center>
             <Text mt={"20px"}>Get a started on Golden Book</Text>
@@ -66,11 +63,9 @@ export default function AvatarProfile() {
             </Button>
           </Center>
           <MenuItem mt={"30px"}>Become a membership</MenuItem>
-          <MenuItem>Delete</MenuItem>
-          <MenuItem>
-          </MenuItem>
+          <MenuItem>Close</MenuItem>
         </MenuList>
       </Menu>
-    </Box>
+    </>
   );
 }

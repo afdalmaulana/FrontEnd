@@ -168,7 +168,7 @@ export default function BlogList() {
               .slice((currentPage - 1) * 4, currentPage * 4)
               .map((blog) => (
                 <SwiperSlide key={blog.id}>
-                  <Card maxW="320px" maxH="lg">
+                  <Card maxW="340px" minW={'340px'} maxH="510px" minH={'510px'} mb={'20px'}>
                     <CardBody justifyContent={"center"}>
                       <Center>
                         <Image
@@ -187,7 +187,7 @@ export default function BlogList() {
                           </Text>
                           <Text></Text>
                         </Flex>
-                        <Text fontSize={"10"}>{blog.content}</Text>
+                        <Text fontSize={"8px"}>{blog.content}</Text>
                         <Text color={"yellow.500"}>
                           Category : {blog.Category.name}
                         </Text>
