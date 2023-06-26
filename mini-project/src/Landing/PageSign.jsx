@@ -35,11 +35,11 @@ import ModalForgetPassword from "../Components/ModalForgetPassword";
 
 const LoginSchema = Yup.object().shape({
   name: Yup.string()
-    .min(5, "username must have 5 characters minimum")
-    .required("username is required"),
+    .min(5, "username must have 5 characters minimum"),
+    // .required("username is required"),
   email: Yup.string()
-    .email("Invalid email address format")
-    .required("email is required"),
+    .email("Invalid email address format"),
+    // .required("email is required"),
   password: Yup.string()
     .min(6, "Password must be 6 characters minimum")
     .max(15, "Password must be less than 16 character")

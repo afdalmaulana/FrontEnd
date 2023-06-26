@@ -45,14 +45,13 @@ export default function ModalForgetPassword({ isOpen, onClose }) {
         }
       );
       console.log(respon);
-      // if (respon.status === 200) {
-      //   toast({
-      //     title: "Password reset send to your email",
-      //     description: "Check you email",
-      //     status: "Success",
-      //     isClosable: true,
-      //   });
-      // }
+      toast({
+        title: "Password reset link send to your email",
+        description: "Check your email",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     } catch (error) {
       console.log("ini erorr", error);
     }
@@ -104,6 +103,7 @@ export default function ModalForgetPassword({ isOpen, onClose }) {
                     w={"200px"}
                     borderRadius={"50px"}
                     onClick={onClose}
+                    colorScheme="red"
                   >
                     Close
                   </Button>
@@ -112,6 +112,7 @@ export default function ModalForgetPassword({ isOpen, onClose }) {
                     w={"200px"}
                     borderRadius={"50px"}
                     type="submit"
+                    colorScheme="yellow"
                   >
                     Get a link
                   </Button>

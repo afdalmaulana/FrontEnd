@@ -6,6 +6,7 @@ import {
   FormLabel,
   Input,
   Stack,
+  useToast,
 } from "@chakra-ui/react";
 import Navbar from "../Components/navbar/Navbar";
 import React from "react";
@@ -14,13 +15,21 @@ import axios from "axios";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 
-const resetSchema = Yup.object().shape({
+const ChangeSchema = Yup.object().shape({
   currentPassword: Yup.string().required("currentPassword is required"),
-  password: Yup.string().required("password is required"),
-  confirmPassword: Yup.string().required("newPassword is required"),
+  password: Yup.string()
+    .required("password is required")
+    .matches(
+      /^.*(?=.{6,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      "Password must contain at least  characters, one uppercase, one number and one special case character"
+    ),
+  confirmPassword: Yup.string()
+    .required("Confirm Password is required")
+    .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });
 
 export default function ChangePassword() {
+  const toast = useToast();
   const changePassword = async (values) => {
     const { currentPassword, password, confirmPassword } = values;
     try {
@@ -30,12 +39,26 @@ export default function ChangePassword() {
           currentPassword: currentPassword,
           password: password,
           confirmPassword: confirmPassword,
-          FE_URL : "http://localhost:3000",
+          FE_URL: "http://localhost:3000",
         }
       );
       console.log(respon.data.success);
+      toast({
+        title: "Password change",
+        description: "your password has been change",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
     } catch (error) {
       console.log(error);
+      toast({
+        title: "Error",
+        description: "your password is not change",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
   const formik = useFormik({
@@ -44,28 +67,12 @@ export default function ChangePassword() {
       password: "",
       confirmPassword: "",
     },
-    validationSchema: resetSchema,
+    validationSchema: ChangeSchema,
     onSubmit: (values) => {
       changePassword(values);
     },
   });
 
-  // function submitHandler(e) {
-  //   setUserOldPassword(`${oldPassword}`);
-  //   setUserNewPassword(`${newPassword}`);
-  //   setUserConfirmPassword(`${confirmPassword}`);
-  //   setOldPassword("");
-  //   setNewPassword("");
-  //   setConfirmPassword("");
-  // }
-  // const OverlayTwo = () => (
-  //   <ModalOverlay
-  //     bg="none"
-  //     backdropFilter="auto"
-  //     backdropInvert="80%"
-  //     backdropBlur="2px"
-  //   />
-  // );
   return (
     <>
       <Box>
@@ -130,10 +137,10 @@ export default function ChangePassword() {
                   fontSize={"20px"}
                   w={"400px"}
                   variant={"outline"}
-                  id="currentPassword"
-                  name="currentPassword"
+                  id="password"
+                  name="password"
                   type="text"
-                  value={formik.values.paassword}
+                  value={formik.values.password}
                   onChange={formik.handleChange}
                 />
                 {formik.touched.password && formik.errors.password && (
@@ -163,7 +170,7 @@ export default function ChangePassword() {
                   id="confirmPassword"
                   name="confirmPassword"
                   type="text"
-                  value={formik.values.newPaassword}
+                  value={formik.values.confirmPassword}
                   onChange={formik.handleChange}
                 />
                 {formik.touched.confirmPassword &&
@@ -185,26 +192,6 @@ export default function ChangePassword() {
               </Button>
             </Stack>
           </form>
-
-          {/* <Modal isCentered isOpen={isOpen} onClose={onClose}>
-              // {overlay}
-              <ModalContent>
-                <ModalHeader>Your Password</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                  <Text>Old Password : {userOldPassword}</Text>
-                  <Text>New Password : {userNewPassword}</Text>
-                  <Text>Confirm Password : {userConfirmPassword}</Text> */}
-          {/* <Text>Gender : {userGender}</Text> */}
-          {/* </ModalBody> */}
-          {/* <ModalFooter>
-                  <ButtonGroup gap={'10px'}>
-                  <Button onClick={onClose} bgColor={'red.300'}>Close</Button>
-                  <Button colorScheme="yellow">Submit</Button>
-                  </ButtonGroup>
-                </ModalFooter>
-              </ModalContent>
-            </Modal> */}
         </Box>
       </Box>
     </>
