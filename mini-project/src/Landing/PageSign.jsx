@@ -24,22 +24,14 @@ import * as Yup from "yup";
 import axios from "axios";
 import { BsGoogle } from "react-icons/bs";
 import { useDispatch } from "react-redux";
-import {
-  userEmail,
-  userLogin,
-  userName,
-  userPhone,
-} from "../redux/reducer/UserReducer";
-import ForgetPassword from "../Components/ForgetPassword";
+import { signIn } from "../redux/reducer/UserReducer";
 import ModalForgetPassword from "../Components/ModalForgetPassword";
 
 const LoginSchema = Yup.object().shape({
-  name: Yup.string()
-    .min(5, "username must have 5 characters minimum"),
-    // .required("username is required"),
-  email: Yup.string()
-    .email("Invalid email address format"),
-    // .required("email is required"),
+  name: Yup.string().min(5, "username must have 5 characters minimum"),
+  // .required("username is required"),
+  email: Yup.string().email("Invalid email address format"),
+  // .required("email is required"),
   password: Yup.string()
     .min(6, "Password must be 6 characters minimum")
     .max(15, "Password must be less than 16 character")
@@ -48,51 +40,11 @@ const LoginSchema = Yup.object().shape({
 });
 
 export default function PageSign() {
-  const {isOpen, onOpen, onClose} = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
-  function toHome() {
-    navigate("/");
-  }
   const toast = useToast();
   const dispatch = useDispatch();
-  const signIn = async (values) => {
-    try {
-      const { name, email, password, phone } = values;
-      console.log(values);
-      const login = await axios.post(
-        `https://minpro-blog.purwadhikabootcamp.com/api/auth/login`,
-        {
-          username: name,
-          email: email,
-          phone: phone,
-          password: password,
-        }
-      );
-      console.log("ini respon", login);
-      if (login.status === 200) {
-        dispatch(userLogin(login.data.token));
-        dispatch(userName(login.data.isAccountExist.username));
-        dispatch(userEmail(login.data.isAccountExist.email));
-        dispatch(userPhone(login.data.isAccountExist.phone));
-        toast({
-          description: "Login Success, Happy Reading",
-          status: "success",
-          duration: 5000,
-          isClosable: true,
-        });
-        toHome();
-      }
-      // document.location.href = "/";
-    } catch (error) {
-      console.log(error);
-      toast({
-        description: "Account not verify",
-        status: "error",
-        duration: 2000,
-        isClosable: true,
-      });
-    }
-  };
+
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -102,7 +54,7 @@ export default function PageSign() {
     },
     validationSchema: LoginSchema,
     onSubmit: (values) => {
-      signIn(values);
+      dispatch(signIn(values));
     },
   });
 
@@ -252,9 +204,14 @@ export default function PageSign() {
                   </Stack>
                 </form>
                 <Text>Forget your password ? </Text>
-                <Button onClick={onOpen} mt={'10px'}>Hit Me</Button>
-                <ModalForgetPassword isOpen={isOpen} onOpen={onOpen} onClose={onClose}/>
-              {/* <ForgetPassword /> */}
+                <Button onClick={onOpen} mt={"10px"}>
+                  Hit Me
+                </Button>
+                <ModalForgetPassword
+                  isOpen={isOpen}
+                  onOpen={onOpen}
+                  onClose={onClose}
+                />
               </Box>
               <Box>
                 <Divider orientation="vertical" />

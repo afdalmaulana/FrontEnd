@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { Box, Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export default function Category() {
@@ -23,7 +23,9 @@ export default function Category() {
       console.log(error);
     }
   };
-  blogCategory();
+  useEffect(() => {
+    blogCategory()
+  }, [])
   return (
     <>
       <Box>

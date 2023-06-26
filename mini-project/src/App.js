@@ -16,12 +16,16 @@ import UserBookmark from './Landing/UserBookmark';
 import Navbar from './Components/navbar/Navbar';
 import Verify from './Landing/Verify';
 import ResetPassword from './Landing/ResetPassword';
+import UserAuth from './Components/UserAuth';
+// import UserAuth from './Components/UserAuth';
 // import Pages from './Pages';
 
 
 function App() {
   return (
     <>
+<UserAuth>
+
       <Navbar />
       <Routes>
         <Route path='/' element={<Home/>}></Route>
@@ -42,7 +46,8 @@ function App() {
         {/* /verification/:token */}
       </Routes>
       {/* <Pages/> */}
-      
+    {/* </UserAuthentication> */}
+</UserAuth>
     </>
   );
 }

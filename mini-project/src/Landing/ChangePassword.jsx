@@ -5,6 +5,7 @@ import {
   FormErrorMessage,
   FormLabel,
   Input,
+  InputGroup,
   Stack,
   useToast,
 } from "@chakra-ui/react";
@@ -14,6 +15,8 @@ import { ArrowForwardIcon } from "@chakra-ui/icons";
 import axios from "axios";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import { RiEye2Line, RiEyeCloseFill } from "react-icons/ri";
+import { useNavigate } from "react-router-dom";
 
 const ChangeSchema = Yup.object().shape({
   currentPassword: Yup.string().required("currentPassword is required"),
@@ -29,20 +32,34 @@ const ChangeSchema = Yup.object().shape({
 });
 
 export default function ChangePassword() {
+  const navigate = useNavigate();
+  function toHome() {
+    navigate("/");
+  }
+
+  const [show, setShow] = React.useState(false);
+  const handleClick = () => setShow(!show);
   const toast = useToast();
   const changePassword = async (values) => {
+    const token = localStorage.getItem("token");
+    console.log("token", token);
     const { currentPassword, password, confirmPassword } = values;
     try {
-      const respon = await axios.get(
+      const respon = await axios.patch(
         "https://minpro-blog.purwadhikabootcamp.com/api/auth/changePass",
         {
           currentPassword: currentPassword,
           password: password,
           confirmPassword: confirmPassword,
           FE_URL: "http://localhost:3000",
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
       );
-      console.log(respon.data.success);
+      console.log(respon);
       toast({
         title: "Password change",
         description: "your password has been change",
@@ -50,6 +67,7 @@ export default function ChangePassword() {
         duration: 3000,
         isClosable: true,
       });
+      toHome();
     } catch (error) {
       console.log(error);
       toast({
@@ -99,20 +117,38 @@ export default function ChangePassword() {
                   fontFamily={"sans-serif"}
                   mt={"20px"}
                 >
-                  Old Password
+                  Current Password
                 </FormLabel>
-                <Input
-                  mt={"5px"}
-                  placeholder="Type here"
-                  fontSize={"20px"}
-                  w={"400px"}
-                  variant={"outline"}
-                  id="currentPassword"
-                  name="currentPassword"
-                  type="text"
-                  value={formik.values.currentPassword}
-                  onChange={formik.handleChange}
-                />
+                <InputGroup>
+                  <Input
+                    id="currentPassword"
+                    name="currentPassword"
+                    mt={"20px"}
+                    value={formik.values.currentPassword}
+                    onChange={formik.handleChange}
+                    pr="4.5rem"
+                    type={show ? "text" : "password"}
+                    placeholder="Enter password"
+                    variant={"flushed"}
+                    borderColor={"black"}
+                    w={"400px"}
+                    InputRightElement
+                    // value={password}
+                  />
+                  <Button
+                    size="sm"
+                    onClick={handleClick}
+                    mt={"10px"}
+                    variant={"unstyled"}
+                  >
+                    {" "}
+                    {show ? (
+                      <RiEye2Line size={"25px"} />
+                    ) : (
+                      <RiEyeCloseFill size={"25px"} />
+                    )}
+                  </Button>
+                </InputGroup>
                 {formik.touched.currentPassword &&
                   formik.errors.currentPassword && (
                     <FormErrorMessage>
@@ -131,18 +167,36 @@ export default function ChangePassword() {
                 >
                   New Password
                 </FormLabel>
-                <Input
-                  mt={"5px"}
-                  placeholder="Type here"
-                  fontSize={"20px"}
-                  w={"400px"}
-                  variant={"outline"}
-                  id="password"
-                  name="password"
-                  type="text"
-                  value={formik.values.password}
-                  onChange={formik.handleChange}
-                />
+                <InputGroup>
+                  <Input
+                    id="password"
+                    name="password"
+                    mt={"20px"}
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    pr="4.5rem"
+                    type={show ? "text" : "password"}
+                    placeholder="Enter password"
+                    variant={"flushed"}
+                    borderColor={"black"}
+                    w={"400px"}
+                    InputRightElement
+                    // value={password}
+                  />
+                  <Button
+                    size="sm"
+                    onClick={handleClick}
+                    mt={"10px"}
+                    variant={"unstyled"}
+                  >
+                    {" "}
+                    {show ? (
+                      <RiEye2Line size={"25px"} />
+                    ) : (
+                      <RiEyeCloseFill size={"25px"} />
+                    )}
+                  </Button>
+                </InputGroup>
                 {formik.touched.password && formik.errors.password && (
                   <FormErrorMessage>{formik.errors.password}</FormErrorMessage>
                 )}
@@ -161,18 +215,36 @@ export default function ChangePassword() {
                 >
                   Confirm New Password
                 </FormLabel>
-                <Input
-                  mt={"5px"}
-                  placeholder="Type here"
-                  fontSize={"20px"}
-                  w={"400px"}
-                  variant={"outline"}
-                  id="confirmPassword"
-                  name="confirmPassword"
-                  type="text"
-                  value={formik.values.confirmPassword}
-                  onChange={formik.handleChange}
-                />
+                <InputGroup>
+                  <Input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    mt={"20px"}
+                    value={formik.values.confirmPassword}
+                    onChange={formik.handleChange}
+                    pr="4.5rem"
+                    type={show ? "text" : "password"}
+                    placeholder="Enter password"
+                    variant={"flushed"}
+                    borderColor={"black"}
+                    w={"400px"}
+                    InputRightElement
+                    // value={password}
+                  />
+                  <Button
+                    size="sm"
+                    onClick={handleClick}
+                    mt={"10px"}
+                    variant={"unstyled"}
+                  >
+                    {" "}
+                    {show ? (
+                      <RiEye2Line size={"25px"} />
+                    ) : (
+                      <RiEyeCloseFill size={"25px"} />
+                    )}
+                  </Button>
+                </InputGroup>
                 {formik.touched.confirmPassword &&
                   formik.errors.confirmPassword && (
                     <FormErrorMessage>

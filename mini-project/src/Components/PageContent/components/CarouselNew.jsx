@@ -13,7 +13,7 @@ import {
   Text,
   useBreakpointValue,
 } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { GrLike } from "react-icons/gr";
@@ -33,7 +33,9 @@ export default function CarouselNew() {
       console.log(error);
     }
   }
-  latestBlog();
+  useEffect(() => {
+    latestBlog();
+  }, []);
 
   // new
   const [currentContentIndex, setCurrentContentIndex] = useState(0);
@@ -73,9 +75,8 @@ export default function CarouselNew() {
   };
   return (
     <>
-
       <Box h={"600px"} id="carousel" mt={"50px"}>
-      <link
+        <link
           rel="stylesheet"
           type="text/css"
           charSet="UTF-8"
@@ -94,7 +95,7 @@ export default function CarouselNew() {
             variant="outline"
             position="absolute"
             left={side}
-            top={'1080px'}
+            top={"1080px"}
             transform="translate(0%, -50%)"
             zIndex={2}
             onClick={() => slider?.slickPrev()}
@@ -109,7 +110,7 @@ export default function CarouselNew() {
             variant="outline"
             position="absolute"
             right={side}
-            top={'1080px'}
+            top={"1080px"}
             transform="translate(0%, -50%)"
             zIndex={2}
             onClick={() => slider?.slickNext()}
@@ -131,7 +132,13 @@ export default function CarouselNew() {
         <Slider {...settings} ref={setSlider}>
           {latest.map((item) => {
             return (
-              <Card maxW="md" maxH="lg">
+              <Card
+                maxW="450px"
+                minW={"450px"}
+                minH={"510px"}
+                maxH="510px"
+                mb={"20px"}
+              >
                 <CardBody justifyContent={"center"}>
                   <Center>
                     <Image
@@ -143,13 +150,18 @@ export default function CarouselNew() {
                     />
                   </Center>
                   <Stack mt="6" spacing="2">
-                    <Text fontSize={'12px'} fontWeight={'bold'}>{item.title}</Text>
+                    <Text fontSize={"12px"} fontWeight={"bold"}>
+                      {item.title}
+                    </Text>
                     <Text color="blue.600" fontSize="10px">
                       {item.User.username}
                     </Text>
-                    <Text fontSize={"8px"}>{item.content}</Text>
-                    <Text color={'yellow.500'}>Category : {item.Category.name}</Text>
-
+                    <Text fontSize={"12px"} noOfLines={3}>
+                      {item.content}
+                    </Text>
+                    <Text color={"yellow.500"}>
+                      Category : {item.Category.name}
+                    </Text>
                   </Stack>
                 </CardBody>
                 <Divider />
