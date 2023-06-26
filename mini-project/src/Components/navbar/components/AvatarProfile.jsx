@@ -13,6 +13,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 
 export default function AvatarProfile() {
+  
   const navigate = useNavigate();
   function toSigninPage() {
     navigate("/signPage");

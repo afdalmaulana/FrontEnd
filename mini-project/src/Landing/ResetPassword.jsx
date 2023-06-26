@@ -1,45 +1,29 @@
-import {
-  Box,
-  Button,
-  Input,
-  Modal,
-  ModalBody,
-  ModalCloseButton,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  ModalOverlay,
-  Stack,
-  Text,
-  useDisclosure,
-} from "@chakra-ui/react";
+import { Box, Button, Input, Stack, Text } from "@chakra-ui/react";
 import Navbar from "../Components/navbar/Navbar";
-import React, { useState } from "react";
+import React from "react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
+import axios from "axios";
 
 export default function ResetPassword() {
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-
-  const [userNewPassword, setUserNewPassword] = useState("");
-  const [userConfirmPassword, setUserConfirmPassword] = useState("");
-
-  function submitHandler(e) {
-    setUserNewPassword(`${newPassword}`);
-    setUserConfirmPassword(`${confirmPassword}`);
-    setNewPassword("");
-    setConfirmPassword("");
-  }
-  const OverlayTwo = () => (
-    <ModalOverlay
-      bg="none"
-      backdropFilter="auto"
-      backdropInvert="80%"
-      backdropBlur="2px"
-    />
-  );
-  const [overlay, setOverlay] = React.useState(<OverlayTwo />);
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const resetPassword = async (values) => {
+    const url = window.location.href.split("/");
+    const token = url.pop();
+    console.log(url);
+    console.log(token);
+    try {
+      const res = await axios.patch(
+        "https://minpro-blog.purwadhikabootcamp.com/api/auth/resetPass",
+        {
+          password: values.password,
+          confirmPassword: values.confirmPassword,
+          FE_URL: "http:/localhost/3000",
+        }
+      );
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <Box>
@@ -67,8 +51,6 @@ export default function ResetPassword() {
               variant={"outline"}
               w={"400px"}
               mt={"5px"}
-              value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
             />
             <Text
               fontSize={"1xl"}
@@ -84,8 +66,6 @@ export default function ResetPassword() {
               variant={"outline"}
               w={"400px"}
               mt={"5px"}
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
             />
             <Button
               colorScheme="yellow"
@@ -93,29 +73,9 @@ export default function ResetPassword() {
               borderRadius={"50px"}
               mt={"50px"}
               rightIcon={<ArrowForwardIcon />}
-              onClick={() => {
-                setOverlay(<OverlayTwo />);
-                onOpen();
-                submitHandler();
-              }}
             >
               Submit
             </Button>
-            <Modal isCentered isOpen={isOpen} onClose={onClose}>
-              {overlay}
-              <ModalContent>
-                <ModalHeader>Your Password</ModalHeader>
-                <ModalCloseButton />
-                <ModalBody>
-                  <Text>New Password : {userNewPassword}</Text>
-                  <Text>Confirm Password : {userConfirmPassword}</Text>
-                  {/* <Text>Gender : {userGender}</Text> */}
-                </ModalBody>
-                <ModalFooter>
-                  <Button onClick={onClose}>Close</Button>
-                </ModalFooter>
-              </ModalContent>
-            </Modal>
           </Stack>
         </Box>
       </Box>

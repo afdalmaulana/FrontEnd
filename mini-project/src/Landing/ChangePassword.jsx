@@ -30,6 +30,7 @@ export default function ChangePassword() {
           currentPassword: currentPassword,
           password: password,
           confirmPassword: confirmPassword,
+          FE_URL : "http://localhost:3000",
         }
       );
       console.log(respon.data.success);

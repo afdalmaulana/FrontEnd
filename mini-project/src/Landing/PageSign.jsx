@@ -10,6 +10,7 @@ import {
   InputGroup,
   Stack,
   Text,
+  useDisclosure,
   useToast,
 } from "@chakra-ui/react";
 import Navbar from "../Components/navbar/Navbar";
@@ -30,6 +31,7 @@ import {
   userPhone,
 } from "../redux/reducer/UserReducer";
 import ForgetPassword from "../Components/ForgetPassword";
+import ModalForgetPassword from "../Components/ModalForgetPassword";
 
 const LoginSchema = Yup.object().shape({
   name: Yup.string()
@@ -46,6 +48,7 @@ const LoginSchema = Yup.object().shape({
 });
 
 export default function PageSign() {
+  const {isOpen, onOpen, onClose} = useDisclosure();
   const navigate = useNavigate();
   function toHome() {
     navigate("/");
@@ -248,7 +251,10 @@ export default function PageSign() {
                     </Stack>
                   </Stack>
                 </form>
-              <ForgetPassword />
+                <Text>Forget your password ? </Text>
+                <Button onClick={onOpen} mt={'10px'}>Hit Me</Button>
+                <ModalForgetPassword isOpen={isOpen} onOpen={onOpen} onClose={onClose}/>
+              {/* <ForgetPassword /> */}
               </Box>
               <Box>
                 <Divider orientation="vertical" />

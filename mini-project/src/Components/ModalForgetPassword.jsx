@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 const ResetSchema = Yup.object().shape({
@@ -25,6 +26,10 @@ const ResetSchema = Yup.object().shape({
 
 export default function ModalForgetPassword({ isOpen, onClose }) {
   const toast = useToast();
+  const navigate = useNavigate();
+  function toHome() {
+    navigate("/");
+  }
 
   const resetPassword = async (values) => {
     // const url = window.location.href.split("/");
@@ -36,20 +41,20 @@ export default function ModalForgetPassword({ isOpen, onClose }) {
         `https://minpro-blog.purwadhikabootcamp.com/api/auth/forgotPass`,
         {
           email: values.email,
+          FE_URL: "http://localhost:3000",
         }
       );
-      console.log(respon.data.message);
-      toast({
-        title: respon.data.message,
-        description: "Check you email",
-        status: "Success",
-      });
+      console.log(respon);
+      // if (respon.status === 200) {
+      //   toast({
+      //     title: "Password reset send to your email",
+      //     description: "Check you email",
+      //     status: "Success",
+      //     isClosable: true,
+      //   });
+      // }
     } catch (error) {
       console.log("ini erorr", error);
-      toast({
-        description: "error",
-        status: "error",
-      });
     }
   };
   const formik = useFormik({
@@ -59,6 +64,7 @@ export default function ModalForgetPassword({ isOpen, onClose }) {
     validationSchema: ResetSchema,
     onSubmit: (values) => {
       resetPassword(values);
+      onClose();
     },
   });
   return (

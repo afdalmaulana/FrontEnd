@@ -15,6 +15,7 @@ import UpdateProfile from './Landing/UpdateProfile';
 import UserBookmark from './Landing/UserBookmark';
 import Navbar from './Components/navbar/Navbar';
 import Verify from './Landing/Verify';
+import ResetPassword from './Landing/ResetPassword';
 // import Pages from './Pages';
 
 
@@ -37,6 +38,7 @@ function App() {
         <Route path='/category' element={<BlogCategory/>}/>
         <Route path='/userbookmark' element={<UserBookmark/>}/>
         <Route path='/verification/:token' element={<Verify/>}/>
+        <Route path='/reset-password/:token' element={<ResetPassword/>}/>
         {/* /verification/:token */}
       </Routes>
       {/* <Pages/> */}
