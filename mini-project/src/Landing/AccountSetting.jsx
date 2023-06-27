@@ -19,6 +19,7 @@ import { BsArrowUpRight } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import UserAvatar from "../Components/PageContent/components/UserAvatar";
+import ChangeUsername from "../Components/change/ChangeUsername";
 
 export default function AccountSetting() {
   const { username } = useSelector((state) => state.UserReducer);
@@ -66,7 +67,7 @@ export default function AccountSetting() {
                     <Box mt={"30px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Email address</Text>
-                        {!login ? "" : <Text>{email}</Text>}
+                        <Text>{email}</Text>
                       </Flex>
                     </Box>
                     <Box mt={"30px"}>
@@ -105,13 +106,14 @@ export default function AccountSetting() {
                     <Box mt={"30px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Change username</Text>
-                        <Button
+                        <ChangeUsername />
+                        {/* <Button
                           rightIcon={<BsArrowUpRight />}
                           variant={""}
                           onClick={""}
                         >
                           Change
-                        </Button>
+                        </Button> */}
                       </Flex>
                     </Box>
                     <Box mt={"30px"}>

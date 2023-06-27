@@ -225,8 +225,14 @@ export default function PageSign() {
                     </Stack>
                   </Stack>
                 </form>
-                <Text>Forget your password ? </Text>
-                <Button onClick={onOpen} mt={"10px"}>
+                <Text mt={"20px"}>Forget your password ? </Text>
+                <Button
+                  onClick={onOpen}
+                  mt={"10px"}
+                  w={"200px"}
+                  colorScheme="yellow"
+                  borderRadius={"30px"}
+                >
                   Hit Me
                 </Button>
                 <ModalForgetPassword

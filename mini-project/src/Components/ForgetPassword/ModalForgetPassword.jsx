@@ -26,16 +26,8 @@ const ResetSchema = Yup.object().shape({
 
 export default function ModalForgetPassword({ isOpen, onClose }) {
   const toast = useToast();
-  const navigate = useNavigate();
-  function toHome() {
-    navigate("/");
-  }
 
   const resetPassword = async (values) => {
-    // const url = window.location.href.split("/");
-    // const token = url.pop();
-    // console.log(url);
-    // console.log(token);
     try {
       const respon = await axios.put(
         `https://minpro-blog.purwadhikabootcamp.com/api/auth/forgotPass`,

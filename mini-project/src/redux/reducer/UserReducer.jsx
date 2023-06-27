@@ -54,6 +54,9 @@ export const UserReducer = createSlice({
     keepLoginSuccess: (state) => {
       state.login = true;
     },
+    changeUsername(state, action) {
+      state.username.splice(0, action.payload);
+    },
   },
 });
 
@@ -116,5 +119,6 @@ export const {
   userEmail,
   userPhone,
   keepLoginSuccess,
+  changeUsername,
 } = UserReducer.actions;
 export default UserReducer.reducer;
