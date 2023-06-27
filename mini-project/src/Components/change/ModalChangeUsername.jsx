@@ -34,8 +34,8 @@ const ChangeUsernameSchema = Yup.object().shape({
 export default function ModalChangeUsername({ isOpen, onClose }) {
   const { user } = useSelector((state) => state.UserReducer);
   const navigate = useNavigate();
-  function toProfile() {
-    navigate("/accountsetting");
+  function toHome() {
+    navigate("/");
   }
   const dispatch = useDispatch();
   const toast = useToast();
@@ -61,12 +61,12 @@ export default function ModalChangeUsername({ isOpen, onClose }) {
       console.log("ini respon changeusername", respon);
       toast({
         title: "Username change",
-        description: "your username has been change",
+        description: "Please check your email to verification username change",
         status: "success",
         duration: 3000,
         isClosable: true,
       });
-      toProfile();
+      toHome();
       // dispatch(changeUsername(respon.data.username))
     } catch (error) {
       console.log(error);
