@@ -22,9 +22,7 @@ import UserAvatar from "../Components/PageContent/components/UserAvatar";
 import ChangeUsername from "../Components/change/ChangeUsername";
 
 export default function AccountSetting() {
-  const { username } = useSelector((state) => state.UserReducer);
-  const { email } = useSelector((state) => state.UserReducer);
-  const { phone } = useSelector((state) => state.UserReducer);
+  const { user } = useSelector((state) => state.UserReducer);
   const login = localStorage.getItem("token");
   const navigate = useNavigate();
   function toChangePassword() {
@@ -61,19 +59,19 @@ export default function AccountSetting() {
                     <Box>
                       <Flex justifyContent={"space-between"}>
                         <Text>Username</Text>
-                        <Text>{username}</Text>
+                        <Text>{user.username}</Text>
                       </Flex>
                     </Box>
                     <Box mt={"30px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Email address</Text>
-                        <Text>{email}</Text>
+                        <Text>{user.email}</Text>
                       </Flex>
                     </Box>
                     <Box mt={"30px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Phone number</Text>
-                        <Text>{phone}</Text>
+                        <Text>{user.phone}</Text>
                       </Flex>
                     </Box>
                     <Box bgColor={"blackAlpha.800"}>

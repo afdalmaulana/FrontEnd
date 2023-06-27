@@ -10,29 +10,28 @@ export default function Verify() {
     console.log(url);
     console.log(token);
     try {
-        const verifAccount = await axios.patch(
-            "https://minpro-blog.purwadhikabootcamp.com/api/auth/verify",
-            {},
-            {
-              headers: {
-                Authorization: `Bearer ${token}`,
-              },
-            }
-          );
-          toast({
-            title: verifAccount.data.message,
-            description: "Happy Reading",
-            status: "success",
-            duration: 9000,
-            isClosable: true,
-          });    
-          document.location.href = "/";
+      const verifAccount = await axios.patch(
+        "https://minpro-blog.purwadhikabootcamp.com/api/auth/verify",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      toast({
+        title: verifAccount.data.message,
+        description: "Happy Reading",
+        status: "success",
+        duration: 9000,
+        isClosable: true,
+      });
+      document.location.href = "/";
     } catch (error) {
-        toast({
-            description: "erorr"
-          });    
+      toast({
+        description: "erorr",
+      });
     }
-    
   }
 
   return (
@@ -41,7 +40,7 @@ export default function Verify() {
         <Stack>
           <Text fontSize={"6xl"}>Verify your account</Text>
           <Text>
-            Thanks for your registration, Click "Hit Me" for start reading
+            Thanks for your participation, Click "Hit Me" for start reading
           </Text>
           <Button
             colorScheme="yellow"

@@ -18,7 +18,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeUsername } from "../../redux/reducer/UserReducer";
 
 const ChangeUsernameSchema = Yup.object().shape({
@@ -32,10 +32,15 @@ const ChangeUsernameSchema = Yup.object().shape({
 });
 
 export default function ModalChangeUsername({ isOpen, onClose }) {
+  const { user } = useSelector((state) => state.UserReducer);
+  const navigate = useNavigate();
+  function toProfile() {
+    navigate("/accountsetting");
+  }
   const dispatch = useDispatch();
   const toast = useToast();
 
-  const change = async (values) => {
+  const change = async (values, newValues) => {
     const token = localStorage.getItem("token");
     console.log(token);
     const { currentUsername, newUsername } = values;
@@ -53,7 +58,7 @@ export default function ModalChangeUsername({ isOpen, onClose }) {
           },
         }
       );
-      console.log("ini respon", respon);
+      console.log("ini respon changeusername", respon);
       toast({
         title: "Username change",
         description: "your username has been change",
@@ -61,7 +66,8 @@ export default function ModalChangeUsername({ isOpen, onClose }) {
         duration: 3000,
         isClosable: true,
       });
-      dispatch(changeUsername(respon.data.username))
+      toProfile();
+      // dispatch(changeUsername(respon.data.username))
     } catch (error) {
       console.log(error);
       toast({

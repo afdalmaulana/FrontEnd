@@ -42,6 +42,7 @@ function App() {
         <Route path='/category' element={<BlogCategory/>}/>
         <Route path='/userbookmark' element={<UserBookmark/>}/>
         <Route path='/verification/:token' element={<Verify/>}/>
+        <Route path='/verification-change-email/:token' element={<Verify/>}/>
         <Route path='/reset-password/:token' element={<ResetPassword/>}/>
         {/* /verification/:token */}
       </Routes>

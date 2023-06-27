@@ -16,6 +16,7 @@ const initialState = {
   username: [],
   email: [],
   phone: [],
+  loginError: null,
 };
 
 export const UserReducer = createSlice({
@@ -37,25 +38,23 @@ export const UserReducer = createSlice({
     },
     userLogin: (state, action) => {
       state.login = true;
+      state.loginError = null;
     },
+    // userLoginFailed: (state, action) => {
+    //   console.log("user login failed");
+    //   state.login = false;
+    //   state.loginError = action.payload || "Login Failed";
+    //   console.log(state.loginError);
+    // },
     userLogout: (state, action) => {
       state.login = false;
       localStorage.removeItem("token");
-    },
-    userName: (state, action) => {
-      state.username.push(action.payload);
-    },
-    userEmail: (state, action) => {
-      state.email.push(action.payload);
-    },
-    userPhone: (state, action) => {
-      state.phone.push(action.payload);
     },
     keepLoginSuccess: (state) => {
       state.login = true;
     },
     changeUsername(state, action) {
-      state.username.splice(0, action.payload);
+      state.username.splice(0, 1, action.payload);
     },
   },
 });
@@ -63,15 +62,15 @@ export const UserReducer = createSlice({
 export const signIn = (values) => {
   return async (dispatch) => {
     try {
-      const { name, email, password, phone } = values;
+      // const { name, email, password, phone } = values;
       console.log(values);
       const login = await axios.post(
         `https://minpro-blog.purwadhikabootcamp.com/api/auth/login`,
         {
-          username: name,
-          email: email,
-          phone: phone,
-          password: password,
+          username: values.identifier,
+          email: values.identifier,
+          phone: values.identifier,
+          password: values.password,
         }
       );
       console.log("ini respon", login);
@@ -79,12 +78,9 @@ export const signIn = (values) => {
       localStorage.setItem("token", token);
       dispatch(userLogin());
       dispatch(setUser(login.data.isAccountExist));
-      dispatch(userName(login.data.isAccountExist.username));
-      dispatch(userEmail(login.data.isAccountExist.email));
-      dispatch(userPhone(login.data.isAccountExist.phone));
       // document.location.href = "/";
     } catch (error) {
-      console.log(error);
+      console.log("ini error", error);
     }
   };
 };
@@ -113,6 +109,7 @@ export const keepLogin = () => {
 
 export const {
   userLogin,
+  userLoginFailed,
   userLogout,
   setUser,
   userName,

@@ -28,15 +28,16 @@ import { signIn } from "../redux/reducer/UserReducer";
 import ModalForgetPassword from "../Components/ForgetPassword/ModalForgetPassword";
 
 const LoginSchema = Yup.object().shape({
-  name: Yup.string().min(5, "username must have 5 characters minimum"),
-  // .required("username is required"),
-  email: Yup.string().email("Invalid email address format"),
-  // .required("email is required"),
+  identifier: Yup.string().required("Identifier is required"),
+  // name: Yup.string().min(5, "username must have 5 characters minimum"),
+  // // .required("username is required"),
+  // email: Yup.string().email("Invalid email address format"),
+  // // .required("email is required"),
   password: Yup.string()
     .min(6, "Password must be 6 characters minimum")
     .max(15, "Password must be less than 16 character")
     .required("Password is required"),
-  phone: Yup.string().matches(/^[0-9]+$/, "Phone number must be number"),
+  // phone: Yup.string().matches(/^[0-9]+$/, "Phone number must be number"),
 });
 
 export default function PageSign() {
@@ -46,22 +47,23 @@ export default function PageSign() {
   }
 
   const login = useSelector((state) => state.UserReducer.login);
-  console.log(login);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const dispatch = useDispatch();
   const toast = useToast();
 
   const formik = useFormik({
     initialValues: {
-      name: "",
-      email: "",
+      identifier: "",
+      // name: "",
+      // email: "",
       password: "",
-      phone: "",
+      // phone: "",
     },
     validationSchema: LoginSchema,
     onSubmit: (values) => {
       dispatch(signIn(values));
-      if (!login) {
+      console.log("ini console", values);
+      try {
         toast({
           description: "Login Success, Happy Reading",
           status: "success",
@@ -69,7 +71,7 @@ export default function PageSign() {
           isClosable: true,
         });
         toHome();
-      } else {
+      } catch (error) {
         toast({
           description: "Account not verify",
           status: "error",
@@ -105,27 +107,32 @@ export default function PageSign() {
                 <form onSubmit={formik.handleSubmit}>
                   <Stack>
                     <FormControl
-                      isInvalid={formik.touched.name && formik.errors.name}
+                      isInvalid={
+                        formik.touched.identifier && formik.errors.identifier
+                      }
                     >
-                      <FormLabel htmlFor="name"></FormLabel>
+                      <FormLabel htmlFor="identifier">
+                        Username, Email, or Phone
+                      </FormLabel>
                       <Input
-                        placeholder="Username"
+                        placeholder="Type here"
                         variant={"flushed"}
                         borderColor={"black"}
                         w={"310px"}
-                        id="name"
-                        name="name"
+                        id="identifier"
+                        name="identifier"
                         type="text"
-                        value={formik.values.name}
+                        value={formik.values.identifier}
                         onChange={formik.handleChange}
                       ></Input>
-                      {formik.touched.name && formik.errors.name && (
-                        <FormErrorMessage>
-                          {formik.errors.name}
-                        </FormErrorMessage>
-                      )}
+                      {formik.touched.identifier &&
+                        formik.errors.identifier && (
+                          <FormErrorMessage>
+                            {formik.errors.identifier}
+                          </FormErrorMessage>
+                        )}
                     </FormControl>
-                    <FormControl
+                    {/* <FormControl
                       isInvalid={formik.touched.email && formik.errors.email}
                     >
                       <FormLabel htmlFor="email"></FormLabel>
@@ -146,7 +153,7 @@ export default function PageSign() {
                           {formik.errors.email}
                         </FormErrorMessage>
                       )}
-                    </FormControl>
+                    </FormControl> */}
                     {/* <FormControl
                       isInvalid={formik.touched.phone && formik.errors.phone}
                     >

@@ -5,6 +5,7 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import TopLike from "./components/TopLike";
 import BlogList from "./components/BlogList";
 import jsonTopLike from "../../json-dummy/listBlog.json";
+import Explore from "./components/Explore";
 
 export default function Content() {
   const blogLike = jsonTopLike.topLike;
@@ -92,7 +93,8 @@ export default function Content() {
             ></Image> */}
           </Stack>
         </Box>
-        <BlogList />
+        {/* <BlogList /> */}
+        <Explore/>
       </Box>
     </>
   );

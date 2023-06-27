@@ -15,25 +15,25 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <>
-      <Box mt={"100px"} bgColor={"blackAlpha.600"}>
+      <Box mt={"100px"} bgColor={"#282A3A"}>
         <Box bgColor={"black"}>
           <Divider />
         </Box>
         <Flex justifyContent={"space-between"} mt={"20px"} ml={"55px"}>
           {/* <Box pl={'10px'} pt={'20px'} color={'blackAlpha.600'}> */}
-          <Box color={"blackAlpha.600"} mt={"20px"}>
+          <Box color={"#E7CEA6"} mt={"20px"}>
             <Text>About</Text>
             <Text mt={"10px"}>FAQs</Text>
             <Text mt={"10px"}>
               <Link to={"/terms"}>Terms of service</Link>
             </Text>
             <Text mt={"10px"}>Donate </Text>
-            <Text color={"blackAlpha.600"} mt={"30px"}>
+            <Text color={"#E7CEA6"} mt={"30px"}>
               Connect with Editor
             </Text>
             <Flex mt={"10px"}>
               {/* <Avatar bg='teal.500' mr={'20px'} color={'black'} src="./afdal.png" h={'60px'} w={'60px'}/> */}
-              <Text color={"black"}>
+              <Text color={"#E7CEA6"}>
                 Muh. Afdal Maulana Said
                 <HStack spacing="10px">
                   <Box w="40px" h="40px">
@@ -79,14 +79,14 @@ export default function Footer() {
               </Text>
             </Flex>
           </Box>
-          <Box color={"blackAlpha.600"} mt={"20px"}>
+          <Box color={"#E7CEA6"} mt={"20px"}>
             <Text>Contact</Text>
             <Text mt={"10px"}>Phone: 081 2421 4977</Text>
           </Box>
-          <Box mt={"20px"} color={"blackAlpha.600"}>
+          <Box mt={"20px"} color={"#E7CEA6"}>
             <Text>NewsLetter</Text>
             <Text
-              color={"black"}
+              color={"#E7CEA6"}
               mt={"10px"}
               fontSize={"3xl"}
               fontFamily={"sans-serif"}
@@ -94,7 +94,7 @@ export default function Footer() {
               Sign up for Daily Tip
             </Text>
             <Text
-              color={"black"}
+              color={"#E7CEA6"}
               mr={"50px"}
               fontSize={"15px"}
               w={"300px"}
@@ -131,7 +131,7 @@ export default function Footer() {
           <Box bgColor={"blackAlpha.500"} ml={"-50px"}>
             <Divider orientation="vertical" />
           </Box>
-          <Box mt={"20px"} color={"blackAlpha.600"} ml={"-100px"}>
+          <Box mt={"20px"} color={"#E7CEA6"} ml={"-100px"}>
             <Text>Privacy and Policy</Text>
             <Text mt={"10px"}>References</Text>
           </Box>
@@ -142,7 +142,7 @@ export default function Footer() {
           </Box>
         </Flex>
 
-        <Text textAlign={"center"}>
+        <Text textAlign={"center"} color={"#E7CEA6"}>
           Copyrigth &copy; 2023 Golden Book: Muh. Afdal Maulana Said
         </Text>
       </Box>

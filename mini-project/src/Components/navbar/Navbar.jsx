@@ -37,7 +37,7 @@ export default function Navbar() {
         </Link>
         <Spacer />
         <ButtonGroup>
-          <Category />
+          {/* <Category /> */}
           <WriteBlog />
           <SignIn />
         </ButtonGroup>
