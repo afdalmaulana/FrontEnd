@@ -1,70 +1,49 @@
-import { Box, Button, Input, Stack, Text } from "@chakra-ui/react";
-import Navbar from "../Components/navbar/Navbar";
-export default function UpdateProfile(){
-    return(
-        <>
+import {
+  Avatar,
+  Box,
+  Button,
+  Flex,
+  Input,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
+export default function ProfilePage() {
+  const { user } = useSelector((state) => state.UserReducer);
+  const [profilePicture, setProfilePicture] = useState(
+    "url_to_initial_profile_picture.jpg"
+  );
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
+  const handleProfilePictureUpdate = () => {
+    // Perform necessary logic to update the profile picture using the selected file
+    const reader = new FileReader();
+    reader.onload = () => {
+      const newProfilePicture = reader.result;
+      setProfilePicture(newProfilePicture);
+    };
+    reader.readAsDataURL(selectedFile);
+  };
+
+  return (
+    <>
       <Box>
-        <Navbar/>
-        <Box mt={'200px'} ml={'250px'}>
-        <Stack
-          w={"500px"}
-          pl={"50px"}
-          shadow={"lg"}
-          borderRadius={"20px"}
-          h={"500px"}
-          ml={"250px"}
-        >
-          <Text
-            fontSize={"1xl"}
-            fontWeight={"bold"}
-            fontFamily={"sans-serif"}
-            mt={"20px"}
-          >
-            Username
-          </Text>
-          <Input
-            mt={"5px"}
-            placeholder="New Username"
-            fontSize={"20px"}
-            w={"400px"}
-            variant={"outline"}
-          />
-          <Text
-            fontSize={"1xl"}
-            fontWeight={"bold"}
-            fontFamily={"sans-serif"}
-            mt={"20px"}
-          >
-            Email
-          </Text>
-          <Input
-            placeholder="New Email"
-            fontSize={"20px"}
-            variant={"outline"}
-            w={"400px"}
-            mt={"5px"}
-          />
-          <Text
-            fontSize={"1xl"}
-            fontWeight={"bold"}
-            fontFamily={"sans-serif"}
-            mt={"5px"}
-          >
-            Phone number
-          </Text>
-          <Input
-            placeholder="New Phone number"
-            fontSize={"20px"}
-            variant={"outline"}
-            w={"400px"}
-            mt={"5px"}
-          />
-          <Button colorScheme="yellow" w={"400px"} mt={'50px'}>
-            Change
-          </Button>
-        </Stack>
-        </Box>
-        
+        <Flex>
+          <Box>
+            <Avatar src={profilePicture} alt="Profile Picture" size="xl" />
+          </Box>
+          <Box ml={'20px'}>
+            <Text fontSize={'20px'} fontWeight={'bold'}>{user.username}</Text>
+            <Input type="file" onChange={handleFileChange} mt={'10px'} variant={""} />
+            <Button onClick={handleProfilePictureUpdate}>Update Picture</Button>
+          </Box>
+        </Flex>
       </Box>
     </>
   );

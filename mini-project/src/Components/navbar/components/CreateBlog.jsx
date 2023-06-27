@@ -1,4 +1,5 @@
 import { Button, ButtonGroup } from "@chakra-ui/react";
+import axios from "axios";
 import { FaPencilAlt } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 export default function CreateBlog() {
@@ -15,7 +16,8 @@ export default function CreateBlog() {
           leftIcon={<FaPencilAlt />}
           variant={""}
           onClick={toNewBlog}
-          p={"10px"} mr={'10px'}
+          p={"10px"}
+          mr={"10px"}
         >
           Start Writing
         </Button>

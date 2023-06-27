@@ -29,8 +29,11 @@ import { Link } from "react-router-dom";
 import Navbar from "../Components/navbar/Navbar";
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
 import UserAvatar from "../Components/PageContent/components/UserAvatar";
+import { useSelector } from "react-redux";
+import ProfilePage from "./UpdateProfile";
 
 export default function Profile() {
+  const { user } = useSelector((state) => state.UserReducer);
   // const [avatarImage, setAvatarImage] = useState('');
 
   // const handleAvatarChange = (imageUrl) => {
@@ -76,7 +79,7 @@ export default function Profile() {
           >
             <Stack>
               <Text fontSize={"4xl"} fontWeight={"bold"}>
-                Nama Pengguna
+                {user.username}
               </Text>
               <Tabs w={"650px"}>
                 <TabList>
@@ -105,19 +108,21 @@ export default function Profile() {
                     <Box>
                       <Flex>
                         <Box>
-                          <Avatar
+                          {/* <Avatar
                             as={Button}
                             type="file"
                             src="https://bit.ly/broken-link"
                             size={"xl"}
-                          />
+                          /> */}
                           {/* <AvatarUser imageUrl={avatarImage}/>
                           <AvatarUploader onAvatarChange={handleAvatarChange}/> */}
                         </Box>
                         <Box>
-                          <Text ml={"20px"} fontSize={"2xl"}>
-                            Nama Pengguna
+                          {/* <Text ml={"20px"} fontSize={"2xl"}>
+                            {user.username}
                           </Text>
+                          <Input type="file" variant={""}></Input> */}
+                          <ProfilePage />
                         </Box>
                       </Flex>
                     </Box>

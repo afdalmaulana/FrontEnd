@@ -1,4 +1,13 @@
-import { Button, Card, CardBody, CardFooter, Heading, Image, Stack, Text } from "@chakra-ui/react";
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  Heading,
+  Image,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 
 export default function ItemBookmark({ bookmark }) {
   return bookmark?.map((item) => {
@@ -22,14 +31,10 @@ export default function ItemBookmark({ bookmark }) {
               <Text py="2">{item.content}</Text>
             </CardBody>
 
-            <CardFooter>
-              <Button variant="solid" colorScheme="yellow">
-                Read More
-              </Button>
-            </CardFooter>
+            <CardFooter></CardFooter>
           </Stack>
         </Card>
       </>
-    )
+    );
   });
 }

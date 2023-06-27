@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   FormControl,
   FormErrorMessage,
@@ -14,42 +13,31 @@ import {
   Stack,
   useToast,
 } from "@chakra-ui/react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { changeUsername } from "../../redux/reducer/UserReducer";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
-const ChangeUsernameSchema = Yup.object().shape({
-  currentUsername: Yup.string().required("Username is required"),
-  newUsername: Yup.string()
-    .matches(
-      /^.*(?=.{6,})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-      "Username must contain at least characters, one uppercase, one number and one special case character"
-    )
-    .required("Username is required"),
+const PhoneSchema = Yup.object().shape({
+  currentPhone: Yup.string().required("Phone is Required"),
+  newPhone: Yup.string().required("Phone is Required"),
 });
 
-export default function ModalChangeUsername({ isOpen, onClose }) {
-  const { user } = useSelector((state) => state.UserReducer);
+export default function ModalChangePhone({ isOpen, onClose }) {
   const navigate = useNavigate();
   function toHome() {
     navigate("/");
   }
-  const dispatch = useDispatch();
-  const toast = useToast();
-
-  const change = async (values, newValues) => {
+  const toast = new useToast();
+  const phoneChange = async (values) => {
     const token = localStorage.getItem("token");
-    console.log(token);
-    const { currentUsername, newUsername } = values;
+    const { currentPhone, newPhone } = values;
     try {
       const respon = await axios.patch(
-        "https://minpro-blog.purwadhikabootcamp.com/api/auth/changeUsername",
+        "https://minpro-blog.purwadhikabootcamp.com/api/auth/changePhone",
         {
-          currentUsername: currentUsername,
-          newUsername: newUsername,
+          currentPhone: currentPhone,
+          newPhone: newPhone,
           FE_URL: "http://localhost:3000",
         },
         {
@@ -58,35 +46,35 @@ export default function ModalChangeUsername({ isOpen, onClose }) {
           },
         }
       );
-      console.log("ini respon changeusername", respon);
+      console.log("ini respon change phone", respon);
       toast({
-        title: "Username change",
-        description: "Please check your email to verification username change",
+        title: "Phone change",
+        description: "Please check your email to verification phone change",
         status: "success",
         duration: 3000,
         isClosable: true,
       });
       toHome();
-      // dispatch(changeUsername(respon.data.username))
     } catch (error) {
       console.log(error);
       toast({
         title: "Error",
-        description: "your password is not change",
+        description: "your phone is not change",
         status: "error",
         duration: 3000,
         isClosable: true,
       });
     }
   };
+
   const formik = useFormik({
     initialValues: {
-      currentUsername: "",
-      newUsername: "",
+      currentPhone: "",
+      newPhone: "",
     },
-    validationSchema: ChangeUsernameSchema,
+    validationSchema: PhoneSchema,
     onSubmit: (values) => {
-      change(values);
+      phoneChange(values);
       onClose();
     },
   });
@@ -95,58 +83,55 @@ export default function ModalChangeUsername({ isOpen, onClose }) {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Change Username</ModalHeader>
+          <ModalHeader>Change Phone</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Stack>
               <form onSubmit={formik.handleSubmit}>
                 <FormControl
                   isInvalid={
-                    formik.touched.currentUsername &&
-                    formik.errors.currentUsername
+                    formik.touched.currentPhone && formik.errors.currentPhone
                   }
                 >
                   <Input
                     required
-                    placeholder="Current Username"
+                    placeholder="Current phone number"
                     variant={"flushed"}
                     borderColor={"black"}
                     w={"350px"}
                     mt={"20px"}
-                    id="currentUsername"
-                    name="currentUsername"
-                    type="currentUsername"
-                    value={formik.values.currentUsername}
+                    id="currentPhone"
+                    name="currentPhone"
+                    type="number"
+                    value={formik.values.currentPhone}
                     onChange={formik.handleChange}
                   ></Input>
-                  {formik.touched.currentUsername &&
-                    formik.errors.currentUsername && (
+                  {formik.touched.currentPhone &&
+                    formik.errors.currentPhone && (
                       <FormErrorMessage>
-                        {formik.errors.currentUsername}
+                        {formik.errors.currentPhone}
                       </FormErrorMessage>
                     )}
                 </FormControl>
                 <FormControl
-                  isInvalid={
-                    formik.touched.newUsername && formik.errors.newUsername
-                  }
+                  isInvalid={formik.touched.newPhone && formik.errors.newPhone}
                 >
                   <Input
                     required
-                    placeholder="New Username"
+                    placeholder="New phone number"
                     variant={"flushed"}
                     borderColor={"black"}
                     w={"350px"}
                     mt={"20px"}
-                    id="newUsername"
-                    name="newUsername"
-                    type="newUsername"
-                    value={formik.values.newUsername}
+                    id="newPhone"
+                    name="newPhone"
+                    type="number"
+                    value={formik.values.newPhone}
                     onChange={formik.handleChange}
                   ></Input>
-                  {formik.touched.newUsername && formik.errors.newUsername && (
+                  {formik.touched.newPhone && formik.errors.newPhone && (
                     <FormErrorMessage>
-                      {formik.errors.newUsername}
+                      {formik.errors.newPhone}
                     </FormErrorMessage>
                   )}
                 </FormControl>

@@ -13,9 +13,6 @@ const initialState = {
     role: false,
   },
   login: false,
-  username: [],
-  email: [],
-  phone: [],
   loginError: null,
 };
 
@@ -53,8 +50,8 @@ export const UserReducer = createSlice({
     keepLoginSuccess: (state) => {
       state.login = true;
     },
-    changeUsername(state, action) {
-      state.username.splice(0, 1, action.payload);
+    handleProfile: (state, action) => {
+      state.imgProfile.push(action.payload);
     },
   },
 });

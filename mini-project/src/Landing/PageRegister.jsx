@@ -26,14 +26,17 @@ import axios from "axios";
 const RegistrasiSchema = Yup.object().shape({
   name: Yup.string()
     .matches(
-      /^.*(?=.{6,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      /^.*(?=.{6,})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
       "Username must contain at least  characters, one uppercase, one number and one special case character"
     )
     .required("Username is required"),
   email: Yup.string()
     .email("Invalid email address format")
     .required("Password is required"),
-  phone: Yup.string().matches(/^[0-9]+$/, "Phone number must be number"),
+  phone: Yup.string()
+    .matches(/^[0-9]+$/, "Phone number must be number")
+    .min(10, "Phone minimum must be 10 number")
+    .max(12, "Phone maximal must be 12 number"),
   password: Yup.string()
     .matches(
       /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
@@ -47,49 +50,47 @@ const RegistrasiSchema = Yup.object().shape({
   ),
 });
 
-
-
 export default function PageRegister() {
   const navigate = useNavigate();
-  function toHome(){
-    navigate("/")
+  function toHome() {
+    navigate("/");
   }
   const toast = useToast();
   const register = async (values) => {
-  try {
-    const { name, email, phone, password, confirm } = values;
-    console.log(values)
-    const res = await axios.post(
-      "https://minpro-blog.purwadhikabootcamp.com/api/auth/", 
-      {
-        username: name,
-        email: email,
-        phone: phone,
-        password: password,
-        confirmPassword: confirm,
-        FE_URL : "http://localhost:3000"
-      },
-    );
-    console.log("ini register",res);
-    if(res.status === 200){
+    try {
+      const { name, email, phone, password, confirm } = values;
+      console.log(values);
+      const res = await axios.post(
+        "https://minpro-blog.purwadhikabootcamp.com/api/auth/",
+        {
+          username: name,
+          email: email,
+          phone: phone,
+          password: password,
+          confirmPassword: confirm,
+          FE_URL: "http://localhost:3000",
+        }
+      );
+      console.log("ini register", res);
+      if (res.status === 200) {
+        toast({
+          title: "Register Success, Please check your email to verify",
+          status: "success",
+          duration: 4000,
+          isClosable: true,
+        });
+        toHome();
+      }
+    } catch (error) {
+      console.log(error);
       toast({
-        title: "Register Success, Please check your email to verify",
-        status: "success",
-        duration: 4000,
+        description: "Account not verify",
+        status: "error",
+        duration: 2000,
         isClosable: true,
       });
-      toHome();
     }
-  } catch (error) {
-    console.log(error);
-    toast({
-      description : "Account not verify",
-      status : "error",
-      duration:2000,
-      isClosable:true,
-    })
-  }
-};
+  };
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -167,7 +168,7 @@ export default function PageRegister() {
                         variant={"flushed"}
                         borderColor={"black"}
                         w={"320px"}
-                        mt={'20px'}
+                        mt={"20px"}
                         id="email"
                         name="email"
                         type="email"
@@ -192,7 +193,7 @@ export default function PageRegister() {
                         id="phone"
                         name="phone"
                         type="text"
-                        mt={'20px'}
+                        mt={"20px"}
                         value={formik.values.phone}
                         onChange={formik.handleChange}
                       ></Input>
@@ -212,7 +213,7 @@ export default function PageRegister() {
                         <Input
                           id="password"
                           name="password"
-                          mt={'20px'}
+                          mt={"20px"}
                           value={formik.values.password}
                           onChange={formik.handleChange}
                           pr="4.5rem"
@@ -261,7 +262,7 @@ export default function PageRegister() {
                           placeholder="Confirm password"
                           variant={"flushed"}
                           borderColor={"black"}
-                          mt={'20px'}
+                          mt={"20px"}
                           w={"280px"}
                           InputRightElement
                           // value={password}

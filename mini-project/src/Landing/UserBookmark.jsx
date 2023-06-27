@@ -54,12 +54,6 @@ export default function UserBookmark() {
             <Box>
               <Stack mt={"80px"} ml={"50px"}>
                 <UserAvatar />
-                <Text fontSize={"20px"} fontWeight={"medium"}>
-                  Nama Pengguna
-                </Text>
-                <Text fontSize={"15px"} color={"green"}>
-                  <Link to={"/accountsetting"}>Account Setting</Link>
-                </Text>
               </Stack>
             </Box>
           </GridItem>

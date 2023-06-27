@@ -6,6 +6,11 @@ import {
   Flex,
   Grid,
   GridItem,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalOverlay,
   Stack,
   Tab,
   TabList,
@@ -13,6 +18,7 @@ import {
   TabPanels,
   Tabs,
   Text,
+  useDisclosure,
 } from "@chakra-ui/react";
 import Navbar from "../Components/navbar/Navbar";
 import { BsArrowUpRight } from "react-icons/bs";
@@ -20,16 +26,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import UserAvatar from "../Components/PageContent/components/UserAvatar";
 import ChangeUsername from "../Components/change/ChangeUsername";
+import ChangePhone from "../Components/change/ChangePhone";
+import ModalMembership from "../Components/ModalMembership";
 
 export default function AccountSetting() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { user } = useSelector((state) => state.UserReducer);
   const login = localStorage.getItem("token");
   const navigate = useNavigate();
   function toChangePassword() {
     navigate("/changePassword");
-  }
-  function toUpdateProfile() {
-    navigate("/updateProfile");
   }
   return (
     <>
@@ -91,27 +97,8 @@ export default function AccountSetting() {
                     </Box>
                     <Box mt={"30px"}>
                       <Flex justifyContent={"space-between"}>
-                        <Text>Update Profile</Text>
-                        <Button
-                          rightIcon={<BsArrowUpRight />}
-                          variant={""}
-                          onClick={toUpdateProfile}
-                        >
-                          Change
-                        </Button>
-                      </Flex>
-                    </Box>
-                    <Box mt={"30px"}>
-                      <Flex justifyContent={"space-between"}>
                         <Text>Change username</Text>
                         <ChangeUsername />
-                        {/* <Button
-                          rightIcon={<BsArrowUpRight />}
-                          variant={""}
-                          onClick={""}
-                        >
-                          Change
-                        </Button> */}
                       </Flex>
                     </Box>
                     <Box mt={"30px"}>
@@ -129,13 +116,7 @@ export default function AccountSetting() {
                     <Box mt={"30px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Change Phone</Text>
-                        <Button
-                          rightIcon={<BsArrowUpRight />}
-                          variant={""}
-                          onClick={""}
-                        >
-                          Change
-                        </Button>
+                        <ChangePhone />
                       </Flex>
                     </Box>
                   </TabPanel>
@@ -145,9 +126,15 @@ export default function AccountSetting() {
                       mt={"20px"}
                       colorScheme="yellow"
                       borderRadius={"50px"}
+                      onClick={onOpen}
                     >
                       Click Here
                     </Button>
+                    <ModalMembership
+                      isOpen={isOpen}
+                      onOpen={onOpen}
+                      onClose={onClose}
+                    />
                   </TabPanel>
                 </TabPanels>
               </Tabs>

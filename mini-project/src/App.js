@@ -11,7 +11,6 @@ import AccountSetting from './Landing/AccountSetting';
 import ChangePassword from './Landing/ChangePassword';
 import Profile from './Landing/Profile';
 import BlogCategory from './Landing/BlogCategory';
-import UpdateProfile from './Landing/UpdateProfile';
 import UserBookmark from './Landing/UserBookmark';
 import Navbar from './Components/navbar/Navbar';
 import Verify from './Landing/Verify';
@@ -36,7 +35,6 @@ function App() {
         <Route path='/trending' element={<PageTrending/>}/>
         <Route path='/accountsetting' element={<AccountSetting/>}/>
         <Route path='/changePassword' element={<ChangePassword/>}/>
-        <Route path={'/updateprofile'} element={<UpdateProfile/>}/>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/terms' element={<Terms/>}/>
         <Route path='/category' element={<BlogCategory/>}/>

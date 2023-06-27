@@ -28,7 +28,7 @@ export default function ModalLogin({ isOpen, onClose }) {
           <ModalCloseButton />
           <ModalBody>
             <Stack p={"20px"}>
-            <Button
+              <Button
                 colorScheme={"yellow"}
                 w={"220px"}
                 ml={"auto"}

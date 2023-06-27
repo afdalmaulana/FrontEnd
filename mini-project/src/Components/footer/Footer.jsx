@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 export default function Footer() {
   return (
     <>
-      <Box mt={"100px"} bgColor={"#282A3A"}>
+      <Box mt={"100px"} bgColor={"#2C3639"}>
         <Box bgColor={"black"}>
           <Divider />
         </Box>

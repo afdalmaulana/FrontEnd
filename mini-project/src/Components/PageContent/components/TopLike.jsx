@@ -20,7 +20,6 @@ import { useDispatch } from "react-redux";
 import { addToBookmark } from "../../../redux/reducer/BlogReducer";
 
 export default function TopLike({ like }) {
-  
   const dispatch = useDispatch();
   return (
     <>
@@ -45,11 +44,7 @@ export default function TopLike({ like }) {
                   <Stack mt="6" spacing="2">
                     <Heading size="md">{item.title}</Heading>
                     <Text fontSize={"12"}>{item.desc}</Text>
-                    <Text color="blue.600" fontSize="2xl">
-                      <Button rightIcon={<AiFillEye />} variant={""}>
-                        Read more
-                      </Button>
-                    </Text>
+                    <Text color="blue.600" fontSize="2xl"></Text>
                   </Stack>
                 </CardBody>
                 <Divider />

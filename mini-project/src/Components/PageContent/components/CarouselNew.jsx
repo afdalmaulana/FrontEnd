@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   useBreakpointValue,
+  useToast,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
@@ -19,8 +20,31 @@ import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { GrLike } from "react-icons/gr";
 import Slider from "react-slick";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { addToBookmark } from "../../../redux/reducer/BlogReducer";
 
 export default function CarouselNew() {
+  const login = useSelector((state) => state.UserReducer.login);
+  const toast = useToast();
+  const dispatch = useDispatch();
+
+  function toToastAdd() {
+    toast({
+      title: "Bookmark Success",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
+  }
+  function noToast() {
+    toast({
+      title: "Bookmark failed",
+      status: "error",
+      description: "You need to login first, to save the blog",
+      duration: 3000,
+      isClosable: true,
+    });
+  }
   const [latest, setLatest] = useState([]);
   async function latestBlog() {
     try {
@@ -149,15 +173,18 @@ export default function CarouselNew() {
                       alignItems={"center"}
                     />
                   </Center>
-                  <Stack mt="6" spacing="2">
+                  <Stack mt="6" spacing="2" h={'150px'}>
                     <Text fontSize={"12px"} fontWeight={"bold"}>
                       {item.title}
                     </Text>
                     <Text color="blue.600" fontSize="10px">
                       {item.User.username}
                     </Text>
-                    <Text fontSize={"12px"} noOfLines={3}>
+                    <Text fontSize={"12px"} noOfLines={2}>
                       {item.content}
+                    </Text>
+                    <Text fontSize={"sm"} color={"gray.500"}>
+                      Published: {new Date(item.createdAt).toLocaleDateString()}
                     </Text>
                     <Text color={"yellow.500"}>
                       Category : {item.Category.name}
@@ -165,7 +192,7 @@ export default function CarouselNew() {
                   </Stack>
                 </CardBody>
                 <Divider />
-                <CardFooter>
+                <CardFooter mt={'6px'}>
                   <ButtonGroup spacing="2">
                     <Button
                       variant=""
@@ -174,11 +201,23 @@ export default function CarouselNew() {
                     >
                       Like
                     </Button>
-                    <Button
-                      variant=""
-                      color="black"
-                      rightIcon={<BsFillBookmarkStarFill />}
-                    ></Button>
+                    {!login ? (
+                      <Button
+                        variant=""
+                        color="black"
+                        rightIcon={<BsFillBookmarkStarFill />}
+                        onClick={() => noToast()}
+                      ></Button>
+                    ) : (
+                      <Button
+                        variant=""
+                        color="black"
+                        rightIcon={<BsFillBookmarkStarFill />}
+                        onClick={() =>
+                          dispatch(addToBookmark(item), toToastAdd())
+                        }
+                      ></Button>
+                    )}
                   </ButtonGroup>
                 </CardFooter>
               </Card>

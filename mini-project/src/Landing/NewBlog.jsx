@@ -16,8 +16,25 @@ import {
 } from "@chakra-ui/react";
 import Navbar from "../Components/navbar/Navbar";
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
+import axios from "axios";
 
 export default function NewBlog() {
+  const newBlog = async (values) => {
+    const { title, content, author, date, category, keyword } = values;
+    const respon = await axios.post(
+      "https://minpro-blog.purwadhikabootcamp.com/api/blog",
+      {
+        data: {
+          title: title,
+          author: author,
+          content: content,
+          date: date,
+          category: category,
+          keyword: keyword,
+        },
+      }
+    );
+  };
   function EditableControls() {
     const {
       isEditing,
@@ -56,11 +73,7 @@ export default function NewBlog() {
       <Stack>
         <InputGroup mt={"80px"}>
           <Stack>
-            <Editable
-              defaultValue="Title"
-              fontSize={"50px"}
-              color={"blackAlpha.200"}
-            >
+            <Editable value="title" fontSize={"50px"} color={"blackAlpha.200"}>
               <EditablePreview
                 placeholder="Title"
                 ml={"450px"}
@@ -73,6 +86,7 @@ export default function NewBlog() {
                 border={"1px"}
                 w={"600px"}
                 h={"100px"}
+                // value={title}
                 marginLeft={"450px"}
                 fontSize={"50px"}
                 as={EditableInput}
@@ -87,9 +101,22 @@ export default function NewBlog() {
               ml={"450px"}
             ></Input>
             <Box ml={"450px"}>
-              <Stack border={'1px'} w={'600px'} borderRadius={'10px'} borderColor={'blackAlpha.300'}>
-              <Text fontSize={'20px'} fontWeight={'bold'} fontFamily={'initial'} ml={'15px'} color={'blackAlpha.400'}>Image</Text>
-              <Input type="file" placeholder="image" variant={''}></Input>
+              <Stack
+                border={"1px"}
+                w={"600px"}
+                borderRadius={"10px"}
+                borderColor={"blackAlpha.300"}
+              >
+                <Text
+                  fontSize={"20px"}
+                  fontWeight={"bold"}
+                  fontFamily={"initial"}
+                  ml={"15px"}
+                  color={"blackAlpha.400"}
+                >
+                  Image
+                </Text>
+                <Input type="file" placeholder="image" variant={""}></Input>
               </Stack>
             </Box>
             <Input placeholder="Category" w={"600px"} ml={"450px"}></Input>
