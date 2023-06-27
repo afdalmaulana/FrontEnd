@@ -28,6 +28,7 @@ import UserAvatar from "../Components/PageContent/components/UserAvatar";
 import ChangeUsername from "../Components/change/ChangeUsername";
 import ChangePhone from "../Components/change/ChangePhone";
 import ModalMembership from "../Components/ModalMembership";
+import ChangeEmail from "../Components/change/ChangeEmail";
 
 export default function AccountSetting() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -103,20 +104,14 @@ export default function AccountSetting() {
                     </Box>
                     <Box mt={"30px"}>
                       <Flex justifyContent={"space-between"}>
-                        <Text>Change email</Text>
-                        <Button
-                          rightIcon={<BsArrowUpRight />}
-                          variant={""}
-                          onClick={""}
-                        >
-                          Change
-                        </Button>
+                        <Text>Change phone</Text>
+                        <ChangePhone />
                       </Flex>
                     </Box>
                     <Box mt={"30px"}>
                       <Flex justifyContent={"space-between"}>
-                        <Text>Change Phone</Text>
-                        <ChangePhone />
+                        <Text>Change email</Text>
+                        <ChangeEmail />
                       </Flex>
                     </Box>
                   </TabPanel>

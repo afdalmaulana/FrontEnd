@@ -50,10 +50,11 @@ const Explore = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortOrder, setSortOrder] = useState("ASC");
+  const [page, setPage] = useState(1);
 
   const fetchData = async () => {
     try {
-      const url = `https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=${selectedCategory}&sort=${sortOrder}&page=1`;
+      const url = `https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=${selectedCategory}&sort=${sortOrder}&page=${page}`;
       const response = await axios.get(url);
       // console.log(response.data);
       setArticles(response.data.result);
@@ -64,17 +65,17 @@ const Explore = () => {
 
   useEffect(() => {
     fetchData();
-  }, [selectedCategory, sortOrder]);
+  }, [selectedCategory, sortOrder, page]);
 
   const handleNextPage = () => {
     const totalPages = Math.ceil(articles.length / 3);
     if (activePage < totalPages && activePage < 3)
-      setActivePage((prevPage) => prevPage + 1);
+      setActivePage((prevPage) => prevPage + page);
   };
 
   const handlePrevPage = () => {
     if (activePage > 1) {
-      setActivePage((prevPage) => prevPage - 1);
+      setActivePage((prevPage) => prevPage - page);
     }
   };
 
@@ -141,7 +142,12 @@ const Explore = () => {
   return (
     <Box>
       <Box m={"24px 60px 40px"}>
-        <Heading fontSize={"5xl"} fontWeight={"bold"} fontFamily={"mono"} mt={'50px'}>
+        <Heading
+          fontSize={"5xl"}
+          fontWeight={"bold"}
+          fontFamily={"mono"}
+          mt={"50px"}
+        >
           All Blog and Book
         </Heading>
       </Box>
