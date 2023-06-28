@@ -63,7 +63,7 @@ export default function ModalForgetPassword({ isOpen, onClose }) {
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalHeader>Modal Title</ModalHeader>
+          <ModalHeader>Forget Password?</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
             <Stack>

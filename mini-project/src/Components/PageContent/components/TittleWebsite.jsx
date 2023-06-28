@@ -1,4 +1,5 @@
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
+import { useRef } from "react";
 import { BiBookBookmark } from "react-icons/bi";
 // import { useNavigate } from "react-router-dom";
 
@@ -7,6 +8,7 @@ export default function TittleWebsite() {
   // function toContent() {
   //   navigate("/carousel");
   // }
+
   return (
     <>
       <Box w={"100%"}>

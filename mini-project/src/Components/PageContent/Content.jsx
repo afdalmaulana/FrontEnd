@@ -48,6 +48,8 @@ export default function Content() {
           </Box>
         </Stack>
         <TopLike like={blogLike} />
+        <Box>
+        </Box>
         <Box ml={"250px"} mt={"100px"}>
           <Stack>
             <Flex>
@@ -94,7 +96,7 @@ export default function Content() {
           </Stack>
         </Box>
         {/* <BlogList /> */}
-        <Explore/>
+        <Explore />
       </Box>
     </>
   );

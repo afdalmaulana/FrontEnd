@@ -228,7 +228,7 @@ export default function PageRegister() {
                         <Button
                           size="sm"
                           onClick={handleClick}
-                          mt={"10px"}
+                          mt={"30px"}
                           variant={"unstyled"}
                         >
                           {" "}
@@ -270,7 +270,7 @@ export default function PageRegister() {
                         <Button
                           size="sm"
                           onClick={handleClick}
-                          mt={"10px"}
+                          mt={"30px"}
                           variant={"unstyled"}
                         >
                           {" "}

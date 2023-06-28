@@ -22,7 +22,7 @@ import { BsBookmarkPlus, BsHeart } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { addToBookmark } from "../../../redux/reducer/BlogReducer";
 
-const Explore = () => {
+const Explore = ({ linkRef }) => {
   const dispatch = useDispatch();
   const login = useSelector((state) => state.UserReducer.login);
   const toast = useToast();
@@ -201,7 +201,7 @@ const Explore = () => {
                   <Card w={"full"} h={"430px"}>
                     <CardBody>
                       <Box
-                        height={"100px"}
+                        height={"110px"}
                         position="relative"
                         backgroundPosition="center"
                         backgroundRepeat="no-repeat"

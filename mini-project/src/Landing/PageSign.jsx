@@ -26,6 +26,7 @@ import { BsGoogle } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { signIn } from "../redux/reducer/UserReducer";
 import ModalForgetPassword from "../Components/ForgetPassword/ModalForgetPassword";
+import ForgetPassword from "../Components/ForgetPassword/ForgetPassword";
 
 const LoginSchema = Yup.object().shape({
   identifier: Yup.string().required("Identifier is required"),
@@ -132,50 +133,6 @@ export default function PageSign() {
                           </FormErrorMessage>
                         )}
                     </FormControl>
-                    {/* <FormControl
-                      isInvalid={formik.touched.email && formik.errors.email}
-                    >
-                      <FormLabel htmlFor="email"></FormLabel>
-                      <Input
-                        placeholder="Email"
-                        variant={"flushed"}
-                        borderColor={"black"}
-                        w={"310px"}
-                        id="email"
-                        name="email"
-                        type="email"
-                        value={formik.values.email}
-                        mt={"20px"}
-                        onChange={formik.handleChange}
-                      ></Input>
-                      {formik.touched.email && formik.errors.email && (
-                        <FormErrorMessage>
-                          {formik.errors.email}
-                        </FormErrorMessage>
-                      )}
-                    </FormControl> */}
-                    {/* <FormControl
-                      isInvalid={formik.touched.phone && formik.errors.phone}
-                    >
-                      <FormLabel htmlFor="phone"></FormLabel>
-                      <Input
-                        placeholder="Phone"
-                        variant={"flushed"}
-                        borderColor={"black"}
-                        w={"310px"}
-                        id="phone"
-                        name="phone"
-                        type="text"
-                        value={formik.values.phone}
-                        mt={"20px"}
-                        onChange={formik.handleChange}
-                      ></Input>
-                      {formik.touched.phone && formik.errors.phone && (
-                        <FormErrorMessage>
-                          {formik.errors.phone}
-                        </FormErrorMessage>
-                      )}
-                    </FormControl> */}
                     <InputGroup>
                       <FormControl
                         isInvalid={
@@ -233,20 +190,7 @@ export default function PageSign() {
                   </Stack>
                 </form>
                 <Text mt={"20px"}>Forget your password ? </Text>
-                <Button
-                  onClick={onOpen}
-                  mt={"10px"}
-                  w={"200px"}
-                  colorScheme="yellow"
-                  borderRadius={"30px"}
-                >
-                  Hit Me
-                </Button>
-                <ModalForgetPassword
-                  isOpen={isOpen}
-                  onOpen={onOpen}
-                  onClose={onClose}
-                />
+                <ForgetPassword />
               </Box>
               <Box>
                 <Divider orientation="vertical" />

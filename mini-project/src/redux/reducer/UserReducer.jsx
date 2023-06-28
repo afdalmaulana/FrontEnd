@@ -37,12 +37,6 @@ export const UserReducer = createSlice({
       state.login = true;
       state.loginError = null;
     },
-    // userLoginFailed: (state, action) => {
-    //   console.log("user login failed");
-    //   state.login = false;
-    //   state.loginError = action.payload || "Login Failed";
-    //   console.log(state.loginError);
-    // },
     userLogout: (state, action) => {
       state.login = false;
       localStorage.removeItem("token");
