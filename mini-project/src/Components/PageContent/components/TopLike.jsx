@@ -12,6 +12,7 @@ import {
   Image,
   Stack,
   Text,
+  useToast,
 } from "@chakra-ui/react";
 import { AiFillEye } from "react-icons/ai";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
@@ -23,6 +24,7 @@ import { useEffect, useState } from "react";
 import { AiFillHeart } from "react-icons/ai";
 
 export default function TopLike() {
+  const login = useSelector((state) => state.UserReducer.login);
   const [like, setLike] = useState([]);
   const topLike = async () => {
     try {
@@ -38,6 +40,25 @@ export default function TopLike() {
     topLike();
   }, []);
   const dispatch = useDispatch();
+
+  const toast = useToast();
+  function toToastAdd() {
+    toast({
+      title: "Bookmark Success",
+      status: "success",
+      duration: 3000,
+      isClosable: true,
+    });
+  }
+  function noToast() {
+    toast({
+      title: "Bookmark failed",
+      status: "error",
+      description: "You need to login first, to save the blog",
+      duration: 3000,
+      isClosable: true,
+    });
+  }
   return (
     <>
       <Box ml={"40px"} mt={"100px"}>
@@ -47,20 +68,40 @@ export default function TopLike() {
         <Flex wrap={"wrap"} gap={"20px"}>
           {like.map((item) => {
             return (
-              <Card maxW="md" maxH="lg">
+              <Card w="430px" maxH="lg" shadow={'dark-lg'}>
                 <CardBody justifyContent={"center"}>
-                  <Center>
-                    <Image
+                  {/* <Center> */}
+                    <Box
+                      height={"140px"}
+                      position="relative"
+                      backgroundPosition="center"
+                      backgroundRepeat="no-repeat"
+                      backgroundSize="cover"
+                      borderRadius="lg"
+                      backgroundImage={`https://minpro-blog.purwadhikabootcamp.com/${item.imageURL}`}
+                    ></Box>
+                    {/* <Image
                       src={`https://minpro-blog.purwadhikabootcamp.com/${item.imageURL}`}
                       borderRadius="lg"
                       w={"400px"}
-                      h={"200px"}
+                      h={"100px"}
                       alignItems={"center"}
-                    />
-                  </Center>
+                    /> */}
+                  {/* </Center> */}
                   <Stack mt="6" spacing="2">
                     <Heading size="md">{item.title}</Heading>
-                    <Text fontSize={"12"}>{item.User.username}</Text>
+                    <Text color="blue.600" fontSize="10px">
+                      {item.User.username}
+                    </Text>
+                    <Text fontSize={"12px"} noOfLines={2}>
+                      {item.content}
+                    </Text>
+                    <Text fontSize={"sm"} color={"gray.500"}>
+                      Published: {new Date(item.createdAt).toLocaleDateString()}
+                    </Text>
+                    <Text color={"yellow.500"}>
+                      Category : {item.Category.name}
+                    </Text>
                     <Flex>
                       <Box mt={"10px"}>
                         <AiFillHeart color="red" size={"20px"} />
@@ -81,12 +122,23 @@ export default function TopLike() {
                     >
                       Like
                     </Button>
-                    <Button
-                      variant=""
-                      color="black"
-                      rightIcon={<BsFillBookmarkStarFill />}
-                      onClick={() => dispatch(addToBookmark(item))}
-                    ></Button>
+                    {!login ? (
+                      <Button
+                        variant=""
+                        color="black"
+                        rightIcon={<BsFillBookmarkStarFill />}
+                        onClick={() => noToast()}
+                      ></Button>
+                    ) : (
+                      <Button
+                        variant=""
+                        color="black"
+                        rightIcon={<BsFillBookmarkStarFill />}
+                        onClick={() =>
+                          dispatch(addToBookmark(item), toToastAdd())
+                        }
+                      ></Button>
+                    )}
                   </ButtonGroup>
                 </CardFooter>
               </Card>

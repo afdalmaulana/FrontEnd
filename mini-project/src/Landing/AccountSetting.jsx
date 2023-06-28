@@ -29,6 +29,7 @@ import ChangeUsername from "../Components/change/ChangeUsername";
 import ChangePhone from "../Components/change/ChangePhone";
 import ModalMembership from "../Components/ModalMembership";
 import ChangeEmail from "../Components/change/ChangeEmail";
+import ChangePassword from "../Components/change/ChangePassword";
 
 export default function AccountSetting() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -87,13 +88,15 @@ export default function AccountSetting() {
                     <Box mt={"20px"}>
                       <Flex justifyContent={"space-between"}>
                         <Text>Password</Text>
-                        <Button
+                        {/* <GantiPassword /> */}
+                        <ChangePassword />
+                        {/* <Button
                           rightIcon={<BsArrowUpRight />}
                           variant={""}
                           onClick={toChangePassword}
                         >
                           Change
-                        </Button>
+                        </Button> */}
                       </Flex>
                     </Box>
                     <Box mt={"30px"}>

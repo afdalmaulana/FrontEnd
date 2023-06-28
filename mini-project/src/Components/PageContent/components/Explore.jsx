@@ -198,7 +198,7 @@ const Explore = ({ linkRef }) => {
             .map((article) => (
               <SwiperSlide key={article.id}>
                 <Box display={"flex"} justifyContent={"space-between"} p={4}>
-                  <Card w={"full"} h={"430px"}>
+                  <Card w={"full"} h={"430px"} shadow={'lg'}>
                     <CardBody>
                       <Box
                         height={"110px"}

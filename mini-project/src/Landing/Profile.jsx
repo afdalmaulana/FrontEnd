@@ -133,7 +133,7 @@ export default function Profile() {
                   <TabPanel>
                     <Box>
                       Maafkan, aku belum bisa mengambil data blog yang aku tulis
-                      dari API 
+                      dari API
                       {newArticle.map((newArticle) => (
                         <Card
                           direction={{ base: "column", sm: "row" }}
