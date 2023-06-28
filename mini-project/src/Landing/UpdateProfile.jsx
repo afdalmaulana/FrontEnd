@@ -9,64 +9,70 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { changePicture, setUser } from "../redux/reducer/UserReducer";
 
 export default function ProfilePage() {
-  const token = localStorage.getItem("token");
-  const picture = async (values) => {
-    const respon = await axios.post(
-      "https://minpro-blog.purwadhikabootcamp.com/api/profile/single-uploaded",
-      {
-        file: values.file,
-      },
-      {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
-  };
-
   const { user } = useSelector((state) => state.UserReducer);
-  const [profilePicture, setProfilePicture] = useState(
-    "url_to_initial_profile_picture.jpg"
-  );
-  const [selectedFile, setSelectedFile] = useState(null);
+  const dispatch = useDispatch();
+  const [image, setImage] = useState();
 
-  const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
-
-  const handleProfilePictureUpdate = () => {
-    // Perform necessary logic to update the profile picture using the selected file
-    const reader = new FileReader();
-    reader.onload = () => {
-      const newProfilePicture = reader.result;
-      setProfilePicture(newProfilePicture);
-    };
-    reader.readAsDataURL(selectedFile);
-  };
+  function changeImg() {
+    const [file] = document.getElementById("file").files;
+    const imgURL = URL.createObjectURL(file);
+    setImage(imgURL);
+  }
+  function handleSubmit() {
+    const file = document.getElementById("file").files[0];
+    dispatch(changePicture(file));
+  }
 
   return (
     <>
       <Box>
-        <Flex>
+        <Flex justify={"space-around"}>
           <Box>
-            <Avatar src={profilePicture} alt="Profile Picture" size="xl" />
+            <Avatar
+              src={`https://minpro-blog.purwadhikabootcamp.com/${user.imgProfile}`}
+              alt="Profile Picture"
+              size="2xl"
+            />
           </Box>
           <Box ml={"20px"}>
-            <Text fontSize={"20px"} fontWeight={"bold"}>
-              {user.username}
-            </Text>
-            <Input
-              type="file"
-              onChange={handleFileChange}
-              mt={"10px"}
-              variant={""}
-            />
-            <Button onClick={handleProfilePictureUpdate}>Update Picture</Button>
+            <Avatar src={image} size={"2xl"}></Avatar>
           </Box>
         </Flex>
+        <Flex justify={"space-around"}>
+          <Box>
+            <Text fontSize={"20px"} fontWeight={"medium"}>
+              Current Picture
+            </Text>
+          </Box>
+          <Box>
+            <Text fontSize={"20px"} fontWeight={"medium"}>
+              New Picture
+            </Text>
+          </Box>
+        </Flex>
+        <Stack>
+          <Input
+            ml={"180px"}
+            type="file"
+            onChange={changeImg}
+            id="file"
+            mt={"10px"}
+            w={"500px"}
+            variant={""}
+          />
+          <Button
+            onClick={handleSubmit}
+            w={"300px"}
+            ml={"180px"}
+            colorScheme="yellow"
+          >
+            Update Picture
+          </Button>
+        </Stack>
       </Box>
     </>
   );

@@ -17,10 +17,12 @@ export default function UserAvatar() {
   return (
     <>
       <Box>
-        <Avatar
-          src={`https://minpro-blog.purwadhikabootcamp.com/Public/Avatar-6.png`}
-          size={"xl"}
-        />
+        <Box>
+          <Avatar
+            src={`https://minpro-blog.purwadhikabootcamp.com/${user.imgProfile}`}
+            size={"2xl"}
+          />
+        </Box>
         <Text fontSize={"20px"} fontWeight={"medium"}>
           {user.username}
         </Text>

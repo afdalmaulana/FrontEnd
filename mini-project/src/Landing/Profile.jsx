@@ -84,26 +84,14 @@ export default function Profile() {
               </Text>
               <Tabs w={"650px"}>
                 <TabList>
-                  <Tab>About</Tab>
                   <Tab>Change Profile Picture</Tab>
+                  <Tab>About</Tab>
                   <Tab>Your Write</Tab>
                 </TabList>
 
                 <TabPanels>
                   <TabPanel>
-                    <Editable
-                      bgColor={"blackAlpha.200"}
-                      h={"200px"}
-                      textAlign="center"
-                      defaultValue="Tell us about your self"
-                      fontSize="50px"
-                      isPreviewFocusable={false}
-                    >
-                      <EditablePreview />
-                      {/* Here is the custom input */}
-                      <Input as={EditableInput} h={"200px"} />
-                      <EditableControls />
-                    </Editable>
+                    <ProfilePage />
                   </TabPanel>
                   <TabPanel>
                     <Box>
@@ -123,41 +111,56 @@ export default function Profile() {
                             {user.username}
                           </Text>
                           <Input type="file" variant={""}></Input> */}
-                          <ProfilePage />
+                          <Editable
+                            bgColor={"blackAlpha.200"}
+                            w={"500px"}
+                            h={"200px"}
+                            textAlign="center"
+                            defaultValue="Tell us about your self"
+                            fontSize="50px"
+                            isPreviewFocusable={false}
+                            borderRadius={"20px"}
+                          >
+                            <EditablePreview />
+                            {/* Here is the custom input */}
+                            <Input as={EditableInput} h={"200px"} />
+                            <EditableControls />
+                          </Editable>
                         </Box>
                       </Flex>
                     </Box>
                   </TabPanel>
                   <TabPanel>
                     <Box>
-                      {newArticle.map((item) => {
-                        return (
-                          <Card
-                            direction={{ base: "column", sm: "row" }}
-                            overflow="hidden"
-                            variant="outline"
-                          >
-                            <Image
-                              objectFit="cover"
-                              maxW={{ base: "100%", sm: "200px" }}
-                              src="https://images.unsplash.com/photo-1667489022797-ab608913feeb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw5fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-                              alt="Caffe Latte"
-                            />
+                      Maafkan, aku belum bisa mengambil data blog yang aku tulis
+                      dari API 
+                      {newArticle.map((newArticle) => (
+                        <Card
+                          direction={{ base: "column", sm: "row" }}
+                          overflow="hidden"
+                          variant="outline"
+                        >
+                          <Image
+                            objectFit="cover"
+                            maxW={{ base: "100%", sm: "200px" }}
+                            src=""
+                            alt="Caffe Latte"
+                          />
 
-                            <Stack>
-                              <CardBody>
-                                <Heading size="md">{item.title}</Heading>
-                                <Text py="2">{item.content}</Text>
-                                <Text>{item.country}</Text>
-                                <Text>{item.CategoryId}</Text>
-                                <Text>{item.keywords}</Text>
-                              </CardBody>
-
-                              <CardFooter></CardFooter>
-                            </Stack>
-                          </Card>
-                        );
-                      })}
+                          <Stack>
+                            <CardBody>
+                              <Heading size="md">
+                                {newArticle.title === "COBAA"}
+                              </Heading>
+                              <Text py="2">{newArticle.content}</Text>
+                              <Text>{newArticle.country}</Text>
+                              <Text>{newArticle.CategoryId}</Text>
+                              <Text>{newArticle.keywords}</Text>
+                            </CardBody>
+                            <CardFooter></CardFooter>
+                          </Stack>
+                        </Card>
+                      ))}
                     </Box>
                   </TabPanel>
                 </TabPanels>

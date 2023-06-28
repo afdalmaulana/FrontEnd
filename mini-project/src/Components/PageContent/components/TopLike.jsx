@@ -20,6 +20,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToBookmark } from "../../../redux/reducer/BlogReducer";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { AiFillHeart } from "react-icons/ai";
 
 export default function TopLike() {
   const [like, setLike] = useState([]);
@@ -60,9 +61,14 @@ export default function TopLike() {
                   <Stack mt="6" spacing="2">
                     <Heading size="md">{item.title}</Heading>
                     <Text fontSize={"12"}>{item.User.username}</Text>
-                    <Text color="blue.600" fontSize="2xl">
-                      Like : {item.total_fav}
-                    </Text>
+                    <Flex>
+                      <Box mt={"10px"}>
+                        <AiFillHeart color="red" size={"20px"} />
+                      </Box>
+                      <Text color="black" fontSize="1xl" mt={"8px"}>
+                        : {item.total_fav} likes
+                      </Text>
+                    </Flex>
                   </Stack>
                 </CardBody>
                 <Divider />

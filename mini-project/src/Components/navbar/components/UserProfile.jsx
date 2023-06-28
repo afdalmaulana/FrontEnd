@@ -12,11 +12,12 @@ import { CgProfile } from "react-icons/cg";
 import { AiOutlineSetting } from "react-icons/ai";
 import { BiBookmarks } from "react-icons/bi";
 import { MdNoAccounts } from "react-icons/md";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "../../../redux/reducer/UserReducer";
 import axios from "axios";
 
 export default function UserProfile() {
+  const { user } = useSelector((state) => state.UserReducer);
   const getAvatar = async () => {
     try {
       const res = await axios.get(
@@ -44,11 +45,12 @@ export default function UserProfile() {
   }
   return (
     <>
-      <Box mt={"2px"} mr={"10px"}>
+      <Box mr={"10px"}>
         <Menu>
           <Avatar
-            src="https://minpro-blog.purwadhikabootcamp.com/Public/Avatar-6.png"
-            boxSize={9}
+            src={`https://minpro-blog.purwadhikabootcamp.com/${user.imgProfile}`}
+            boxSize={10}
+            size={"2xl"}
           />
           <MenuButton
             as={Button}

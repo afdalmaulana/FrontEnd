@@ -98,6 +98,31 @@ export const keepLogin = () => {
   };
 };
 
+export const changePicture = (photo) => {
+  return async () => {
+    const token = localStorage.getItem("token");
+    const formData = new FormData();
+    formData.append("file", photo);
+    try {
+      const respon = await axios.post(
+        "https://minpro-blog.purwadhikabootcamp.com/api/profile/single-uploaded",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log(respon.data);
+      alert("Your profile picture is change");
+      document.location.href = "/profile";
+    } catch (error) {
+      console.log(error);
+      alert("Failed, Maximum file is 1 mb");
+    }
+  };
+};
+
 export const {
   userLogin,
   userLoginFailed,
