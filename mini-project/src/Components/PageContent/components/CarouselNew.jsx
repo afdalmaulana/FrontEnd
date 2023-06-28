@@ -49,7 +49,7 @@ export default function CarouselNew() {
   async function latestBlog() {
     try {
       const res = await axios.get(
-        "https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=&sort=ASC&size=30"
+        "https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=&sort=DESC&size=30"
       );
       // console.log(res.data.result);
       setLatest(res.data.result);

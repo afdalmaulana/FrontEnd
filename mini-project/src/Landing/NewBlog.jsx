@@ -2,13 +2,11 @@ import {
   Box,
   Button,
   ButtonGroup,
-  Editable,
-  EditableInput,
-  EditablePreview,
   Flex,
   IconButton,
   Input,
   InputGroup,
+  Select,
   Stack,
   Text,
   Textarea,
@@ -17,122 +15,133 @@ import {
 import Navbar from "../Components/navbar/Navbar";
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
+import { makeArticle } from "../redux/reducer/BlogReducer";
 
 export default function NewBlog() {
-  const newBlog = async (values) => {
-    const { title, content, author, date, category, keyword } = values;
-    const respon = await axios.post(
-      "https://minpro-blog.purwadhikabootcamp.com/api/blog",
-      {
-        data: {
-          title: title,
-          author: author,
-          content: content,
-          date: date,
-          category: category,
-          keyword: keyword,
-        },
-      }
-    );
+  const dispatch = useDispatch();
+  const [selected, setSelected] = useState("");
+  const handleOption = (event) => {
+    setSelected(event.target.value);
   };
-  function EditableControls() {
-    const {
-      isEditing,
-      getSubmitButtonProps,
-      getCancelButtonProps,
-      getEditButtonProps,
-    } = useEditableControls();
 
-    return isEditing ? (
-      <ButtonGroup justifyContent="center" size="sm">
-        <IconButton
-          ml={"20px"}
-          icon={<CheckIcon />}
-          {...getSubmitButtonProps()}
-        />
-        <IconButton icon={<CloseIcon />} {...getCancelButtonProps()} />
-      </ButtonGroup>
-    ) : (
-      <ButtonGroup>
-        <Button
-          justifyContent={"center"}
-          w={"100px"}
-          ml={"10px"}
-          leftIcon={<EditIcon />}
-          {...getEditButtonProps()}
-        >
-          {" "}
-          Write
-        </Button>
-      </ButtonGroup>
-    );
-  }
+  const [category, setCategory] = useState();
+  const getCategory = async () => {
+    try {
+      const respon = await axios.get(
+        "https://minpro-blog.purwadhikabootcamp.com/api/blog/allCategory"
+      );
+      setCategory(respon.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getCategory();
+  }, []);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    const data = {
+      title: document.getElementById("title").value,
+      country: document.getElementById("country").value,
+      CategoryId: selected,
+      url: "/",
+      keywords: document.getElementById("keywords").value,
+      content: document.getElementById("content").value,
+    };
+    const file = document.getElementById("file").files[0];
+    dispatch(makeArticle(data, file));
+  };
+
   return (
     <>
       <Navbar />
       <Stack>
         <InputGroup mt={"80px"}>
           <Stack>
-            <Editable value="title" fontSize={"50px"} color={"blackAlpha.200"}>
-              <EditablePreview
-                placeholder="Title"
-                ml={"450px"}
-                border={"1px"}
-                borderColor={"blackAlpha.300"}
-                w={"600px"}
-              />
+            <form onSubmit={handleSubmit}>
               <Input
                 placeholder="Title"
-                border={"1px"}
+                id="title"
+                name="title"
                 w={"600px"}
                 h={"100px"}
-                // value={title}
-                marginLeft={"450px"}
-                fontSize={"50px"}
-                as={EditableInput}
+                ml={"450px"}
+                fontSize={"2xl"}
               ></Input>
-              <EditableControls />
-            </Editable>
-            <Input placeholder="Author" w={"600px"} ml={"450px"}></Input>
-            <Input
-              placeholder="Publication Date"
-              type="datetime-local"
-              w={"600px"}
-              ml={"450px"}
-            ></Input>
-            <Box ml={"450px"}>
-              <Stack
-                border={"1px"}
+              <Input
+                placeholder="Country"
+                id="country"
+                name="country"
                 w={"600px"}
-                borderRadius={"10px"}
-                borderColor={"blackAlpha.300"}
+                ml={"450px"}
+              ></Input>
+              <Select
+                w={"600px"}
+                ml={"450px"}
+                value={selected}
+                onChange={handleOption}
               >
-                <Text
-                  fontSize={"20px"}
-                  fontWeight={"bold"}
-                  fontFamily={"initial"}
-                  ml={"15px"}
-                  color={"blackAlpha.400"}
-                >
-                  Image
-                </Text>
-                <Input type="file" placeholder="image" variant={""}></Input>
-              </Stack>
-            </Box>
-            <Input placeholder="Category" w={"600px"} ml={"450px"}></Input>
-            <Input placeholder="News Content" w={"600px"} ml={"450px"}></Input>
-            <Input placeholder="Keywords" w={"600px"} ml={"450px"}></Input>
-            <Flex>
+                <option value={""}>Category</option>
+                {category &&
+                  category.map((item) => (
+                    <option value={item.id}>{item.name}</option>
+                  ))}
+              </Select>
+              <Input
+                placeholder="Keyword"
+                w={"600px"}
+                ml={"450px"}
+                id="keywords"
+                name="keywords"
+              ></Input>
               <Textarea
                 placeholder="Input your imagination"
+                id="content"
+                name="content"
                 w={"600px"}
                 h={"200px"}
                 marginLeft={"450px"}
               ></Textarea>
-              <Button w={"100px"} ml={"10px"} colorScheme={"whatsapp"}>
+
+              <Box ml={"450px"}>
+                <Stack
+                  border={"1px"}
+                  w={"600px"}
+                  borderRadius={"10px"}
+                  borderColor={"blackAlpha.300"}
+                >
+                  <Text
+                    fontSize={"20px"}
+                    fontWeight={"bold"}
+                    fontFamily={"initial"}
+                    ml={"15px"}
+                    color={"blackAlpha.400"}
+                  >
+                    Image
+                  </Text>
+                  <Input
+                    type="file"
+                    id="file"
+                    placeholder="image"
+                    variant={""}
+                  ></Input>
+                </Stack>
+              </Box>
+              <Button
+                w={"600px"}
+                ml={"450px"}
+                mt={"20px"}
+                type="submit"
+                colorScheme={"whatsapp"}
+              >
                 Publish
               </Button>
-            </Flex>
+            </form>
           </Stack>
         </InputGroup>
       </Stack>
