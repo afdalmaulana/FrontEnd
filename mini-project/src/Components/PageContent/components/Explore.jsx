@@ -54,7 +54,7 @@ const Explore = ({ linkRef }) => {
 
   const fetchData = async () => {
     try {
-      const url = `https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=${selectedCategory}&sort=${sortOrder}&page=${page}`;
+      const url = `https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=${selectedCategory}&sort=${sortOrder}&page=${page}&size=50`;
       const response = await axios.get(url);
       // console.log(response.data);
       setArticles(response.data.result);
@@ -68,8 +68,8 @@ const Explore = ({ linkRef }) => {
   }, [selectedCategory, sortOrder, page]);
 
   const handleNextPage = () => {
-    const totalPages = Math.ceil(articles.length / 3);
-    if (activePage < totalPages && activePage < 3)
+    const totalPages = Math.ceil(articles.length / 5);
+    if (activePage < totalPages && activePage < 20)
       setActivePage((prevPage) => prevPage + page);
   };
 
@@ -106,7 +106,7 @@ const Explore = ({ linkRef }) => {
   };
 
   const renderArticleIndexes = () => {
-    const totalPages = Math.ceil(articles.length / 3);
+    const totalPages = Math.ceil(articles.length / 5);
     const indexes = [];
     for (let i = 1; i <= totalPages; i++) {
       indexes.push(renderArticleIndex(i));
@@ -194,7 +194,7 @@ const Explore = ({ linkRef }) => {
       <Box p={"24px 60px"} gap={4}>
         <Swiper slidesPerView={3}>
           {sortedArticles
-            .slice((activePage - 1) * 3, activePage * 3)
+            .slice((activePage - 1) * 5, activePage * 5)
             .map((article) => (
               <SwiperSlide key={article.id}>
                 <Box display={"flex"} justifyContent={"space-between"} p={4}>
@@ -286,7 +286,8 @@ const Explore = ({ linkRef }) => {
           size={"sm"}
           colorScheme="yellow"
           onClick={handleNextPage}
-          disabled={activePage === Math.ceil(articles.length / 3)}
+          disabled={activePage === Math.ceil(articles.length / 5)}
+          // disabled={activePage === 20}
         >
           Next
         </Button>

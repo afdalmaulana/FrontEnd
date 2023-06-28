@@ -16,10 +16,26 @@ import {
 import { AiFillEye } from "react-icons/ai";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { GrLike } from "react-icons/gr";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToBookmark } from "../../../redux/reducer/BlogReducer";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
-export default function TopLike({ like }) {
+export default function TopLike() {
+  const [like, setLike] = useState([]);
+  const topLike = async () => {
+    try {
+      const respon = await axios.get(
+        "https://minpro-blog.purwadhikabootcamp.com/api/blog/pagFav?size=10&sort=DESC&orderBy=total_fav"
+      );
+      setLike(respon.data.result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    topLike();
+  }, []);
   const dispatch = useDispatch();
   return (
     <>
@@ -34,7 +50,7 @@ export default function TopLike({ like }) {
                 <CardBody justifyContent={"center"}>
                   <Center>
                     <Image
-                      src={item.images}
+                      src={`https://minpro-blog.purwadhikabootcamp.com/${item.imageURL}`}
                       borderRadius="lg"
                       w={"400px"}
                       h={"200px"}
@@ -43,8 +59,10 @@ export default function TopLike({ like }) {
                   </Center>
                   <Stack mt="6" spacing="2">
                     <Heading size="md">{item.title}</Heading>
-                    <Text fontSize={"12"}>{item.desc}</Text>
-                    <Text color="blue.600" fontSize="2xl"></Text>
+                    <Text fontSize={"12"}>{item.User.username}</Text>
+                    <Text color="blue.600" fontSize="2xl">
+                      Like : {item.total_fav}
+                    </Text>
                   </Stack>
                 </CardBody>
                 <Divider />

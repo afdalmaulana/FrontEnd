@@ -49,7 +49,7 @@ export default function CarouselNew() {
   async function latestBlog() {
     try {
       const res = await axios.get(
-        "https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=&sort=ASC"
+        "https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=&sort=ASC&size=30"
       );
       // console.log(res.data.result);
       setLatest(res.data.result);
@@ -173,7 +173,7 @@ export default function CarouselNew() {
                       alignItems={"center"}
                     />
                   </Center>
-                  <Stack mt="6" spacing="2" h={'150px'}>
+                  <Stack mt="6" spacing="2" h={"150px"}>
                     <Text fontSize={"12px"} fontWeight={"bold"}>
                       {item.title}
                     </Text>
@@ -192,7 +192,7 @@ export default function CarouselNew() {
                   </Stack>
                 </CardBody>
                 <Divider />
-                <CardFooter mt={'6px'}>
+                <CardFooter mt={"6px"}>
                   <ButtonGroup spacing="2">
                     <Button
                       variant=""
