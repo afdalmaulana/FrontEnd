@@ -50,13 +50,15 @@ const Explore = ({ linkRef }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortOrder, setSortOrder] = useState("ASC");
-  const [page, setPage] = useState(1);
+  const [index, setIndex] = useState(1);
+  const [page, setPage] = useState(0);
 
   const fetchData = async () => {
     try {
-      const url = `https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=${selectedCategory}&sort=${sortOrder}&page=${page}&size=50`;
+      const url = `https://minpro-blog.purwadhikabootcamp.com/api/blog?id_cat=${selectedCategory}&sort=${sortOrder}&page=${index}&size=50`;
       const response = await axios.get(url);
       // console.log(response.data);
+      setPage(response.data.page);
       setArticles(response.data.result);
     } catch (error) {
       console.log(error);
@@ -65,17 +67,15 @@ const Explore = ({ linkRef }) => {
 
   useEffect(() => {
     fetchData();
-  }, [selectedCategory, sortOrder, page]);
+  }, [selectedCategory, sortOrder, index]);
 
   const handleNextPage = () => {
-    const totalPages = Math.ceil(articles.length / 5);
-    if (activePage < totalPages && activePage < 20)
-      setActivePage((prevPage) => prevPage + page);
+    if (index < page) setIndex(index + 1);
   };
 
   const handlePrevPage = () => {
-    if (activePage > 1) {
-      setActivePage((prevPage) => prevPage - page);
+    if (index > 1) {
+      setIndex(index - 1);
     }
   };
 
@@ -91,29 +91,32 @@ const Explore = ({ linkRef }) => {
     setSortOrder(event.target.value);
   };
 
-  const renderArticleIndex = (index) => {
-    return (
-      <Button
-        key={index}
-        onClick={() => setActivePage(index)}
-        colorScheme={activePage === index ? "blackAlpha" : "gray"}
-        mx={1}
-        size="sm"
-      >
-        {index}
-      </Button>
-    );
+  const handlePageChange = (pageIndex) => {
+    setIndex(pageIndex);
   };
+  const renderPageButtons = () => {
+    const totalPages = page;
+    const startPage = Math.max(1, index - 2);
+    const endPage = Math.min(startPage + 4, totalPages);
 
-  const renderArticleIndexes = () => {
-    const totalPages = Math.ceil(articles.length / 5);
-    const indexes = [];
-    for (let i = 1; i <= totalPages; i++) {
-      indexes.push(renderArticleIndex(i));
+    const pageButtons = [];
+    for (let pageNum = startPage; pageNum <= endPage; pageNum++) {
+      pageButtons.push(
+        <Button
+          key={pageNum}
+          variant="outline"
+          onClick={() => handlePageChange(pageNum)}
+          isActive={index === pageNum}
+          disabled={index === pageNum}
+          color="blue.400"
+        >
+          {pageNum}
+        </Button>
+      );
     }
-    return indexes;
-  };
 
+    return pageButtons;
+  };
   const filteredArticles = articles.filter((article) => {
     const lowerCaseSearchTerm = searchTerm.toLowerCase();
     const lowerCaseTitle = article.title.toLowerCase();
@@ -198,7 +201,7 @@ const Explore = ({ linkRef }) => {
             .map((article) => (
               <SwiperSlide key={article.id}>
                 <Box display={"flex"} justifyContent={"space-between"} p={4}>
-                  <Card w={"full"} h={"430px"} shadow={'lg'}>
+                  <Card w={"full"} h={"430px"} shadow={"lg"}>
                     <CardBody>
                       <Box
                         height={"110px"}
@@ -281,7 +284,7 @@ const Explore = ({ linkRef }) => {
         >
           Previous
         </Button>
-        {renderArticleIndexes()}
+        {renderPageButtons()}
         <Button
           size={"sm"}
           colorScheme="yellow"

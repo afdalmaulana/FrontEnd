@@ -1,4 +1,12 @@
-import { Box, Button, Divider, Flex, Image, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Divider,
+  Flex,
+  Image,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { AiOutlineArrowRight } from "react-icons/ai";
@@ -6,8 +14,10 @@ import TopLike from "./components/TopLike";
 import BlogList from "./components/BlogList";
 import jsonTopLike from "../../json-dummy/listBlog.json";
 import Explore from "./components/Explore";
+import { useSelector } from "react-redux";
 
 export default function Content() {
+  const login = useSelector((state) => state.UserReducer.login);
   const blogLike = jsonTopLike.topLike;
   // console.log(blogList);
   const navigate = useNavigate();
@@ -48,13 +58,14 @@ export default function Content() {
           </Box>
         </Stack>
         <TopLike like={blogLike} />
-        <Divider/>
-        <Box>
+        <Box bgColor={"black"}>
+          <Divider size={"50px"} mt={"40px"} />
         </Box>
-        <Box ml={"250px"} mt={"100px"}>
+        <Box></Box>
+        <Box ml={"250px"} mt={"50px"}>
           <Stack>
             <Flex>
-              <Box shadow={'dark-lg'}>
+              <Box shadow={"dark-lg"}>
                 <Image
                   src="https://images.unsplash.com/photo-1581970196594-f0a8ad70eaa1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fHJlYWRpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60"
                   h={"600px"}
@@ -80,15 +91,27 @@ export default function Content() {
                     anda terhadap tulisan yang ada pada Golden Book
                   </Text>
                 </Stack>
-                <Button
-                  mt={"45px"}
-                  fontSize={"2xl"}
-                  variant={""}
-                  rightIcon={<AiOutlineArrowRight />}
-                  onClick={toSign}
-                >
-                  Start
-                </Button>
+                {!login ? (
+                  <Button
+                    mt={"45px"}
+                    fontSize={"2xl"}
+                    variant={""}
+                    rightIcon={<AiOutlineArrowRight />}
+                    onClick={() => document.location.href = "/"}
+                  >
+                    Start
+                  </Button>
+                ) : (
+                  <Button
+                    mt={"45px"}
+                    fontSize={"2xl"}
+                    variant={""}
+                    rightIcon={<AiOutlineArrowRight />}
+                    onClick={toSign}
+                  >
+                    Start
+                  </Button>
+                )}
               </Box>
             </Flex>
             {/* <Image src="https://images.unsplash.com/photo-1575024357670-2b5164f470c3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80"

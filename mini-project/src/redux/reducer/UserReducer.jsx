@@ -33,9 +33,8 @@ export const UserReducer = createSlice({
         role,
       };
     },
-    userLogin: (state, action) => {
+    userLogin: (state) => {
       state.login = true;
-      state.loginError = null;
     },
     userLogout: (state, action) => {
       state.login = false;

@@ -29,16 +29,16 @@ export default function ProfilePage() {
 
   return (
     <>
-      <Box>
+      <Box shadow={'lg'} borderRadius={'20px'}>
         <Flex justify={"space-around"}>
-          <Box>
+          <Box mt={'20px'}>
             <Avatar
               src={`https://minpro-blog.purwadhikabootcamp.com/${user.imgProfile}`}
               alt="Profile Picture"
               size="2xl"
             />
           </Box>
-          <Box ml={"20px"}>
+          <Box ml={"20px"} mt={'20px'}>
             <Avatar src={image} size={"2xl"}></Avatar>
           </Box>
         </Flex>
