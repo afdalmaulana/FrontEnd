@@ -32,7 +32,7 @@ const RegistrasiSchema = Yup.object().shape({
     .required("Username is required"),
   email: Yup.string()
     .email("Invalid email address format")
-    .required("Password is required"),
+    .required("Email is required"),
   phone: Yup.string()
     .matches(/^[0-9]+$/, "Phone number must be number")
     .min(10, "Phone minimum must be 10 number")

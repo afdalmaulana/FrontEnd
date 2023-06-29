@@ -27,14 +27,14 @@ const resetSchema = Yup.object().shape({
       "Username must contain at least  characters, one uppercase, one number and one special case character"
     ),
   confirmPassword: Yup.string()
-    .required("newPassword is required")
-    .oneOf([Yup.ref("password"), null], "Passwords must match"),
+    .oneOf([Yup.ref("password"), null], "Passwords must match")
+    .required("newPassword is required"),
 });
 
 export default function ResetPassword() {
   const navigate = useNavigate();
-  function toSignin(){
-    navigate("/signPage")
+  function toSignin() {
+    navigate("/signPage");
   }
   const toast = useToast();
   const [show, setShow] = React.useState(false);

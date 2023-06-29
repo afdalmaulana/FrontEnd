@@ -31,7 +31,7 @@ import ModalForgetPassword from "../Components/ForgetPassword/ModalForgetPasswor
 import ForgetPassword from "../Components/ForgetPassword/ForgetPassword";
 
 const LoginSchema = Yup.object().shape({
-  identifier: Yup.string().required("Identifier is required"),
+  identifier: Yup.string().required("Username, email, or phone is required"),
   // name: Yup.string().min(5, "username must have 5 characters minimum"),
   // // .required("username is required"),
   // email: Yup.string().email("Invalid email address format"),
@@ -68,10 +68,7 @@ export default function PageSign() {
       console.log("ini console", values);
       const token = localStorage.getItem("token");
       try {
-        <Alert status="success" variant="solid">
-          <AlertIcon />
-          Login Success!
-        </Alert>;
+        alert("Login Success");
         toHome();
       } catch (error) {
         console.log(error);

@@ -3,8 +3,8 @@ import { BiBookBookmark } from "react-icons/bi";
 import WriteBlog from "./components/WriteBlog";
 import { Link } from "react-router-dom";
 import SignIn from "./components/SignIn";
-import SearchBar from "./components/SearchBar";
-import Category from "./components/Category";
+// import SearchBar from "./components/SearchBar";
+// import Category from "./components/Category";
 
 export default function Navbar() {
   return (
@@ -30,7 +30,7 @@ export default function Navbar() {
                   {" "}
                   Book
                 </Text>
-                <SearchBar />
+                {/* <SearchBar /> */}
               </Flex>
             </Box>
           </Button>

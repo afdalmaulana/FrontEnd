@@ -49,7 +49,7 @@ export default function ModalChangePhone({ isOpen, onClose }) {
       console.log("ini respon change phone", respon);
       toast({
         title: "Phone change",
-        description: "Please check your email to verification phone change",
+        description: "Please remember your new phone number to login",
         status: "success",
         duration: 3000,
         isClosable: true,

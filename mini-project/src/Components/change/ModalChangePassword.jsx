@@ -108,80 +108,131 @@ export default function ModalChangePassword({ isOpen, onClose }) {
           <ModalBody>
             <Stack>
               <form onSubmit={formik.handleSubmit}>
-                <FormControl
-                  isInvalid={
-                    formik.touched.currentPassword &&
-                    formik.errors.currentPassword
-                  }
-                >
-                  <Input
-                    required
-                    placeholder="Current Password"
-                    variant={"flushed"}
-                    borderColor={"black"}
-                    w={"350px"}
-                    mt={"20px"}
-                    id="currentPassword"
-                    name="currentPassword"
-                    type="text"
-                    value={formik.values.currentPassword}
-                    onChange={formik.handleChange}
-                  ></Input>
-                  {formik.touched.currentPassword &&
-                    formik.errors.currentPassword && (
+                <InputGroup>
+                  <FormControl
+                    isInvalid={
+                      formik.touched.currentPassword &&
+                      formik.errors.currentPassword
+                    }
+                  >
+                    <Input
+                      required
+                      placeholder="Current Password"
+                      variant={"flushed"}
+                      borderColor={"black"}
+                      ml={"30px"}
+                      w={"300px"}
+                      mt={"20px"}
+                      id="currentPassword"
+                      name="currentPassword"
+                      type={show ? "text" : "password"}
+                      value={formik.values.currentPassword}
+                      onChange={formik.handleChange}
+                      InputRightElement
+                    ></Input>
+                    {formik.touched.currentPassword &&
+                      formik.errors.currentPassword && (
+                        <FormErrorMessage>
+                          {formik.errors.currentPassword}
+                        </FormErrorMessage>
+                      )}
+                    <Button
+                      size="sm"
+                      onClick={handleClick}
+                      mt={"5px"}
+                      variant={"unstyled"}
+                    >
+                      {" "}
+                      {show ? (
+                        <RiEye2Line size={"30px"} />
+                      ) : (
+                        <RiEyeCloseFill size={"30px"} />
+                      )}
+                    </Button>
+                  </FormControl>
+                </InputGroup>
+                <InputGroup>
+                  <FormControl
+                    isInvalid={
+                      formik.touched.password && formik.errors.password
+                    }
+                  >
+                    <Input
+                      required
+                      ml={"30px"}
+                      placeholder="New password"
+                      variant={"flushed"}
+                      borderColor={"black"}
+                      w={"300px"}
+                      mt={"20px"}
+                      id="password"
+                      name="password"
+                      type={show ? "text" : "password"}
+                      value={formik.values.password}
+                      onChange={formik.handleChange}
+                    ></Input>
+                    {formik.touched.password && formik.errors.password && (
                       <FormErrorMessage>
-                        {formik.errors.currentPassword}
+                        {formik.errors.password}
                       </FormErrorMessage>
                     )}
-                </FormControl>
-                <FormControl
-                  isInvalid={formik.touched.password && formik.errors.password}
-                >
-                  <Input
-                    required
-                    placeholder="New password"
-                    variant={"flushed"}
-                    borderColor={"black"}
-                    w={"350px"}
-                    mt={"20px"}
-                    id="password"
-                    name="password"
-                    type="text"
-                    value={formik.values.password}
-                    onChange={formik.handleChange}
-                  ></Input>
-                  {formik.touched.password && formik.errors.password && (
-                    <FormErrorMessage>
-                      {formik.errors.password}
-                    </FormErrorMessage>
-                  )}
-                </FormControl>
-                <FormControl
-                  isInvalid={
-                    formik.touched.confirmPassword &&
-                    formik.errors.confirmPassword
-                  }
-                >
-                  <Input
-                    id="confirmPassword"
-                    name="confirmPassword"
-                    mt={"20px"}
-                    value={formik.values.confirmPassword}
-                    onChange={formik.handleChange}
-                    pr="4.5rem"
-                    type="text"
-                    placeholder="Enter password"
-                    variant={"flushed"}
-                    borderColor={"black"}
-                    w={"350px"}
-                  />
-                  {formik.touched.confirmPassword &&
-                    formik.errors.confirmPassword && (
-                      <FormErrorMessage>
-                        {formik.errors.confirmPassword}
-                      </FormErrorMessage>
-                    )}
-                </FormControl>
+                    <Button
+                      size="sm"
+                      onClick={handleClick}
+                      mt={"5px"}
+                      variant={"unstyled"}
+                    >
+                      {" "}
+                      {show ? (
+                        <RiEye2Line size={"30px"} />
+                      ) : (
+                        <RiEyeCloseFill size={"30px"} />
+                      )}
+                    </Button>
+                  </FormControl>
+                </InputGroup>
+                <InputGroup>
+                  <FormControl
+                    isInvalid={
+                      formik.touched.confirmPassword &&
+                      formik.errors.confirmPassword
+                    }
+                  >
+                    <Input
+                      ml={"30px"}
+                      id="confirmPassword"
+                      name="confirmPassword"
+                      mt={"20px"}
+                      value={formik.values.confirmPassword}
+                      onChange={formik.handleChange}
+                      pr="4.5rem"
+                      type={show ? "text" : "password"}
+                      placeholder="Enter password"
+                      variant={"flushed"}
+                      borderColor={"black"}
+                      w={"300px"}
+                    />
+                    {formik.touched.confirmPassword &&
+                      formik.errors.confirmPassword && (
+                        <FormErrorMessage>
+                          {formik.errors.confirmPassword}
+                        </FormErrorMessage>
+                      )}
+                    <Button
+                      size="sm"
+                      onClick={handleClick}
+                      mt={"5px"}
+                      variant={"unstyled"}
+                    >
+                      {" "}
+                      {show ? (
+                        <RiEye2Line size={"30px"} />
+                      ) : (
+                        <RiEyeCloseFill size={"30px"} />
+                      )}
+                    </Button>
+                  </FormControl>
+                </InputGroup>
                 <ModalFooter>
                   <Button
                     mt={"20px"}

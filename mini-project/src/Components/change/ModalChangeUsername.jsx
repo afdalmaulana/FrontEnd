@@ -61,7 +61,7 @@ export default function ModalChangeUsername({ isOpen, onClose }) {
       console.log("ini respon changeusername", respon);
       toast({
         title: "Username change",
-        description: "Please check your email to verification username change",
+        description: "Please remember your new username to login",
         status: "success",
         duration: 3000,
         isClosable: true,
@@ -72,7 +72,7 @@ export default function ModalChangeUsername({ isOpen, onClose }) {
       console.log(error);
       toast({
         title: "Error",
-        description: "your password is not change",
+        description: "your username is not change",
         status: "error",
         duration: 3000,
         isClosable: true,

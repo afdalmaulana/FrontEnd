@@ -18,7 +18,8 @@ import {
 } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { BsBookmarkPlus, BsHeart } from "react-icons/bs";
+import { GrLike } from "react-icons/gr";
+import { BsFillBookmarkStarFill, BsHeart } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
 import { addToBookmark } from "../../../redux/reducer/BlogReducer";
 
@@ -246,7 +247,7 @@ const Explore = ({ linkRef }) => {
                           rounded={"full"}
                           aria-label="Bookmark"
                           onClick={() => noToast()}
-                          icon={<BsBookmarkPlus />}
+                          icon={<BsFillBookmarkStarFill />}
                         />
                       ) : (
                         <IconButton
@@ -257,17 +258,17 @@ const Explore = ({ linkRef }) => {
                           onClick={() =>
                             dispatch(addToBookmark(article), toToastAdd())
                           }
-                          icon={<BsBookmarkPlus />}
+                          icon={<BsFillBookmarkStarFill />}
                         />
                       )}
 
-                      <IconButton
+                      <Button
                         variant={"ghost"}
-                        size={"md"}
                         rounded={"full"}
-                        aria-label="Like"
-                        icon={<BsHeart />}
-                      />
+                        leftIcon={<GrLike />}
+                      >
+                        Like
+                      </Button>
                     </CardFooter>
                   </Card>
                 </Box>

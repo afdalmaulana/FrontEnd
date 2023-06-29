@@ -195,28 +195,32 @@ export default function CarouselNew() {
                 <CardFooter mt={"6px"}>
                   <ButtonGroup spacing="2">
                     <Button
-                      variant=""
-                      colorScheme="white"
+                      variant={"ghost"}
+                      rounded={"full"}
                       leftIcon={<GrLike />}
                     >
                       Like
                     </Button>
                     {!login ? (
-                      <Button
-                        variant=""
-                        color="black"
-                        rightIcon={<BsFillBookmarkStarFill />}
+                      <IconButton
+                        variant={"ghost"}
+                        size={"md"}
+                        rounded={"full"}
+                        aria-label="Bookmark"
                         onClick={() => noToast()}
-                      ></Button>
+                        icon={<BsFillBookmarkStarFill />}
+                      />
                     ) : (
-                      <Button
-                        variant=""
-                        color="black"
-                        rightIcon={<BsFillBookmarkStarFill />}
+                      <IconButton
+                        variant={"ghost"}
+                        size={"md"}
+                        rounded={"full"}
+                        aria-label="Bookmark"
                         onClick={() =>
                           dispatch(addToBookmark(item), toToastAdd())
                         }
-                      ></Button>
+                        icon={<BsFillBookmarkStarFill />}
+                      />
                     )}
                   </ButtonGroup>
                 </CardFooter>

@@ -16,8 +16,9 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function ModalLogin({ isOpen, onClose }) {
   const navigate = useNavigate();
-  function toSignPage() {
-    navigate("/signPage");
+  function toSignUp() {
+    navigate("/pageRegister");
+    onClose();
   }
   return (
     <>
@@ -35,7 +36,7 @@ export default function ModalLogin({ isOpen, onClose }) {
                 mr={"auto"}
                 borderRadius={"40px"}
                 mt={"10px"}
-                onClick={toSignPage}
+                onClick={toSignUp}
               >
                 Sign up
               </Button>
@@ -62,7 +63,7 @@ export default function ModalLogin({ isOpen, onClose }) {
               </Button>
               <Flex ml={"50px"} w={"300px"} mt={"50px"} fontSize={"15px"}>
                 <Text>Already have ay account ? </Text>
-                <Link to={"/signPage"}>
+                <Link to={"/signPage"} onClick={onClose}>
                   <Text color={"green"}>Sign in</Text>
                 </Link>
               </Flex>

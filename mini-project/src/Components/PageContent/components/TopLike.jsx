@@ -9,6 +9,7 @@ import {
   Divider,
   Flex,
   Heading,
+  IconButton,
   Image,
   Stack,
   Text,
@@ -68,19 +69,19 @@ export default function TopLike() {
         <Flex wrap={"wrap"} gap={"20px"}>
           {like.map((item) => {
             return (
-              <Card w="430px" maxH="lg" shadow={'dark-lg'}>
+              <Card w="430px" maxH="lg" shadow={"dark-lg"}>
                 <CardBody justifyContent={"center"}>
                   {/* <Center> */}
-                    <Box
-                      height={"140px"}
-                      position="relative"
-                      backgroundPosition="center"
-                      backgroundRepeat="no-repeat"
-                      backgroundSize="cover"
-                      borderRadius="lg"
-                      backgroundImage={`https://minpro-blog.purwadhikabootcamp.com/${item.imageURL}`}
-                    ></Box>
-                    {/* <Image
+                  <Box
+                    height={"140px"}
+                    position="relative"
+                    backgroundPosition="center"
+                    backgroundRepeat="no-repeat"
+                    backgroundSize="cover"
+                    borderRadius="lg"
+                    backgroundImage={`https://minpro-blog.purwadhikabootcamp.com/${item.imageURL}`}
+                  ></Box>
+                  {/* <Image
                       src={`https://minpro-blog.purwadhikabootcamp.com/${item.imageURL}`}
                       borderRadius="lg"
                       w={"400px"}
@@ -104,7 +105,7 @@ export default function TopLike() {
                     </Text>
                     <Flex>
                       <Box mt={"10px"}>
-                        <AiFillHeart color="red" size={"20px"} />
+                        <GrLike color="red" size={"20px"} />
                       </Box>
                       <Text color="black" fontSize="1xl" mt={"8px"}>
                         : {item.total_fav} likes
@@ -116,28 +117,32 @@ export default function TopLike() {
                 <CardFooter>
                   <ButtonGroup spacing="2">
                     <Button
-                      variant=""
-                      colorScheme="white"
+                      variant={"ghost"}
+                      rounded={"full"}
                       leftIcon={<GrLike />}
                     >
                       Like
                     </Button>
                     {!login ? (
-                      <Button
-                        variant=""
-                        color="black"
-                        rightIcon={<BsFillBookmarkStarFill />}
+                      <IconButton
+                        variant={"ghost"}
+                        size={"md"}
+                        rounded={"full"}
+                        aria-label="Bookmark"
                         onClick={() => noToast()}
-                      ></Button>
+                        icon={<BsFillBookmarkStarFill />}
+                      />
                     ) : (
-                      <Button
-                        variant=""
-                        color="black"
-                        rightIcon={<BsFillBookmarkStarFill />}
+                      <IconButton
+                        variant={"ghost"}
+                        size={"md"}
+                        rounded={"full"}
+                        aria-label="Bookmark"
                         onClick={() =>
                           dispatch(addToBookmark(item), toToastAdd())
                         }
-                      ></Button>
+                        icon={<BsFillBookmarkStarFill />}
+                      />
                     )}
                   </ButtonGroup>
                 </CardFooter>
