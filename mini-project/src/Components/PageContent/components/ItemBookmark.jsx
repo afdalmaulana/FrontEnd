@@ -1,11 +1,14 @@
 import {
+  Box,
   Button,
   Card,
   CardBody,
   CardFooter,
+  Divider,
   Heading,
   Image,
   Stack,
+  Tag,
   Text,
 } from "@chakra-ui/react";
 
@@ -19,16 +22,29 @@ export default function ItemBookmark({ bookmark }) {
           variant="outline"
         >
           <Image
-            objectFit="cover"
-            maxW={{ base: "100%", sm: "200px" }}
+            objectFit="center"
+            w={"300px"}
+            h={"300px"}
             src={`https://minpro-blog.purwadhikabootcamp.com/${item.imageURL}`}
             alt="bloglist"
           />
 
           <Stack>
             <CardBody>
-              <Heading size="md">{item.title}</Heading>
+              <Heading size="lg">{item.title}</Heading>
+              <Box bgColor={"black"} w={"400px"}>
+                <Divider />
+              </Box>
+              <Text py="2" color={"blue.300"}>
+                creator : {item.User.username}
+              </Text>
               <Text py="2">{item.content}</Text>
+              <Text py="2">
+                Published: {new Date(item.createdAt).toLocaleDateString()}
+              </Text>
+              <Tag py="2" rounded={"full"}>
+                {item.Category.name}
+              </Tag>
             </CardBody>
 
             <CardFooter></CardFooter>

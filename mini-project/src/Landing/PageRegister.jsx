@@ -40,9 +40,8 @@ const RegistrasiSchema = Yup.object().shape({
   password: Yup.string()
     .matches(
       /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-      "Username must contain at least 8 characters, one uppercase, one number and one special case character"
+      "Password must contain at least 8 characters, one uppercase, one number and one special case character"
     )
-    .min(6, "Password must be 6 characters minimum")
     .required("Password is required"),
   confirm: Yup.string().oneOf(
     [Yup.ref("password"), null],

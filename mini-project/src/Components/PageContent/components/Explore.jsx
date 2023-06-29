@@ -108,7 +108,7 @@ const Explore = ({ linkRef }) => {
           onClick={() => handlePageChange(pageNum)}
           isActive={index === pageNum}
           disabled={index === pageNum}
-          color="blue.400"
+          color="yellow.600"
         >
           {pageNum}
         </Button>
@@ -151,7 +151,7 @@ const Explore = ({ linkRef }) => {
           fontFamily={"mono"}
           mt={"50px"}
         >
-          All Blog and Book
+          All Article and Blog
         </Heading>
       </Box>
       <Box
@@ -218,7 +218,7 @@ const Explore = ({ linkRef }) => {
                         </Heading>
                         <Text noOfLines={2}>{article.content}</Text>
                         <Text fontSize={"sm"} color={"gray.500"}>
-                          {article.User.username}
+                          creator : {article.User.username}
                         </Text>
                         <Text fontSize={"sm"} color={"gray.500"}>
                           Published:{" "}
@@ -277,7 +277,7 @@ const Explore = ({ linkRef }) => {
       </Box>
       <Box display="flex" justifyContent="center" mb={4}>
         <Button
-          size={"sm"}
+          size={"md"}
           colorScheme="yellow"
           onClick={handlePrevPage}
           disabled={activePage === 1}
@@ -286,7 +286,7 @@ const Explore = ({ linkRef }) => {
         </Button>
         {renderPageButtons()}
         <Button
-          size={"sm"}
+          size={"md"}
           colorScheme="yellow"
           onClick={handleNextPage}
           disabled={activePage === Math.ceil(articles.length / 5)}

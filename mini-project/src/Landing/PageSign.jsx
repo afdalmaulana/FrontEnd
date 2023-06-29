@@ -1,4 +1,6 @@
 import {
+  Alert,
+  AlertIcon,
   Box,
   Button,
   Divider,
@@ -64,21 +66,15 @@ export default function PageSign() {
     onSubmit: (values) => {
       dispatch(signIn(values));
       console.log("ini console", values);
+      const token = localStorage.getItem("token");
       try {
-        toast({
-          description: "Login Success, Happy Reading",
-          status: "success",
-          duration: 3000,
-          isClosable: true,
-        });
+        <Alert status="success" variant="solid">
+          <AlertIcon />
+          Login Success!
+        </Alert>;
         toHome();
       } catch (error) {
-        toast({
-          description: "Account not verify",
-          status: "error",
-          duration: 3000,
-          isClosable: true,
-        });
+        console.log(error);
       }
     },
   });

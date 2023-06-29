@@ -91,7 +91,7 @@ export default function TopLike() {
                   <Stack mt="6" spacing="2">
                     <Heading size="md">{item.title}</Heading>
                     <Text color="blue.600" fontSize="10px">
-                      {item.User.username}
+                      creator : {item.User.username}
                     </Text>
                     <Text fontSize={"12px"} noOfLines={2}>
                       {item.content}

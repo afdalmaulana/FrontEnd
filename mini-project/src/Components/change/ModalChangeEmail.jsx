@@ -16,6 +16,7 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { useFormik } from "formik";
+import { useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 const ChangeEmailSchema = Yup.object().shape({
@@ -29,6 +30,10 @@ const ChangeEmailSchema = Yup.object().shape({
 
 export default function ModalChangeEmail({ isOpen, onClose }) {
   const toast = useToast();
+  const navigate = useNavigate();
+  function toHome() {
+    navigate("/");
+  }
   const emailChange = async (values) => {
     const token = localStorage.getItem("token");
     const { currentEmail, newEmail } = values;
@@ -53,6 +58,7 @@ export default function ModalChangeEmail({ isOpen, onClose }) {
         duration: 3000,
         isClosable: true,
       });
+      toHome();
     } catch (error) {
       console.log(error);
     }

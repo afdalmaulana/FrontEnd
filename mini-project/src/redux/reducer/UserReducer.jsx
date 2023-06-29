@@ -1,4 +1,4 @@
-import { useToast } from "@chakra-ui/react";
+import { Alert, AlertIcon, useToast } from "@chakra-ui/react";
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { useState } from "react";
@@ -13,7 +13,6 @@ const initialState = {
     role: false,
   },
   login: false,
-  loginError: null,
 };
 
 export const UserReducer = createSlice({
@@ -69,6 +68,11 @@ export const signIn = (values) => {
       dispatch(userLogin());
       dispatch(setUser(login.data.isAccountExist));
       // document.location.href = "/";
+      // alert("Login Success");
+      <Alert status="success" variant="solid">
+        <AlertIcon />
+        Login Success!
+      </Alert>;
     } catch (error) {
       console.log("ini error", error);
     }

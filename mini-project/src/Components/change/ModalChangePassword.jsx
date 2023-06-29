@@ -169,13 +169,11 @@ export default function ModalChangePassword({ isOpen, onClose }) {
                     value={formik.values.confirmPassword}
                     onChange={formik.handleChange}
                     pr="4.5rem"
-                    type={show ? "text" : "password"}
+                    type="text"
                     placeholder="Enter password"
                     variant={"flushed"}
                     borderColor={"black"}
                     w={"350px"}
-                    InputRightElement
-                    // value={password}
                   />
                   {formik.touched.confirmPassword &&
                     formik.errors.confirmPassword && (

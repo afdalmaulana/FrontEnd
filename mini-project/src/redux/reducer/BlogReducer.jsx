@@ -36,7 +36,7 @@ export const makeArticle = (data, file) => {
         }
       );
       alert("Article telah dibuat");
-      // document.location.href = "/";
+      document.location.href = "/";
     } catch (error) {
       console.log(error);
     }

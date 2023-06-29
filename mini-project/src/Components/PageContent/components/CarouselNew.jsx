@@ -178,7 +178,7 @@ export default function CarouselNew() {
                       {item.title}
                     </Text>
                     <Text color="blue.600" fontSize="10px">
-                      {item.User.username}
+                      creator : {item.User.username}
                     </Text>
                     <Text fontSize={"12px"} noOfLines={2}>
                       {item.content}
