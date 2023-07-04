@@ -29,16 +29,16 @@ export default function ProfilePage() {
 
   return (
     <>
-      <Box shadow={'lg'} borderRadius={'20px'}>
+      <Box shadow={"lg"} borderRadius={"20px"}>
         <Flex justify={"space-around"}>
-          <Box mt={'20px'}>
+          <Box mt={"20px"}>
             <Avatar
               src={`https://minpro-blog.purwadhikabootcamp.com/${user.imgProfile}`}
               alt="Profile Picture"
               size="2xl"
             />
           </Box>
-          <Box ml={"20px"} mt={'20px'}>
+          <Box ml={"20px"} mt={"20px"}>
             <Avatar src={image} size={"2xl"}></Avatar>
           </Box>
         </Flex>
@@ -69,6 +69,8 @@ export default function ProfilePage() {
             w={"300px"}
             ml={"180px"}
             colorScheme="yellow"
+            mb={"10px"}
+            borderRadius={"20px"}
           >
             Update Picture
           </Button>

@@ -64,15 +64,7 @@ export default function PageSign() {
     },
     validationSchema: LoginSchema,
     onSubmit: (values) => {
-      dispatch(signIn(values));
-      console.log("ini console", values);
-      const token = localStorage.getItem("token");
-      try {
-        alert("Login Success");
-        toHome();
-      } catch (error) {
-        console.log(error);
-      }
+      dispatch(signIn(values, toast));
     },
   });
   //

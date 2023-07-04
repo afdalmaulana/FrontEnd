@@ -17,14 +17,13 @@ export default function ItemBookmark({ bookmark }) {
     return (
       <>
         <Card
-          direction={{ base: "column", sm: "row" }}
+          direction={{ base: "column", md: "row" }}
           overflow="hidden"
           variant="outline"
         >
           <Image
             objectFit="center"
-            w={"300px"}
-            h={"300px"}
+            w={"150px"}
             src={`https://minpro-blog.purwadhikabootcamp.com/${item.imageURL}`}
             alt="bloglist"
           />

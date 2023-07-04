@@ -3,9 +3,12 @@ import {
   Avatar,
   Box,
   Button,
+  Divider,
   Menu,
   MenuButton,
   MenuList,
+  Stack,
+  Text,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
@@ -59,10 +62,27 @@ export default function UserProfile() {
             rightIcon={<ChevronDownIcon />}
             variant=""
           ></MenuButton>
-          <MenuList w={"300px"} marginRight={"10px"}>
+          <MenuList w={"320px"} marginRight={"5px"}>
+            <Box w={"320px"} mb={"20px"}>
+              <Text ml={"20px"} fontSize={"15px"} fontFamily={"mono"}>
+                Username :
+              </Text>
+              <Text ml={"20px"} fontSize={"15px"} fontFamily={"mono"}>
+                {user.username}
+              </Text>
+              <Text ml={"20px"} fontSize={"15px"} fontFamily={"mono"}>
+                Email :
+              </Text>
+              <Text ml={"20px"} fontSize={"15px"} fontFamily={"mono"}>
+                {user.email}
+              </Text>
+            </Box>
+            <Box bgColor={"black"}>
+              <Divider />
+            </Box>
             <Button
               variant={""}
-              w={"200px"}
+              w={"250px"}
               leftIcon={<CgProfile />}
               fontSize={"15px"}
               justifyContent={"left"}

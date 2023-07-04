@@ -68,8 +68,8 @@ export default function ModalLogin({ isOpen, onClose }) {
                 </Link>
               </Flex>
               <Text mt={"50px"} fontSize={"10px"}>
-                Click “Sign Up” to agree to Medium Terms of Service and
-                acknowledge that Medium Privacy Policy applies to you.
+                Click “Sign Up” to agree to Golden Book Terms of Service and
+                acknowledge that Golden Book Privacy Policy applies to you.
               </Text>
             </Stack>
           </ModalBody>

@@ -21,12 +21,19 @@ import { GrLike } from "react-icons/gr";
 import Slider from "react-slick";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import { addToBookmark } from "../../../redux/reducer/BlogReducer";
+import {
+  addToBookmark,
+  likeBlog,
+  viewArticle,
+} from "../../../redux/reducer/BlogReducer";
+import { useNavigate } from "react-router-dom";
+import { AiOutlineArrowUp } from "react-icons/ai";
 
 export default function CarouselNew() {
   const login = useSelector((state) => state.UserReducer.login);
   const toast = useToast();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   function toToastAdd() {
     toast({
@@ -97,6 +104,27 @@ export default function CarouselNew() {
     autoplaySpeed: 1000,
     cssEase: "linear",
   };
+
+  const getLike = (item) => {
+    const token = localStorage.getItem("token");
+    console.log("id like: ", item);
+    if (token) {
+      return dispatch(likeBlog(item, toast));
+    } else {
+      toast({
+        title: "Please Login First",
+        status: "error",
+        description: "You need to login first, to like the blog",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+    // console.log("ini like", like.id);
+  };
+  function viewBlog(item) {
+    dispatch(viewArticle(item));
+    navigate(`/viewarticle/${item.id}?${item.title}`);
+  }
   return (
     <>
       <Box h={"600px"} id="carousel" mt={"50px"}>
@@ -199,6 +227,7 @@ export default function CarouselNew() {
                       variant={"ghost"}
                       rounded={"full"}
                       leftIcon={<GrLike />}
+                      onClick={() => getLike(item.id)}
                     >
                       Like
                     </Button>
@@ -223,6 +252,14 @@ export default function CarouselNew() {
                         icon={<BsFillBookmarkStarFill />}
                       />
                     )}
+                    <Button
+                      rightIcon={<AiOutlineArrowUp />}
+                      onClick={() => viewBlog(item)}
+                      colorScheme="yellow"
+                      borderRadius={"20px"}
+                    >
+                      Read More
+                    </Button>
                   </ButtonGroup>
                 </CardFooter>
               </Card>

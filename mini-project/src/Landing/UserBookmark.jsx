@@ -16,6 +16,7 @@ import Navbar from "../Components/navbar/Navbar";
 import { useSelector } from "react-redux";
 import ItemBookmark from "../Components/PageContent/components/ItemBookmark";
 import UserAvatar from "../Components/PageContent/components/UserAvatar";
+import LikedArticle from "./LikedArticle";
 
 export default function UserBookmark() {
   const bookmarkBlog = useSelector((state) => state.BlogReducer.blog);
@@ -39,11 +40,17 @@ export default function UserBookmark() {
               <Tabs w={"650px"}>
                 <TabList>
                   <Tab>Bookmark</Tab>
+                  <Tab>Liked Article</Tab>
                 </TabList>
                 <TabPanels>
                   <TabPanel>
                     <Box>
                       <ItemBookmark bookmark={bookmarkBlog} />
+                    </Box>
+                  </TabPanel>
+                  <TabPanel>
+                    <Box>
+                      <LikedArticle />
                     </Box>
                   </TabPanel>
                 </TabPanels>

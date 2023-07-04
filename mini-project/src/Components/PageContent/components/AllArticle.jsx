@@ -20,9 +20,16 @@ import "swiper/css";
 import { GrLike } from "react-icons/gr";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { addToBookmark, likeBlog } from "../../../redux/reducer/BlogReducer";
+import {
+  addToBookmark,
+  likeBlog,
+  viewArticle,
+} from "../../../redux/reducer/BlogReducer";
+import { AiOutlineArrowUp } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 
-export default function AllArticle ({ linkRef }) {
+export default function AllArticle({ linkRef }) {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const login = useSelector((state) => state.UserReducer.login);
   const toast = useToast();
@@ -52,6 +59,8 @@ export default function AllArticle ({ linkRef }) {
   const [sortOrder, setSortOrder] = useState("ASC");
   const [index, setIndex] = useState(1);
   const [page, setPage] = useState(0);
+
+  const [likes, setLikes] = useState({});
 
   const fetchData = async () => {
     try {
@@ -142,7 +151,26 @@ export default function AllArticle ({ linkRef }) {
     }
   });
 
-
+  function viewBlog(item) {
+    dispatch(viewArticle(item));
+    navigate(`/viewarticle/${item.id}?${item.title}`);
+  }
+  const getLike = (item) => {
+    const token = localStorage.getItem("token");
+    console.log("id like: ", item);
+    if (token) {
+      return dispatch(likeBlog(item, toast));
+    } else {
+      toast({
+        title: "Please Login First",
+        status: "error",
+        description: "You need to login first, to like the blog",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+    // console.log("ini like", like.id);
+  };
   return (
     <Box>
       <Box m={"24px 60px 40px"}>
@@ -261,11 +289,19 @@ export default function AllArticle ({ linkRef }) {
                           icon={<BsFillBookmarkStarFill />}
                         />
                       )}
-
+                      <Button
+                        rightIcon={<AiOutlineArrowUp />}
+                        onClick={() => viewBlog(article)}
+                        colorScheme="yellow"
+                        borderRadius={"20px"}
+                      >
+                        Read More
+                      </Button>
                       <Button
                         variant={"ghost"}
                         rounded={"full"}
                         leftIcon={<GrLike />}
+                        onClick={() => getLike(article.id)}
                       >
                         Like
                       </Button>
@@ -298,5 +334,4 @@ export default function AllArticle ({ linkRef }) {
       </Box>
     </Box>
   );
-};
-
+}

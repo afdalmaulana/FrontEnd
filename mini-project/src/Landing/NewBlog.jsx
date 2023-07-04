@@ -11,6 +11,7 @@ import {
   Text,
   Textarea,
   useEditableControls,
+  useToast,
 } from "@chakra-ui/react";
 import Navbar from "../Components/navbar/Navbar";
 import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
@@ -20,6 +21,7 @@ import { useDispatch } from "react-redux";
 import { makeArticle } from "../redux/reducer/BlogReducer";
 
 export default function NewBlog() {
+  const toast = useToast();
   const dispatch = useDispatch();
   const [selected, setSelected] = useState("");
   const handleOption = (event) => {
@@ -54,7 +56,7 @@ export default function NewBlog() {
       content: document.getElementById("content").value,
     };
     const file = document.getElementById("file").files[0];
-    dispatch(makeArticle(data, file));
+    dispatch(makeArticle(data, file, toast));
   };
 
   return (

@@ -16,6 +16,7 @@ import Navbar from './Components/navbar/Navbar';
 import Verify from './Landing/Verify';
 import ResetPassword from './Landing/ResetPassword';
 import UserAuth from './Components/UserAuth';
+import ViewArticle from './Landing/ViewArticle';
 // import UserAuth from './Components/UserAuth';
 // import Pages from './Pages';
 
@@ -42,6 +43,7 @@ function App() {
         <Route path='/verification/:token' element={<Verify/>}/>
         <Route path='/verification-change-email/:token' element={<Verify/>}/>
         <Route path='/reset-password/:token' element={<ResetPassword/>}/>
+        <Route path='/viewarticle/:id' element={<ViewArticle/>}/>
         {/* /verification/:token */}
       </Routes>
       {/* <Pages/> */}

@@ -8,6 +8,7 @@ import {
   FormLabel,
   Input,
   InputGroup,
+  InputLeftAddon,
   Stack,
   Text,
   useToast,
@@ -184,24 +185,28 @@ export default function PageRegister() {
                       isInvalid={formik.touched.phone && formik.errors.phone}
                     >
                       <FormLabel></FormLabel>
-                      <Input
-                        placeholder="Phone Number"
-                        variant={"flushed"}
-                        borderColor={"black"}
-                        w={"320px"}
-                        id="phone"
-                        name="phone"
-                        type="text"
-                        mt={"20px"}
-                        value={formik.values.phone}
-                        onChange={formik.handleChange}
-                      ></Input>
+                      <InputGroup>
+                        <InputLeftAddon children="+62" mt={"20px"} />
+                        <Input
+                          placeholder="Phone Number"
+                          variant={"flushed"}
+                          borderColor={"black"}
+                          w={"250px"}
+                          id="phone"
+                          name="phone"
+                          type="text"
+                          mt={"20px"}
+                          value={formik.values.phone}
+                          onChange={formik.handleChange}
+                        ></Input>
+                      </InputGroup>
                       {formik.touched.phone && formik.errors.phone && (
                         <FormErrorMessage>
                           {formik.errors.phone}
                         </FormErrorMessage>
                       )}
                     </FormControl>
+
                     <FormControl
                       isInvalid={
                         formik.touched.password && formik.errors.password

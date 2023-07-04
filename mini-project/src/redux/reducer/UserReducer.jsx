@@ -48,7 +48,7 @@ export const UserReducer = createSlice({
   },
 });
 
-export const signIn = (values) => {
+export const signIn = (values, toast) => {
   return async (dispatch) => {
     try {
       // const { name, email, password, phone } = values;
@@ -67,14 +67,25 @@ export const signIn = (values) => {
       localStorage.setItem("token", token);
       dispatch(userLogin());
       dispatch(setUser(login.data.isAccountExist));
-      // document.location.href = "/";
-      // alert("Login Success");
-      <Alert status="success" variant="solid">
-        <AlertIcon />
-        Login Success!
-      </Alert>;
+      toast({
+        title: "Login Success",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      setTimeout(() => {
+        // window.location.reload();
+        document.location.href = "/";
+      }, 350);
     } catch (error) {
       console.log("ini error", error);
+      toast({
+        title: "Login Failed",
+        description: "Account Not Verify",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
     }
   };
 };

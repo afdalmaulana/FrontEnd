@@ -16,14 +16,23 @@ import {
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { GrLike } from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
-import { addToBookmark, likeBlog } from "../../../redux/reducer/BlogReducer";
+import {
+  addToBookmark,
+  dislikeBlog,
+  likeBlog,
+  viewArticle,
+} from "../../../redux/reducer/BlogReducer";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AiOutlineArrowUp } from "react-icons/ai";
 
 export default function TopLike() {
   const login = useSelector((state) => state.UserReducer.login);
   const [like, setLike] = useState([]);
   const [likes, setLikes] = useState({});
+
+  const navigate = useNavigate();
 
   const topLike = async () => {
     try {
@@ -67,15 +76,9 @@ export default function TopLike() {
 
   const getLike = (item) => {
     const token = localStorage.getItem("token");
-    // console.log("id like: ", item);
+    console.log("id like: ", item);
     if (token) {
-      toast({
-        title: "Like Success",
-        status: "success",
-        duration: 3000,
-        isClosable: true,
-      });
-      return dispatch(likeBlog(item));
+      return dispatch(likeBlog(item, toast));
     } else {
       toast({
         title: "Please Login First",
@@ -87,6 +90,10 @@ export default function TopLike() {
     }
     // console.log("ini like", like.id);
   };
+  function viewBlog(item) {
+    dispatch(viewArticle(item));
+    navigate(`/viewarticle/${item.id}?${item.title}`);
+  }
   return (
     <>
       <Box ml={"40px"} mt={"100px"}>
@@ -95,7 +102,7 @@ export default function TopLike() {
         </Text>
         <Flex wrap={"wrap"} gap={"20px"} id="blogTopLike">
           {like.map((item) => {
-            console.log("ini isi likeees:", like);
+            // console.log("ini isi likeees:", like);
             return (
               <Card key={item.id} w="430px" maxH="lg" shadow={"dark-lg"}>
                 <CardBody justifyContent={"center"}>
@@ -174,6 +181,14 @@ export default function TopLike() {
                         icon={<BsFillBookmarkStarFill />}
                       />
                     )}
+                    <Button
+                      rightIcon={<AiOutlineArrowUp />}
+                      onClick={() => viewBlog(item)}
+                      colorScheme="yellow"
+                      borderRadius={"20px"}
+                    >
+                      Read More
+                    </Button>
                   </ButtonGroup>
                 </CardFooter>
               </Card>
