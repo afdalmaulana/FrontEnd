@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import {
   Box,
@@ -19,9 +18,9 @@ import {
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { GrLike } from "react-icons/gr";
-import { BsFillBookmarkStarFill, BsHeart } from "react-icons/bs";
+import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { useDispatch, useSelector } from "react-redux";
-import { addToBookmark } from "../../../redux/reducer/BlogReducer";
+import { addToBookmark, likeBlog } from "../../../redux/reducer/BlogReducer";
 
 const Explore = ({ linkRef }) => {
   const dispatch = useDispatch();
@@ -142,6 +141,7 @@ const Explore = ({ linkRef }) => {
       return b.createdAt.localeCompare(a.createdAt);
     }
   });
+
 
   return (
     <Box>

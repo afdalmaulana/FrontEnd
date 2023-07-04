@@ -157,6 +157,7 @@ export default function CarouselNew() {
           {latest.map((item) => {
             return (
               <Card
+                key={item.id}
                 maxW="450px"
                 minW={"450px"}
                 minH={"510px"}

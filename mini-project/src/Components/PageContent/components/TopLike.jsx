@@ -5,34 +5,38 @@ import {
   Card,
   CardBody,
   CardFooter,
-  Center,
   Divider,
   Flex,
   Heading,
   IconButton,
-  Image,
   Stack,
   Text,
   useToast,
 } from "@chakra-ui/react";
-import { AiFillEye } from "react-icons/ai";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { GrLike } from "react-icons/gr";
 import { useDispatch, useSelector } from "react-redux";
-import { addToBookmark } from "../../../redux/reducer/BlogReducer";
+import { addToBookmark, likeBlog } from "../../../redux/reducer/BlogReducer";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { AiFillHeart } from "react-icons/ai";
 
 export default function TopLike() {
   const login = useSelector((state) => state.UserReducer.login);
   const [like, setLike] = useState([]);
+  const [likes, setLikes] = useState({});
+
   const topLike = async () => {
     try {
       const respon = await axios.get(
         "https://minpro-blog.purwadhikabootcamp.com/api/blog/pagFav?size=10&sort=DESC&orderBy=total_fav"
       );
       setLike(respon.data.result);
+      // console.log("isi id :", like)
+      const likesData = respon.data.result.reduce((acc, item) => {
+        acc[item.id] = item.total_fav;
+        return acc;
+      }, {});
+      setLikes(likesData);
     } catch (error) {
       console.log(error);
     }
@@ -60,16 +64,40 @@ export default function TopLike() {
       isClosable: true,
     });
   }
+
+  const getLike = (item) => {
+    const token = localStorage.getItem("token");
+    console.log("id like: ", item);
+    if (token) {
+      toast({
+        title: "Like Success",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      return dispatch(likeBlog(item));
+    } else {
+      toast({
+        title: "Please Login First",
+        status: "error",
+        description: "You need to login first, to like the blog",
+        duration: 3000,
+        isClosable: true,
+      });
+    }
+    console.log("ini like", like.id);
+  };
   return (
     <>
       <Box ml={"40px"} mt={"100px"}>
         <Text fontSize={"5xl"} fontWeight={"bold"} fontFamily={"mono"}>
           10 Top Like
         </Text>
-        <Flex wrap={"wrap"} gap={"20px"}>
+        <Flex wrap={"wrap"} gap={"20px"} id="blogTopLike">
           {like.map((item) => {
+            console.log("ini isi likeees:", like);
             return (
-              <Card w="430px" maxH="lg" shadow={"dark-lg"}>
+              <Card key={item.id} w="430px" maxH="lg" shadow={"dark-lg"}>
                 <CardBody justifyContent={"center"}>
                   {/* <Center> */}
                   <Box
@@ -108,7 +136,8 @@ export default function TopLike() {
                         <GrLike color="red" size={"20px"} />
                       </Box>
                       <Text color="black" fontSize="1xl" mt={"8px"}>
-                        : {item.total_fav} likes
+                        {/* : {likes[item.id] || 0} likes */}: {item.total_fav}{" "}
+                        likes
                       </Text>
                     </Flex>
                   </Stack>
@@ -120,6 +149,7 @@ export default function TopLike() {
                       variant={"ghost"}
                       rounded={"full"}
                       leftIcon={<GrLike />}
+                      onClick={() => getLike(item.id)}
                     >
                       Like
                     </Button>

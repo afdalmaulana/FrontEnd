@@ -43,5 +43,28 @@ export const makeArticle = (data, file) => {
   };
 };
 
+export const likeBlog = (blogId) => {
+  return async () => {
+    const token = localStorage.getItem("token");
+    try {
+      const respon = await axios.post(
+        "https://minpro-blog.purwadhikabootcamp.com/api/blog/like",
+        {
+          BlogId: blogId,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      // alert("Blog liked");
+      window.location.reload();
+    } catch (error) {
+      console.log("ini error like", error);
+    }
+  };
+};
+
 export const { addToBookmark } = BlogReducer.actions;
 export default BlogReducer.reducer;
