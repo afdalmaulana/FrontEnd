@@ -67,7 +67,7 @@ export default function TopLike() {
 
   const getLike = (item) => {
     const token = localStorage.getItem("token");
-    console.log("id like: ", item);
+    // console.log("id like: ", item);
     if (token) {
       toast({
         title: "Like Success",
@@ -85,7 +85,7 @@ export default function TopLike() {
         isClosable: true,
       });
     }
-    console.log("ini like", like.id);
+    // console.log("ini like", like.id);
   };
   return (
     <>

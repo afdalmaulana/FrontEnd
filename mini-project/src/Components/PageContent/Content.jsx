@@ -13,8 +13,9 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import TopLike from "./components/TopLike";
 import BlogList from "./components/BlogList";
 import jsonTopLike from "../../json-dummy/listBlog.json";
-import Explore from "./components/Explore";
+// import Explore from "./components/Explore";
 import { useSelector } from "react-redux";
+import AllArticle from "./components/AllArticle";
 
 export default function Content() {
   const login = useSelector((state) => state.UserReducer.login);
@@ -97,7 +98,7 @@ export default function Content() {
                     fontSize={"2xl"}
                     variant={""}
                     rightIcon={<AiOutlineArrowRight />}
-                    onClick={() => document.location.href = "/"}
+                    onClick={() => (document.location.href = "/")}
                   >
                     Start
                   </Button>
@@ -120,7 +121,7 @@ export default function Content() {
           </Stack>
         </Box>
         {/* <BlogList /> */}
-        <Explore />
+        <AllArticle />
       </Box>
     </>
   );
