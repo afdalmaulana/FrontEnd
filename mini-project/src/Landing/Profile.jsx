@@ -6,6 +6,7 @@ import {
   Card,
   CardBody,
   CardFooter,
+  Divider,
   Editable,
   EditableInput,
   EditablePreview,
@@ -22,6 +23,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
+  Tag,
   Text,
   useEditableControls,
 } from "@chakra-ui/react";
@@ -31,15 +33,39 @@ import { CheckIcon, CloseIcon, EditIcon } from "@chakra-ui/icons";
 import UserAvatar from "../Components/PageContent/components/UserAvatar";
 import { useSelector } from "react-redux";
 import ProfilePage from "./UpdateProfile";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Profile() {
   const { user } = useSelector((state) => state.UserReducer);
   const { newArticle } = useSelector((state) => state.BlogReducer);
+
+  const [myArticle, setMyArticle] = useState([]);
+
+  const getArticle = async () => {
+    const token = localStorage.getItem("token");
+    try {
+      const respon = await axios.get(
+        "https://minpro-blog.purwadhikabootcamp.com/api/blog/auth",
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setMyArticle(respon.data.result);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   // const [avatarImage, setAvatarImage] = useState('');
 
   // const handleAvatarChange = (imageUrl) => {
   //   setAvatarImage(imageUrl);
   // };
+  useEffect(() => {
+    getArticle();
+  }, []);
 
   function EditableControls() {
     const {
@@ -132,30 +158,41 @@ export default function Profile() {
                   </TabPanel>
                   <TabPanel>
                     <Box>
-                      Maafkan, aku belum bisa mengambil data blog yang aku tulis
-                      dari API
-                      {newArticle.map((newArticle) => (
+                      {myArticle.map((item) => (
                         <Card
                           direction={{ base: "column", sm: "row" }}
                           overflow="hidden"
                           variant="outline"
                         >
-                          <Image
-                            objectFit="cover"
-                            maxW={{ base: "100%", sm: "200px" }}
-                            src=""
-                            alt="Caffe Latte"
-                          />
-
                           <Stack>
                             <CardBody>
-                              <Heading size="md">
-                                {newArticle.title === "COBAA"}
-                              </Heading>
-                              <Text py="2">{newArticle.content}</Text>
-                              <Text>{newArticle.country}</Text>
-                              <Text>{newArticle.CategoryId}</Text>
-                              <Text>{newArticle.keywords}</Text>
+                              <Box
+                                height={"150px"}
+                                w={"580px"}
+                                position="relative"
+                                backgroundPosition="center"
+                                backgroundRepeat="no-repeat"
+                                backgroundSize="cover"
+                                borderRadius="lg"
+                                backgroundImage={`https://minpro-blog.purwadhikabootcamp.com/${item.imageURL}`}
+                              ></Box>
+                              <Heading size="lg">{item.title}</Heading>
+                              <Divider />
+                              <Text fontSize={"sm"} color={"gray.500"}>
+                                Published:{" "}
+                                {new Date(item.createdAt).toLocaleDateString()}
+                              </Text>
+                              <Text py="2">{item.content}</Text>
+                              <Text>{item.country}</Text>
+                              <Text>{item.keywords}</Text>
+                              <Tag
+                                size={"md"}
+                                rounded={"full"}
+                                mt={4}
+                                fontWeight={"normal"}
+                              >
+                                {item.Category.name}
+                              </Tag>
                             </CardBody>
                             <CardFooter></CardFooter>
                           </Stack>
