@@ -3,6 +3,7 @@ import { BiBookBookmark } from "react-icons/bi";
 import WriteBlog from "./components/WriteBlog";
 import { Link } from "react-router-dom";
 import SignIn from "./components/SignIn";
+import ButtonLibrary from "./components/ButtonLibrary";
 // import SearchBar from "./components/SearchBar";
 // import Category from "./components/Category";
 
@@ -37,6 +38,7 @@ export default function Navbar() {
         </Link>
         <Spacer />
         <ButtonGroup>
+          {/* <ButtonLibrary /> */}
           {/* <Category /> */}
           <WriteBlog />
           <SignIn />
