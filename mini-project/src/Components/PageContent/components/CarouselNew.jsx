@@ -14,7 +14,7 @@ import {
   useBreakpointValue,
   useToast,
 } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import { BsFillBookmarkStarFill } from "react-icons/bs";
 import { GrLike } from "react-icons/gr";

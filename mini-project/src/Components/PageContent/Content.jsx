@@ -16,6 +16,7 @@ import jsonTopLike from "../../json-dummy/listBlog.json";
 // import Explore from "./components/Explore";
 import { useSelector } from "react-redux";
 import AllArticle from "./components/AllArticle";
+import { Link } from "react-scroll";
 
 export default function Content() {
   const login = useSelector((state) => state.UserReducer.login);
@@ -46,15 +47,17 @@ export default function Content() {
                   mood dan pilihan anda untuk dibaca
                 </Text>
               </Box>
-              <Button
-                rightIcon={<ArrowForwardIcon />}
-                ml={"200px"}
-                mt={"50px"}
-                fontSize={"2xl"}
-                variant={""}
-              >
-                Lihat semua Buku atau Blog
-              </Button>
+              <Link to="allarticle" smooth={true}>
+                <Button
+                  rightIcon={<ArrowForwardIcon />}
+                  ml={"200px"}
+                  mt={"50px"}
+                  fontSize={"2xl"}
+                  variant={""}
+                >
+                  Lihat semua Buku atau Blog
+                </Button>
+              </Link>
             </Box>
           </Box>
         </Stack>
@@ -98,7 +101,7 @@ export default function Content() {
                     fontSize={"2xl"}
                     variant={""}
                     rightIcon={<AiOutlineArrowRight />}
-                    onClick={() => (document.location.href = "/")}
+                    onClick={toSign}
                   >
                     Start
                   </Button>
@@ -108,7 +111,7 @@ export default function Content() {
                     fontSize={"2xl"}
                     variant={""}
                     rightIcon={<AiOutlineArrowRight />}
-                    onClick={toSign}
+                    onClick={() => (document.location.href = "/")}
                   >
                     Start
                   </Button>

@@ -2,6 +2,7 @@ import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { useRef } from "react";
 import { BiBookBookmark } from "react-icons/bi";
 // import { useNavigate } from "react-router-dom";
+import { Link } from "react-scroll";
 
 export default function TittleWebsite() {
   // const navigate = useNavigate();
@@ -40,11 +41,16 @@ export default function TittleWebsite() {
               any topic. Find and share real perspectives about topics that
               matter today
             </Text>
-            <a href="#carousel">
+            {/* <a href="#carousel">
               <Button mt={"20px"} borderRadius={"50px"} colorScheme={"yellow"}>
                 Start Reading
               </Button>
-            </a>
+            </a> */}
+            <Link to="carousel" spy={true} smooth={true} duration={500}>
+              <Button mt={"20px"} borderRadius={"50px"} colorScheme={"yellow"}>
+                Start Reading
+              </Button>
+            </Link>
           </Box>
         </Box>
       </Box>

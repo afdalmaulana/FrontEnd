@@ -172,7 +172,7 @@ export default function AllArticle({ linkRef }) {
     // console.log("ini like", like.id);
   };
   return (
-    <Box>
+    <Box id="allarticle">
       <Box m={"24px 60px 40px"}>
         <Heading
           fontSize={"5xl"}
