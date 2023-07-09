@@ -118,24 +118,24 @@ export const dislikeBlog = (blogId, toast) => {
   };
 };
 
-export const viewArticle = (blogId, blogTitle) => {
-  return async () => {
-    const token = localStorage.getItem("token");
-    try {
-      const respon = await axios.get(
-        `https://minpro-blog.purwadhikabootcamp.com/api/blog?sortBy=title&size=20&search=${blogTitle}`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
-};
+// export const viewArticle = (blogId, blogTitle) => {
+//   return async () => {
+//     const token = localStorage.getItem("token");
+//     try {
+//       const respon = await axios.get(
+//         `https://minpro-blog.purwadhikabootcamp.com/api/blog?sortBy=title&size=20&search=${blogTitle}`,
+//         {},
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//           },
+//         }
+//       );
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   };
+// };
 
 export const { addToBookmark } = BlogReducer.actions;
 export default BlogReducer.reducer;

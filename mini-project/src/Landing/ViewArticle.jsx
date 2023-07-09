@@ -14,19 +14,22 @@ import { useEffect, useState } from "react";
 export default function ViewArticle() {
   const [viewArticle, setViewArticle] = useState({});
   const urlId = window.location.href.split("?");
+  console.log("ini url", urlId);
   const idBlogView = urlId[0].split("/").pop();
-  const title = urlId[1].replaceAll("-", " ");
+  console.log("ini id blog view", idBlogView);
+  const titleView = urlId[1].replaceAll("-", " ");
+  console.log("ini title", titleView);
 
-  const viewBlog = async (id, title) => {
+  const viewBlog = async () => {
     const token = localStorage.getItem("token");
     const respon = await axios.get(
-      `https://minpro-blog.purwadhikabootcamp.com/api/blog/${idBlogView}`
+      `https://minpro-blog.purwadhikabootcamp.com/api/blog/${idBlogView}?${titleView}`
     );
     setViewArticle(respon.data[0]);
   };
 
   useEffect(() => {
-    viewBlog(idBlogView, title);
+    viewBlog(idBlogView, titleView);
   }, []);
 
   console.log(viewArticle);

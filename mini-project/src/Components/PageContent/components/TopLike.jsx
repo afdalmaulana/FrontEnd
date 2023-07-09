@@ -20,7 +20,7 @@ import {
   addToBookmark,
   dislikeBlog,
   likeBlog,
-  viewArticle,
+  // viewArticle,
 } from "../../../redux/reducer/BlogReducer";
 import axios from "axios";
 import { useEffect, useState } from "react";
@@ -91,7 +91,7 @@ export default function TopLike() {
     // console.log("ini like", like.id);
   };
   function viewBlog(item) {
-    dispatch(viewArticle(item));
+    // dispatch(viewArticle(item));
     navigate(`/viewarticle/${item.id}?${item.title}`);
   }
   return (

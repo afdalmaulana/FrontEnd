@@ -24,7 +24,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   addToBookmark,
   likeBlog,
-  viewArticle,
+  // viewArticle,
 } from "../../../redux/reducer/BlogReducer";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineArrowUp } from "react-icons/ai";
@@ -122,7 +122,7 @@ export default function CarouselNew() {
     // console.log("ini like", like.id);
   };
   function viewBlog(item) {
-    dispatch(viewArticle(item));
+    // dispatch(viewArticle(item));
     navigate(`/viewarticle/${item.id}?${item.title}`);
   }
   return (

@@ -152,7 +152,7 @@ export default function AllArticle({ linkRef }) {
   });
 
   function viewBlog(item) {
-    dispatch(viewArticle(item));
+    // dispatch(viewArticle(item));
     navigate(`/viewarticle/${item.id}?${item.title}`);
   }
   const getLike = (item) => {
